@@ -4,7 +4,7 @@ import base64, io, json, zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-FILES = ["page_one.py", "handout.py", "data/restaurants.csv", "data/rankings_manual.csv", "data/gaps_manual.json", "data/focus_keywords.csv", "data/baseline_semrush.json", "sample_output/tikka_n_kabab.plan.json", "sample_output/sample_chettinad_kitchen.plan.json"]
+FILES = ["page_one.py", "handout.py", "data/restaurants.csv", "data/rankings_manual.csv", "data/gaps_manual.json", "data/focus_keywords.csv", "data/baseline_site_audit.json", "sample_output/tikka_n_kabab.plan.json", "sample_output/sample_chettinad_kitchen.plan.json"]
 buf = io.BytesIO()
 with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
     for f in FILES:

@@ -130,8 +130,8 @@
   "review_rules": "Send only to real customers. No discounts, gifts or contests for reviews, never ask for 5 stars or specific wording, never review-gate.",
   "featured_gap": "BIGGEST REAL GAP (found on the live site): the website's title tag reads \"Best Hamburgers in Dallas, TX | New Tikka N Kabab | Menu\". It tells Google and AI assistants this is a hamburger place, so it can't match searches for Pakistani/Indian food, biryani or kabab. Fix today (5 minutes in the site builder): change the title to \"Tikka N Kabab | Pakistani & Indian Food, Biryani & Kabab | North Dallas near UTD\".",
   "baseline": {
-    "title": "Baseline (Semrush, Nov 13-14, 2026)",
-    "source": "Semrush (team screenshot) for tikkankababtx.com",
+    "title": "Baseline (site audit, Nov 13-14, 2026)",
+    "source": "SEO site audit (team screenshot) for tikkankababtx.com",
     "metrics": [
       [
         "Organic traffic",
@@ -188,7 +188,7 @@
     "competitor": "Top competitor: O'Desi Aroma (odesiaroma.com), the SEO leader, ~9.8K organic traffic; leads local search coverage.",
     "insight": "Tikka N Kabab only ranks for its own name: zero for generic and dish searches and zero AI visibility. That is exactly what Page One Builder fixes.",
     "fixes": [
-      "Fix the 22 site errors Semrush found",
+      "Fix the 22 site errors the audit found",
       "Fix the title tag ('Best Hamburgers in Dallas' -> Pakistani & Indian food)",
       "Add Restaurant + Menu + FAQ schema (generated here)",
       "Build one page per keyword group (generated here)"

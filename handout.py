@@ -501,7 +501,7 @@ def run_handout(outdir: Path, r: dict, plan: dict, meta: dict, model: str, live:
     feat = json.loads(gp.read_text()) if gp and gp.exists() else {}
     if feat.get("_featured"):
         fixes["featured_gap"] = feat["_featured"]
-    bp = Path(manual_path).with_name("baseline_semrush.json") if manual_path else None
+    bp = Path(manual_path).with_name("baseline_site_audit.json") if manual_path else None
     baseline = json.loads(bp.read_text()) if bp and bp.exists() else None
     fixes["baseline"] = baseline
     if baseline and (outdir / "report.html").exists():
