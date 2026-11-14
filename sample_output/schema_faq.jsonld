@@ -4,42 +4,42 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is Sample Chettinad Kitchen halal?",
+      "name": "Where is Tikka N Kabab?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. All chicken and goat served at Sample Chettinad Kitchen are halal."
+        "text": "7859 McCallum Blvd Ste 106, Dallas, TX 75252, in far North Dallas about 2 miles from UT Dallas."
       }
     },
     {
       "@type": "Question",
-      "name": "What are the hours of Sample Chettinad Kitchen?",
+      "name": "What are Tikka N Kabab's hours?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Open daily from 11 AM to 11 PM."
+        "text": "Open every day from 11 AM to 9:30 PM."
       }
     },
     {
       "@type": "Question",
-      "name": "Does Sample Chettinad Kitchen have a lunch buffet?",
+      "name": "What is Tikka N Kabab known for?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, a South Indian lunch buffet is served on weekdays."
+        "text": "Chicken 65 ($9.99), Chicken Samosa ($2.99 for 2), Veg Samosa ($3.99 for 2), Onion Bhaji ($5.99) and Dal Puri ($4.99 for 4)."
       }
     },
     {
       "@type": "Question",
-      "name": "Where is Sample Chettinad Kitchen located?",
+      "name": "Is Tikka N Kabab affordable?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Richardson, TX 75080, a short drive from UT Dallas."
+        "text": "Yes. Samosas start at $2.99 and most snacks are under $6; Chicken 65 is $9.99."
       }
     },
     {
       "@type": "Question",
-      "name": "What dishes is Sample Chettinad Kitchen known for?",
+      "name": "What is Tikka N Kabab's phone number?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Chicken biryani, Chettinad chicken and dosa."
+        "text": "(469) 857-3000."
       }
     }
   ]

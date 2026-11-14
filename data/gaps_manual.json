@@ -1,0 +1,12 @@
+{
+ "chicken 65 near me": {
+  "categories": "Bawarchi (listed just above us) = 'Indian restaurant'; Malabar Kitchen = 'Kerala restaurant'. Ours: generic 'Restaurant' (Yummy Spice also generic). Fix: primary 'Pakistani restaurant', secondary 'Indian restaurant', 'Kebab shop'.",
+  "menu items": "Malabar Kitchen + Bindaas show Chicken 65 on online menus/ordering platforms AI cites. Ours: not visible online. Fix: add 'Chicken 65 - $9.99' to GBP menu + website menu with Menu schema.",
+  "photos": "Not checked yet. Fix: add a real Chicken 65 photo to GBP this week.",
+  "reviews (count/rating)": "Our 4.2 (407 reviews) beats Bawarchi 3.6 (2,650) and Yummy Spice & Rice 3.9 (1,003), ties Malabar 4.2. Gap is review COUNT, not rating. Fix: honest review ask to every real customer (text below), no incentives.",
+  "review words": "Not checked yet. Fix: ask customers to mention what they ordered (never script wording).",
+  "hours": "Ours: daily 11 AM-9:30 PM. Fix: confirm on GBP + add holiday hours.",
+  "website": "Competitors have menus online AI can quote; Yummy Spice shows a description line ('Classic Indian food in casual quarters'), ours shows none. We have Order online, but no website listed ([website]). Fix: add the GBP description + publish the Chicken 65 page below.",
+  "posts": "Not checked yet. Fix: Week 1 Google post features Chicken 65 at $9.99."
+ }
+}

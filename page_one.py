@@ -9,7 +9,7 @@ Keys rule: the Gemini key is read ONLY from the environment (GEMINI_API_KEY),
 a local .env file (gitignored), or Colab secrets. It is never written anywhere.
 
 Usage:
-  python page_one.py --restaurant "Sample Chettinad Kitchen"
+  python page_one.py --restaurant "Tikka N Kabab"
   python page_one.py --csv data/restaurants.csv --row 0
   python page_one.py --offline          # cached sample output, no key / wifi needed
 """
@@ -26,18 +26,22 @@ from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-SAMPLE_JSON = ROOT / "sample_output" / "sample_chettinad_kitchen.plan.json"
+SAMPLE_JSON = ROOT / "sample_output" / "tikka_n_kabab.plan.json"   # offline fallback (real facts, no rank data)
 
+# Default restaurant: real facts collected by the team. Unknowns are left blank / [placeholder]; never invent.
 SAMPLE_RESTAURANT = {
-    "name": "Sample Chettinad Kitchen",
-    "address": "Richardson, TX 75080",
-    "cuisine": "South Indian (Chettinad)",
-    "website": "https://example.com/sample-chettinad-kitchen",
-    "menu_link": "https://example.com/sample-chettinad-kitchen/menu",
-    "phone": "",
-    "hours": "Mo-Su 11:00-23:00",
-    "features": "halal; lunch buffet; open till 11 PM; near UT Dallas",
-    "menu_items": "chicken biryani; chettinad chicken; dosa",
+    "name": "Tikka N Kabab",
+    "address": "7859 McCallum Blvd Ste 106, Dallas, TX 75252",
+    "cuisine": "Pakistani, Indian (kabab)",
+    "website": "[website]",
+    "menu_link": "[website]/menu",
+    "phone": "(469) 857-3000",
+    "hours": "Mo-Su 11:00-21:30",
+    "features": "Google rating 4.2 (407 reviews); near UT Dallas; order online on Google; dine-in and pickup",
+    "menu_items": "Chicken Samosa (2pc) $2.99; Veg Samosa (2pc) $3.99; Onion Bhaji (pakoda) $5.99; Dal Puri (4) $4.99; Chicken 65 $9.99",
+    "price_range": "$",   # from real menu prices ($2.99-$9.99)
+    "lat": "32.9895",     # approx. Maps pin (Coit Rd/Waterview, just west of UTD); verify
+    "lng": "-96.7735",
 }
 
 INTENT_GROUPS = ["dish", "cuisine_near_me", "occasion_feature"]
@@ -132,6 +136,17 @@ def get_api_key() -> str | None:
     return key
 
 
+FOCUS_CSV = ROOT / "data" / "focus_keywords.csv"
+
+
+def focus_keywords(name: str) -> list[dict]:
+    """Team's fixed hand-check keywords for this restaurant (data/focus_keywords.csv: restaurant,keyword,group)."""
+    if not FOCUS_CSV.exists():
+        return []
+    with open(FOCUS_CSV, newline="", encoding="utf-8-sig") as f:
+        return [r for r in csv.DictReader(f) if r.get("restaurant", "").lower() == (name or "").lower()]
+
+
 def call_gemini(restaurant: dict, model: str) -> dict:
     from google import genai
     from google.genai import types
@@ -146,7 +161,10 @@ def call_gemini(restaurant: dict, model: str) -> dict:
         config = types.GenerateContentConfig(**cfg)
     resp = client.models.generate_content(
         model=model,
-        contents=PROMPT.format(restaurant=json.dumps(restaurant, indent=2)),
+        contents=PROMPT.format(restaurant=json.dumps(restaurant, indent=2)) + (
+            "\nIMPORTANT: the top10 MUST be exactly these keywords (with these intent_groups), in this order; include them among the 20: "
+            + json.dumps([{"keyword": f["keyword"], "intent_group": f["group"]} for f in focus_keywords(restaurant.get("name"))])
+            if focus_keywords(restaurant.get("name")) else ""),
         config=config,
     )
     text = (resp.text or "").strip()
@@ -179,9 +197,7 @@ def build_restaurant_schema(r: dict, plan: dict) -> dict:
         "telephone": r.get("phone") or "+1-000-000-0000 (replace with real number)",
         "openingHours": [h.strip() for h in r.get("hours", "").split(";") if h.strip()] or ["Mo-Su 11:00-23:00"],
         "menu": r.get("menu_link") or r.get("website"),
-        "acceptsReservations": "True",
         "url": r.get("website"),
-        "priceRange": "$$",
         "description": plan.get("gbp_description", "")[:750],
         "hasMenu": {
             "@type": "Menu",
@@ -192,9 +208,19 @@ def build_restaurant_schema(r: dict, plan: dict) -> dict:
             },
         },
     }
-    feats = split_list(r.get("features", ""))
-    if feats:
-        s["amenityFeature"] = [{"@type": "LocationFeatureSpecification", "name": f, "value": True} for f in feats]
+    if r.get("price_range"):
+        s["priceRange"] = r["price_range"]
+    if r.get("accepts_reservations"):
+        s["acceptsReservations"] = r["accepts_reservations"]
+    # menu items: split "Name $price" into MenuItem + Offer
+    items = []
+    for i in split_list(r.get("menu_items", "")):
+        m = re.match(r"^(.*?)\s*\$(\d+(?:\.\d{2})?)$", i)
+        if m:
+            items.append({"@type": "MenuItem", "name": m.group(1).strip(), "offers": {"@type": "Offer", "price": m.group(2), "priceCurrency": "USD"}})
+        else:
+            items.append({"@type": "MenuItem", "name": i.title()})
+    s["hasMenu"]["hasMenuSection"]["hasMenuItem"] = items
     return s
 
 
@@ -219,7 +245,11 @@ def validate_schema(restaurant_ld: dict, faq_ld: dict) -> list[str]:
             problems.append(f"{label}: invalid JSON ({e})")
         if block.get("@context") != "https://schema.org":
             problems.append(f"{label}: missing @context")
-    for k in ["name", "servesCuisine", "address", "telephone", "openingHours", "menu", "acceptsReservations"]:
+    for k in ["name", "servesCuisine", "address", "telephone", "openingHours", "menu"]:
+        pass
+    if "[website]" in json.dumps(restaurant_ld):
+        problems.append("Restaurant: website/menu URL is a [website] placeholder - add the real URL before publishing (warning)")
+    for k in ["name", "servesCuisine", "address", "telephone", "openingHours", "menu"]:
         if not restaurant_ld.get(k):
             problems.append(f"Restaurant: missing {k}")
     if "(replace" in str(restaurant_ld.get("telephone")):
@@ -421,7 +451,10 @@ Hours: {esc(r.get('hours'))} · Menu: {esc(r.get('menu_link'))}</div>
 def render_landing(r: dict, plan: dict, rest_ld: dict, faq_ld: dict) -> str:
     t = plan["top10"][0]
     w = t["website"]
-    menu = "".join(f"<li><b>{esc(i.title())}</b> <span>[price]</span></li>" for i in split_list(r.get("menu_items", "")))
+    def _np(i):
+        m = re.match(r"^(.*?)\s*(\$\d+(?:\.\d{2})?)$", i)
+        return (m.group(1), m.group(2)) if m else (i.title(), "[price]")
+    menu = "".join(f"<li><b>{esc(_np(i)[0])}</b> <span>{esc(_np(i)[1])}</span></li>" for i in split_list(r.get("menu_items", "")))
     feats = "".join(f"<span class='chip'>{esc(f)}</span>" for f in split_list(r.get("features", "")))
     faq = "".join(f"<details><summary>{esc(f['q'])}</summary><p>{esc(f['a'])}</p></details>" for f in plan["faqs"][:5])
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -478,6 +511,12 @@ def main(argv=None):
     ap.add_argument("--offline", action="store_true", help="use cached sample output (no API key / wifi needed)")
     ap.add_argument("--model", default=os.environ.get("GEMINI_MODEL", "gemini-2.5-flash"))
     ap.add_argument("--out", default=str(ROOT / "out"))
+    ap.add_argument("--lat", help="restaurant latitude (for the rank grid map)")
+    ap.add_argument("--lng", help="restaurant longitude (for the rank grid map)")
+    ap.add_argument("--simulate-grid", action="store_true", help="live mode: skip the ~10 Gemini rank-grid calls and use simulated grid (faster demo)")
+    ap.add_argument("--manual", default=str(ROOT / "data" / "rankings_manual.csv"), help="by-hand rankings CSV (keyword,maps_position,maps_top3,page1_yes_no,ai_names_it,notes)")
+    ap.add_argument("--no-ai-check", action="store_true", help="skip the optional Gemini auto-check (AI check (Gemini)) and grid estimates")
+    ap.add_argument("--no-extras", action="store_true", help="skip handout steps 2-6 (where it stands, gaps, fixes, rank grid, PDF)")
     ap.add_argument("--all", action="store_true", help="batch: run every row of --csv and write out/index.html")
     a = ap.parse_args(argv)
 
@@ -504,6 +543,8 @@ def main(argv=None):
     else:
         r = dict(SAMPLE_RESTAURANT)
 
+    if a.lat and a.lng:
+        r["lat"], r["lng"] = a.lat, a.lng
     meta = {"date": date.today().isoformat()}
     plan = None
     if not a.offline:
@@ -554,6 +595,14 @@ def main(argv=None):
     print(f"→ Report:  {outdir / 'report.html'}")
     print(f"→ Landing: {outdir / 'landing.html'}")
     print(f"→ Data:    plan.json, keywords_20.csv, rank_tracker.csv, schema_*.jsonld in {outdir}")
+    if not a.no_extras:
+        try:
+            import handout
+            handout.run_handout(outdir, r, plan, meta, a.model, live=(meta.get("mode") == "live"), simulate_grid=a.simulate_grid,
+                                 manual_path=a.manual, ai_check=not a.no_ai_check)
+        except Exception as e:  # never break the core flow
+            import traceback; traceback.print_exc()
+            print(f"! Handout extras failed ({type(e).__name__}: {e}); core outputs above are still valid.")
     return outdir
 
 

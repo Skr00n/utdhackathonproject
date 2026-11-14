@@ -1,748 +1,765 @@
 {
   "restaurant": {
-    "name": "Sample Chettinad Kitchen",
-    "address": "Richardson, TX 75080",
-    "cuisine": "South Indian (Chettinad)",
-    "website": "https://example.com/sample-chettinad-kitchen",
-    "menu_link": "https://example.com/sample-chettinad-kitchen/menu",
-    "phone": "",
-    "hours": "Mo-Su 11:00-23:00",
-    "features": "halal; lunch buffet; open till 11 PM; near UT Dallas",
-    "menu_items": "chicken biryani; chettinad chicken; dosa"
+    "name": "Tikka N Kabab",
+    "address": "7859 McCallum Blvd Ste 106, Dallas, TX 75252",
+    "cuisine": "Pakistani, Indian (kabab)",
+    "website": "[website]",
+    "menu_link": "[website]/menu",
+    "phone": "(469) 857-3000",
+    "hours": "Mo-Su 11:00-21:30",
+    "features": "Google rating 4.2 (407 reviews); near UT Dallas; order online on Google; dine-in and pickup",
+    "menu_items": "Chicken Samosa (2pc) $2.99; Veg Samosa (2pc) $3.99; Onion Bhaji (pakoda) $5.99; Dal Puri (4) $4.99; Chicken 65 $9.99",
+    "price_range": "$",
+    "lat": "32.9895",
+    "lng": "-96.7735"
   },
   "meta": {
     "date": "2026-11-14",
     "mode": "offline",
     "engine": "cached sample",
-    "source_note": "Hand-written sample output for demo/offline mode (no Gemini call). Prices shown as [price] placeholders; phone and street address must be filled from restaurants.csv before publishing."
+    "source_note": "OFFLINE fallback plan for Tikka N Kabab, written from facts the team collected on site/Google Maps (name, address, phone, hours, 4.2 rating, 5 menu items + prices). Unknowns are [placeholders]. Ranking data is NOT included: fill data/rankings_manual.csv by hand."
   },
-  "_note": "Hand-written sample output for demo/offline mode (no Gemini call). Prices shown as [price] placeholders; phone and street address must be filled from restaurants.csv before publishing.",
+  "_note": "OFFLINE fallback plan for Tikka N Kabab, written from facts the team collected on site/Google Maps (name, address, phone, hours, 4.2 rating, 5 menu items + prices). Unknowns are [placeholders]. Ranking data is NOT included: fill data/rankings_manual.csv by hand.",
   "keywords": [
     {
-      "keyword": "chicken biryani near me",
-      "intent_group": "dish",
-      "est_intent": "high",
-      "intent_score": 10,
-      "why": "Top dish search; people ready to order now"
-    },
-    {
-      "keyword": "chettinad chicken richardson",
+      "keyword": "chicken 65 near me",
       "intent_group": "dish",
       "est_intent": "high",
       "intent_score": 9,
-      "why": "Signature dish + city = strong local intent"
+      "why": "Specific dish search from someone ready to order; Chicken 65 is on the menu at $9.99"
     },
     {
-      "keyword": "dosa near me",
+      "keyword": "samosa near UTD",
       "intent_group": "dish",
       "est_intent": "high",
       "intent_score": 9,
-      "why": "High-volume South Indian dish search"
+      "why": "Cheap snack search from students; samosas from $2.99"
     },
     {
-      "keyword": "best biryani in richardson tx",
+      "keyword": "chicken tikka Dallas",
       "intent_group": "dish",
       "est_intent": "high",
-      "intent_score": 9,
-      "why": "'Best' + dish + city is a classic Maps query"
+      "intent_score": 8,
+      "why": "Signature dish in the restaurant's name; big Dallas search"
     },
     {
-      "keyword": "masala dosa richardson",
+      "keyword": "seekh kabab North Dallas",
       "intent_group": "dish",
       "est_intent": "medium",
       "intent_score": 7,
-      "why": "Specific dosa variant searchers"
+      "why": "Kabab dish + neighborhood; matches the name"
     },
     {
-      "keyword": "spicy south indian chicken curry",
-      "intent_group": "dish",
-      "est_intent": "medium",
-      "intent_score": 6,
-      "why": "Describes Chettinad food without knowing the name"
-    },
-    {
-      "keyword": "goat biryani dallas",
-      "intent_group": "dish",
-      "est_intent": "medium",
-      "intent_score": 6,
-      "why": "Broader metro dish search"
-    },
-    {
-      "keyword": "south indian restaurant near me",
+      "keyword": "Indian restaurant near UT Dallas",
       "intent_group": "cuisine_near_me",
       "est_intent": "high",
-      "intent_score": 10,
+      "intent_score": 9,
+      "why": "Cuisine + campus landmark; Maps-pack search"
+    },
+    {
+      "keyword": "Pakistani food Richardson",
+      "intent_group": "cuisine_near_me",
+      "est_intent": "high",
+      "intent_score": 8,
+      "why": "Cuisine + neighbor city; few Pakistani competitors"
+    },
+    {
+      "keyword": "Indian food 75252",
+      "intent_group": "cuisine_near_me",
+      "est_intent": "medium",
+      "intent_score": 7,
+      "why": "Zip-code search people type in Maps"
+    },
+    {
+      "keyword": "cheap Indian food near UTD",
+      "intent_group": "occasion_feature",
+      "est_intent": "high",
+      "intent_score": 9,
+      "why": "Budget need; samosas $2.99-$3.99 and Chicken 65 $9.99 fit honestly"
+    },
+    {
+      "keyword": "Indian takeout near me",
+      "intent_group": "occasion_feature",
+      "est_intent": "high",
+      "intent_score": 8,
+      "why": "Takeout need; Order online is on the Google profile"
+    },
+    {
+      "keyword": "best kabab near Richardson",
+      "intent_group": "occasion_feature",
+      "est_intent": "medium",
+      "intent_score": 7,
+      "why": "Comparison search AI assistants answer; 4.2 rating helps"
+    },
+    {
+      "keyword": "onion bhaji near me",
+      "intent_group": "dish",
+      "est_intent": "medium",
+      "intent_score": 6,
+      "why": "Named dish with low competition ($5.99)"
+    },
+    {
+      "keyword": "dal puri dallas",
+      "intent_group": "dish",
+      "est_intent": "medium",
+      "intent_score": 6,
+      "why": "Niche dish many places don't list ($4.99)"
+    },
+    {
+      "keyword": "pakistani restaurant near me",
+      "intent_group": "cuisine_near_me",
+      "est_intent": "high",
+      "intent_score": 8,
       "why": "Core cuisine + near me"
     },
     {
-      "keyword": "chettinad restaurant near me",
-      "intent_group": "cuisine_near_me",
-      "est_intent": "high",
-      "intent_score": 8,
-      "why": "Exact niche match, low competition"
-    },
-    {
-      "keyword": "indian restaurant richardson tx",
-      "intent_group": "cuisine_near_me",
-      "est_intent": "high",
-      "intent_score": 9,
-      "why": "Broad cuisine + city"
-    },
-    {
-      "keyword": "tamil food near me",
+      "keyword": "indian restaurant north dallas",
       "intent_group": "cuisine_near_me",
       "est_intent": "medium",
       "intent_score": 7,
-      "why": "Chettinad is Tamil cuisine; diaspora search"
+      "why": "Cuisine + neighborhood"
     },
     {
-      "keyword": "indian food open now",
+      "keyword": "veg samosa near me",
+      "intent_group": "dish",
+      "est_intent": "medium",
+      "intent_score": 6,
+      "why": "Vegetarian variant of the samosa search"
+    },
+    {
+      "keyword": "pakoda near me",
+      "intent_group": "dish",
+      "est_intent": "medium",
+      "intent_score": 5,
+      "why": "Alternate name for onion bhaji"
+    },
+    {
+      "keyword": "indian food open now dallas",
+      "intent_group": "occasion_feature",
+      "est_intent": "medium",
+      "intent_score": 6,
+      "why": "Open-now need; hours 11 AM-9:30 PM daily"
+    },
+    {
+      "keyword": "indian appetizers near me",
+      "intent_group": "dish",
+      "est_intent": "medium",
+      "intent_score": 5,
+      "why": "Matches the snack-heavy menu"
+    },
+    {
+      "keyword": "halal restaurant near utd",
+      "intent_group": "occasion_feature",
+      "est_intent": "medium",
+      "intent_score": 5,
+      "why": "Popular need - ONLY target if halal is confirmed (unknown today)"
+    },
+    {
+      "keyword": "indian dinner richardson",
       "intent_group": "cuisine_near_me",
-      "est_intent": "high",
-      "intent_score": 8,
-      "why": "Time-sensitive intent"
-    },
-    {
-      "keyword": "halal indian restaurant richardson",
-      "intent_group": "occasion_feature",
-      "est_intent": "high",
-      "intent_score": 9,
-      "why": "Halal is a must-have filter for many diners"
-    },
-    {
-      "keyword": "indian lunch buffet near me",
-      "intent_group": "occasion_feature",
-      "est_intent": "high",
-      "intent_score": 9,
-      "why": "Lunch buffet is a strong weekday driver"
-    },
-    {
-      "keyword": "late night food near ut dallas",
-      "intent_group": "occasion_feature",
-      "est_intent": "high",
-      "intent_score": 8,
-      "why": "Open till 11 PM + student audience"
-    },
-    {
-      "keyword": "cheap eats near ut dallas",
-      "intent_group": "occasion_feature",
-      "est_intent": "medium",
-      "intent_score": 7,
-      "why": "Students on a budget"
-    },
-    {
-      "keyword": "indian food open late richardson",
-      "intent_group": "occasion_feature",
-      "est_intent": "high",
-      "intent_score": 8,
-      "why": "Late-hours feature + city"
-    },
-    {
-      "keyword": "halal biryani near me",
-      "intent_group": "occasion_feature",
-      "est_intent": "high",
-      "intent_score": 9,
-      "why": "Combines feature + top dish"
-    },
-    {
-      "keyword": "group dinner indian restaurant richardson",
-      "intent_group": "occasion_feature",
-      "est_intent": "medium",
-      "intent_score": 6,
-      "why": "Groups / student orgs"
-    },
-    {
-      "keyword": "vegetarian south indian food richardson",
-      "intent_group": "occasion_feature",
-      "est_intent": "medium",
-      "intent_score": 6,
-      "why": "Dosa makes it veg-friendly"
+      "est_intent": "low",
+      "intent_score": 4,
+      "why": "Neighbor city search"
     }
   ],
   "top10": [
     {
       "rank": 1,
-      "keyword": "chicken biryani near me",
+      "keyword": "chicken 65 near me",
       "intent_group": "dish",
       "gbp": {
         "categories": [
-          "South Indian restaurant",
+          "Pakistani restaurant",
           "Indian restaurant",
-          "Halal restaurant"
+          "Kebab shop"
         ],
-        "description_addition": "Signature dish highlighted in the description in plain language, e.g. 'Known for Chettinad-style chicken biryani and pepper chicken.'",
+        "description_addition": "Chicken 65 is a spicy, crispy fried chicken dish from South India, and it is one of the best-value plates on our menu at $9.99.",
         "menu_items": [
-          "Chicken Biryani",
-          "Chettinad Chicken",
-          "Masala Dosa",
-          "Goat Biryani"
+          "Chicken 65",
+          "Chicken Samosa (2 pc)",
+          "Veg Samosa (2 pc)",
+          "Onion Bhaji (Pakoda)",
+          "Dal Puri (4)"
         ],
         "photos": [
-          "Close-up of the dish/experience for 'chicken biryani near me' in natural light",
-          "Interior with guests (with permission)",
-          "Exterior + signage so people recognize the storefront",
-          "Menu board showing prices"
+          "Close-up of Chicken 65 in natural light",
+          "Storefront and signage on McCallum Blvd",
+          "Menu board with prices",
+          "Counter/dining area (with permission)"
         ],
         "posts": [
-          "Google Post: photo + 2 lines about chicken biryani with a 'Call' button",
-          "Weekly 'today's special' post mentioning hours (open till 11 PM)"
+          "Photo of Chicken 65 + 2 lines + 'Call' button",
+          "Weekly post with hours: 11 AM-9:30 PM daily"
         ],
-        "review_request": "Add a QR code on receipts/tables: 'Enjoyed your meal? An honest Google review helps us a lot.' Ask every customer the same way; no discounts or gifts for reviews, and never ask for a specific rating or wording."
+        "review_request": "QR code at the counter and on receipts: 'Enjoyed your food? An honest Google review helps us a lot.' Ask everyone the same way; no discounts or gifts, never ask for a rating or specific words."
       },
       "website": {
-        "title_tag": "Chicken Biryani in Richardson, Made the Chettinad Way",
-        "meta_description": "Looking for chicken biryani near you in Richardson? Our biryani is cooked in the Chettinad style, with whole spices roasted in-house and seeraga...",
-        "h1": "Chicken Biryani in Richardson, Made the Chettinad Way",
-        "page_copy": "Looking for chicken biryani near you in Richardson? Our biryani is cooked in the Chettinad style, with whole spices roasted in-house and seeraga samba or basmati rice layered over tender halal chicken. It is the dish most guests order on their first visit.\n\nOur kitchen follows the cooking of the Chettinad region of Tamil Nadu, known for freshly roasted and ground spices: black pepper, fennel, star anise, dried red chilies, kalpasi (stone flower) and curry leaves. We roast our masalas in small batches every morning, so the flavor is deep and aromatic rather than just hot. If you prefer milder food, tell your server and the kitchen will adjust the spice level for you.\n\nThe menu centers on three dishes our regulars come back for. Chicken biryani [price] is layered with seeded basmati rice, slow-cooked chicken, mint and fried onions, and it comes with raita and salna. Chettinad chicken [price] is a dry-roasted pepper curry that pairs well with parotta or steamed rice. Dosa [price] is a thin, crisp rice-and-lentil crepe served with sambar and fresh chutneys, with masala, ghee roast and onion versions available.\n\nAll of our meat is halal. On weekdays we run a lunch buffet with rotating curries, biryani, dosa made to order and dessert, a quick option if you are coming from class or the office. We stay open until 11 PM, so dinner after a late lab or a game is easy.\n\nYou will find us in Richardson, TX 75080, a short drive from the UT Dallas campus. Dine in, pick up, or call ahead for large group orders. Hours: open daily from 11 AM to 11 PM. See the full menu with current prices on our menu page, and check our Google Business Profile for photos and today's specials.\n\nQuestions before you visit? Read the FAQ below or call us. We would love to cook for you."
+        "title_tag": "Chicken 65 | Tikka N Kabab, North Dallas",
+        "meta_description": "Chicken 65 at Tikka N Kabab, 7859 McCallum Blvd, Dallas TX 75252. Open daily 11 AM-9:30 PM. Call (469) 857-3000.",
+        "h1": "Chicken 65 at Tikka N Kabab",
+        "page_copy": "Looking for chicken 65 near me? Chicken 65 is a spicy, crispy fried chicken dish from South India, and it is one of the best-value plates on our menu at $9.99.\n\nTikka N Kabab is at 7859 McCallum Blvd Ste 106, Dallas, TX 75252. We are open every day from 11 AM to 9:30 PM, and you can call us at (469) 857-3000 to place an order or ask a question before you come in.\n\nOur menu includes Chicken Samosa (2 pc) $2.99, Veg Samosa (2 pc) $3.99, Onion Bhaji (pakoda) $5.99, Dal Puri (4) $4.99 and Chicken 65 $9.99. Every item is cooked to order in our kitchen, so it reaches you hot and crisp. If you are new to this food, start with a plate of samosas and add Chicken 65 if you like heat; if you prefer something milder, Dal Puri and Veg Samosa are good choices.\n\nMany of our guests come from the neighborhoods around McCallum Blvd, Campbell Rd and Coit Rd, from Richardson, and from the UT Dallas campus about two miles away. It is easy to stop by for a snack, pick up food for a group, or sit down for a simple meal with friends or family.\n\nGoogle reviewers currently rate Tikka N Kabab 4.2 stars across more than 400 reviews. We read every review and use the feedback to keep improving our food and service. If you visit, we would be grateful for an honest review that mentions what you ordered, because it helps other people nearby find dishes they will enjoy.\n\nBefore you visit, check our Google Business Profile for photos of the food and the latest posts. Menu prices shown here can change; please call to confirm. Website: [website]. [Owner: add halal status, catering and delivery details here only once confirmed.]\n\nCome by Tikka N Kabab today for chicken 65 and the rest of our menu. We look forward to cooking for you."
       },
       "aeo_faqs": [
         {
-          "q": "Does Sample Chettinad Kitchen serve chicken biryani?",
-          "a": "Yes. Chicken biryani is a signature dish, made Chettinad-style with halal chicken and served with raita and salna."
+          "q": "Where can I get chicken 65 near UT Dallas?",
+          "a": "Tikka N Kabab at 7859 McCallum Blvd Ste 106, Dallas, TX 75252, about 2 miles from UTD. Chicken 65 is a spicy, crispy fried chicken dish from South India, and it is one of the best-value plates on our menu at $9.99."
         },
         {
-          "q": "Is the chicken biryani halal?",
-          "a": "Yes, all meat at Sample Chettinad Kitchen is halal."
+          "q": "What are Tikka N Kabab's hours?",
+          "a": "Open daily 11 AM to 9:30 PM."
         },
         {
-          "q": "Can I order biryani for pickup in Richardson?",
-          "a": "Yes. Call ahead or order at the counter for pickup in Richardson, TX 75080."
+          "q": "How do I order from Tikka N Kabab?",
+          "a": "Call (469) 857-3000 or visit 7859 McCallum Blvd Ste 106, Dallas, TX 75252."
         }
       ]
     },
     {
       "rank": 2,
-      "keyword": "south indian restaurant near me",
-      "intent_group": "cuisine_near_me",
+      "keyword": "samosa near UTD",
+      "intent_group": "dish",
       "gbp": {
         "categories": [
-          "South Indian restaurant",
+          "Pakistani restaurant",
           "Indian restaurant",
-          "Tamil restaurant"
+          "Kebab shop"
         ],
-        "description_addition": "State the cuisine and location clearly: 'Chettinad (South Indian) restaurant in Richardson, near UT Dallas.'",
+        "description_addition": "We make two kinds of samosa: Chicken Samosa (2 pieces for $2.99) and Veg Samosa (2 pieces for $3.99), a quick, filling snack close to campus.",
         "menu_items": [
-          "Chettinad Chicken",
-          "Chicken Biryani",
-          "Dosa",
-          "Idli"
+          "Chicken 65",
+          "Chicken Samosa (2 pc)",
+          "Veg Samosa (2 pc)",
+          "Onion Bhaji (Pakoda)",
+          "Dal Puri (4)"
         ],
         "photos": [
-          "Close-up of the dish/experience for 'south indian restaurant near me' in natural light",
-          "Interior with guests (with permission)",
-          "Exterior + signage so people recognize the storefront",
-          "Menu board showing prices"
+          "Close-up of Samosas in natural light",
+          "Storefront and signage on McCallum Blvd",
+          "Menu board with prices",
+          "Counter/dining area (with permission)"
         ],
         "posts": [
-          "Google Post: photo + 2 lines about south indian restaurant with a 'Call' button",
-          "Weekly 'today's special' post mentioning hours (open till 11 PM)"
+          "Photo of Samosas + 2 lines + 'Call' button",
+          "Weekly post with hours: 11 AM-9:30 PM daily"
         ],
-        "review_request": "Add a QR code on receipts/tables: 'Enjoyed your meal? An honest Google review helps us a lot.' Ask every customer the same way; no discounts or gifts for reviews, and never ask for a specific rating or wording."
+        "review_request": "QR code at the counter and on receipts: 'Enjoyed your food? An honest Google review helps us a lot.' Ask everyone the same way; no discounts or gifts, never ask for a rating or specific words."
       },
       "website": {
-        "title_tag": "South Indian Food in Richardson, TX",
-        "meta_description": "If you are searching for a South Indian restaurant close to Richardson or UT Dallas, we cook the food of Tamil Nadu's Chettinad region: peppery...",
-        "h1": "South Indian Food in Richardson, TX",
-        "page_copy": "If you are searching for a South Indian restaurant close to Richardson or UT Dallas, we cook the food of Tamil Nadu's Chettinad region: peppery curries, biryani, dosa and idli, made fresh every day.\n\nOur kitchen follows the cooking of the Chettinad region of Tamil Nadu, known for freshly roasted and ground spices: black pepper, fennel, star anise, dried red chilies, kalpasi (stone flower) and curry leaves. We roast our masalas in small batches every morning, so the flavor is deep and aromatic rather than just hot. If you prefer milder food, tell your server and the kitchen will adjust the spice level for you.\n\nThe menu centers on three dishes our regulars come back for. Chicken biryani [price] is layered with seeded basmati rice, slow-cooked chicken, mint and fried onions, and it comes with raita and salna. Chettinad chicken [price] is a dry-roasted pepper curry that pairs well with parotta or steamed rice. Dosa [price] is a thin, crisp rice-and-lentil crepe served with sambar and fresh chutneys, with masala, ghee roast and onion versions available.\n\nAll of our meat is halal. On weekdays we run a lunch buffet with rotating curries, biryani, dosa made to order and dessert, a quick option if you are coming from class or the office. We stay open until 11 PM, so dinner after a late lab or a game is easy.\n\nYou will find us in Richardson, TX 75080, a short drive from the UT Dallas campus. Dine in, pick up, or call ahead for large group orders. Hours: open daily from 11 AM to 11 PM. See the full menu with current prices on our menu page, and check our Google Business Profile for photos and today's specials.\n\nQuestions before you visit? Read the FAQ below or call us. We would love to cook for you."
+        "title_tag": "Samosas | Tikka N Kabab, North Dallas",
+        "meta_description": "Samosas at Tikka N Kabab, 7859 McCallum Blvd, Dallas TX 75252. Open daily 11 AM-9:30 PM. Call (469) 857-3000.",
+        "h1": "Samosas at Tikka N Kabab",
+        "page_copy": "Looking for samosa near UTD? We make two kinds of samosa: Chicken Samosa (2 pieces for $2.99) and Veg Samosa (2 pieces for $3.99), a quick, filling snack close to campus.\n\nTikka N Kabab is at 7859 McCallum Blvd Ste 106, Dallas, TX 75252. We are open every day from 11 AM to 9:30 PM, and you can call us at (469) 857-3000 to place an order or ask a question before you come in.\n\nOur menu includes Chicken Samosa (2 pc) $2.99, Veg Samosa (2 pc) $3.99, Onion Bhaji (pakoda) $5.99, Dal Puri (4) $4.99 and Chicken 65 $9.99. Every item is cooked to order in our kitchen, so it reaches you hot and crisp. If you are new to this food, start with a plate of samosas and add Chicken 65 if you like heat; if you prefer something milder, Dal Puri and Veg Samosa are good choices.\n\nMany of our guests come from the neighborhoods around McCallum Blvd, Campbell Rd and Coit Rd, from Richardson, and from the UT Dallas campus about two miles away. It is easy to stop by for a snack, pick up food for a group, or sit down for a simple meal with friends or family.\n\nGoogle reviewers currently rate Tikka N Kabab 4.2 stars across more than 400 reviews. We read every review and use the feedback to keep improving our food and service. If you visit, we would be grateful for an honest review that mentions what you ordered, because it helps other people nearby find dishes they will enjoy.\n\nBefore you visit, check our Google Business Profile for photos of the food and the latest posts. Menu prices shown here can change; please call to confirm. Website: [website]. [Owner: add halal status, catering and delivery details here only once confirmed.]\n\nCome by Tikka N Kabab today for samosas and the rest of our menu. We look forward to cooking for you."
       },
       "aeo_faqs": [
         {
-          "q": "What kind of food does Sample Chettinad Kitchen serve?",
-          "a": "South Indian food from the Chettinad region of Tamil Nadu: biryani, Chettinad chicken, dosa and more."
+          "q": "Where can I get samosa near UT Dallas?",
+          "a": "Tikka N Kabab at 7859 McCallum Blvd Ste 106, Dallas, TX 75252, about 2 miles from UTD. We make two kinds of samosa: Chicken Samosa (2 pieces for $2.99) and Veg Samosa (2 pieces for $3.99), a quick, filling snack close to campus."
         },
         {
-          "q": "Where is Sample Chettinad Kitchen?",
-          "a": "Richardson, TX 75080, a short drive from UT Dallas."
+          "q": "What are Tikka N Kabab's hours?",
+          "a": "Open daily 11 AM to 9:30 PM."
         },
         {
-          "q": "Does it have vegetarian options?",
-          "a": "Yes. Dosa and several curries are vegetarian."
+          "q": "How do I order from Tikka N Kabab?",
+          "a": "Call (469) 857-3000 or visit 7859 McCallum Blvd Ste 106, Dallas, TX 75252."
         }
       ]
     },
     {
       "rank": 3,
-      "keyword": "halal indian restaurant richardson",
-      "intent_group": "occasion_feature",
+      "keyword": "chicken tikka Dallas",
+      "intent_group": "dish",
       "gbp": {
         "categories": [
-          "South Indian restaurant",
-          "Halal restaurant",
-          "Buffet restaurant"
+          "Pakistani restaurant",
+          "Indian restaurant",
+          "Kebab shop"
         ],
-        "description_addition": "Mention the real feature once: halal meat, weekday lunch buffet, open until 11 PM.",
+        "description_addition": "Tikka is in our name. Ask us about today's chicken tikka [owner: confirm chicken tikka item and price before publishing].",
         "menu_items": [
-          "Lunch Buffet (weekdays)",
-          "Halal Chicken Biryani",
-          "Late-night Dosa"
+          "Chicken 65",
+          "Chicken Samosa (2 pc)",
+          "Veg Samosa (2 pc)",
+          "Onion Bhaji (Pakoda)",
+          "Dal Puri (4)"
         ],
         "photos": [
-          "Close-up of the dish/experience for 'halal indian restaurant richardson' in natural light",
-          "Interior with guests (with permission)",
-          "Exterior + signage so people recognize the storefront",
-          "Menu board showing prices"
+          "Close-up of Chicken Tikka in natural light",
+          "Storefront and signage on McCallum Blvd",
+          "Menu board with prices",
+          "Counter/dining area (with permission)"
         ],
         "posts": [
-          "Google Post: photo + 2 lines about halal indian restaurant richardson with a 'Call' button",
-          "Weekly 'today's special' post mentioning hours (open till 11 PM)"
+          "Photo of Chicken Tikka + 2 lines + 'Call' button",
+          "Weekly post with hours: 11 AM-9:30 PM daily"
         ],
-        "review_request": "Add a QR code on receipts/tables: 'Enjoyed your meal? An honest Google review helps us a lot.' Ask every customer the same way; no discounts or gifts for reviews, and never ask for a specific rating or wording."
+        "review_request": "QR code at the counter and on receipts: 'Enjoyed your food? An honest Google review helps us a lot.' Ask everyone the same way; no discounts or gifts, never ask for a rating or specific words."
       },
       "website": {
-        "title_tag": "Halal Indian Restaurant in Richardson",
-        "meta_description": "Every meat dish on our menu is made with halal chicken and goat, so you can order the full menu with confidence. We are a family-style South Indian...",
-        "h1": "Halal Indian Restaurant in Richardson",
-        "page_copy": "Every meat dish on our menu is made with halal chicken and goat, so you can order the full menu with confidence. We are a family-style South Indian restaurant in Richardson serving Chettinad cooking.\n\nOur kitchen follows the cooking of the Chettinad region of Tamil Nadu, known for freshly roasted and ground spices: black pepper, fennel, star anise, dried red chilies, kalpasi (stone flower) and curry leaves. We roast our masalas in small batches every morning, so the flavor is deep and aromatic rather than just hot. If you prefer milder food, tell your server and the kitchen will adjust the spice level for you.\n\nThe menu centers on three dishes our regulars come back for. Chicken biryani [price] is layered with seeded basmati rice, slow-cooked chicken, mint and fried onions, and it comes with raita and salna. Chettinad chicken [price] is a dry-roasted pepper curry that pairs well with parotta or steamed rice. Dosa [price] is a thin, crisp rice-and-lentil crepe served with sambar and fresh chutneys, with masala, ghee roast and onion versions available.\n\nAll of our meat is halal. On weekdays we run a lunch buffet with rotating curries, biryani, dosa made to order and dessert, a quick option if you are coming from class or the office. We stay open until 11 PM, so dinner after a late lab or a game is easy.\n\nYou will find us in Richardson, TX 75080, a short drive from the UT Dallas campus. Dine in, pick up, or call ahead for large group orders. Hours: open daily from 11 AM to 11 PM. See the full menu with current prices on our menu page, and check our Google Business Profile for photos and today's specials.\n\nQuestions before you visit? Read the FAQ below or call us. We would love to cook for you."
+        "title_tag": "Chicken Tikka | Tikka N Kabab, North Dallas",
+        "meta_description": "Chicken Tikka at Tikka N Kabab, 7859 McCallum Blvd, Dallas TX 75252. Open daily 11 AM-9:30 PM. Call (469) 857-3000.",
+        "h1": "Chicken Tikka at Tikka N Kabab",
+        "page_copy": "Looking for chicken tikka Dallas? Tikka is in our name. Ask us about today's chicken tikka [owner: confirm chicken tikka item and price before publishing].\n\nTikka N Kabab is at 7859 McCallum Blvd Ste 106, Dallas, TX 75252. We are open every day from 11 AM to 9:30 PM, and you can call us at (469) 857-3000 to place an order or ask a question before you come in.\n\nOur menu includes Chicken Samosa (2 pc) $2.99, Veg Samosa (2 pc) $3.99, Onion Bhaji (pakoda) $5.99, Dal Puri (4) $4.99 and Chicken 65 $9.99. Every item is cooked to order in our kitchen, so it reaches you hot and crisp. If you are new to this food, start with a plate of samosas and add Chicken 65 if you like heat; if you prefer something milder, Dal Puri and Veg Samosa are good choices.\n\nMany of our guests come from the neighborhoods around McCallum Blvd, Campbell Rd and Coit Rd, from Richardson, and from the UT Dallas campus about two miles away. It is easy to stop by for a snack, pick up food for a group, or sit down for a simple meal with friends or family.\n\nGoogle reviewers currently rate Tikka N Kabab 4.2 stars across more than 400 reviews. We read every review and use the feedback to keep improving our food and service. If you visit, we would be grateful for an honest review that mentions what you ordered, because it helps other people nearby find dishes they will enjoy.\n\nBefore you visit, check our Google Business Profile for photos of the food and the latest posts. Menu prices shown here can change; please call to confirm. Website: [website]. [Owner: add halal status, catering and delivery details here only once confirmed.]\n\nCome by Tikka N Kabab today for chicken tikka and the rest of our menu. We look forward to cooking for you."
       },
       "aeo_faqs": [
         {
-          "q": "Is Sample Chettinad Kitchen halal?",
-          "a": "Yes, all chicken and goat served are halal."
+          "q": "Where can I get chicken tikka near UT Dallas?",
+          "a": "Tikka N Kabab at 7859 McCallum Blvd Ste 106, Dallas, TX 75252, about 2 miles from UTD. Tikka is in our name. Ask us about today's chicken tikka [owner: confirm chicken tikka item and price before publishing]."
         },
         {
-          "q": "Is the lunch buffet halal?",
-          "a": "Yes, every meat dish on the buffet is halal."
+          "q": "What are Tikka N Kabab's hours?",
+          "a": "Open daily 11 AM to 9:30 PM."
         },
         {
-          "q": "What halal dishes are popular?",
-          "a": "Chicken biryani and Chettinad chicken are the most ordered halal dishes."
+          "q": "How do I order from Tikka N Kabab?",
+          "a": "Call (469) 857-3000 or visit 7859 McCallum Blvd Ste 106, Dallas, TX 75252."
         }
       ]
     },
     {
       "rank": 4,
-      "keyword": "indian lunch buffet near me",
-      "intent_group": "occasion_feature",
+      "keyword": "seekh kabab North Dallas",
+      "intent_group": "dish",
       "gbp": {
         "categories": [
-          "South Indian restaurant",
-          "Halal restaurant",
-          "Buffet restaurant"
+          "Pakistani restaurant",
+          "Indian restaurant",
+          "Kebab shop"
         ],
-        "description_addition": "Mention the real feature once: halal meat, weekday lunch buffet, open until 11 PM.",
+        "description_addition": "Kababs are in our name. Ask us about seekh kabab [owner: confirm seekh kabab item and price before publishing].",
         "menu_items": [
-          "Lunch Buffet (weekdays)",
-          "Halal Chicken Biryani",
-          "Late-night Dosa"
+          "Chicken 65",
+          "Chicken Samosa (2 pc)",
+          "Veg Samosa (2 pc)",
+          "Onion Bhaji (Pakoda)",
+          "Dal Puri (4)"
         ],
         "photos": [
-          "Close-up of the dish/experience for 'indian lunch buffet near me' in natural light",
-          "Interior with guests (with permission)",
-          "Exterior + signage so people recognize the storefront",
-          "Menu board showing prices"
+          "Close-up of Seekh Kabab in natural light",
+          "Storefront and signage on McCallum Blvd",
+          "Menu board with prices",
+          "Counter/dining area (with permission)"
         ],
         "posts": [
-          "Google Post: photo + 2 lines about indian lunch buffet with a 'Call' button",
-          "Weekly 'today's special' post mentioning hours (open till 11 PM)"
+          "Photo of Seekh Kabab + 2 lines + 'Call' button",
+          "Weekly post with hours: 11 AM-9:30 PM daily"
         ],
-        "review_request": "Add a QR code on receipts/tables: 'Enjoyed your meal? An honest Google review helps us a lot.' Ask every customer the same way; no discounts or gifts for reviews, and never ask for a specific rating or wording."
+        "review_request": "QR code at the counter and on receipts: 'Enjoyed your food? An honest Google review helps us a lot.' Ask everyone the same way; no discounts or gifts, never ask for a rating or specific words."
       },
       "website": {
-        "title_tag": "Weekday South Indian Lunch Buffet in Richardson",
-        "meta_description": "Our weekday lunch buffet is built for people with an hour to eat: biryani, two or three Chettinad curries, a vegetarian dish, dosa made to order at...",
-        "h1": "Weekday South Indian Lunch Buffet in Richardson",
-        "page_copy": "Our weekday lunch buffet is built for people with an hour to eat: biryani, two or three Chettinad curries, a vegetarian dish, dosa made to order at the counter, and dessert, at one set price [price].\n\nOur kitchen follows the cooking of the Chettinad region of Tamil Nadu, known for freshly roasted and ground spices: black pepper, fennel, star anise, dried red chilies, kalpasi (stone flower) and curry leaves. We roast our masalas in small batches every morning, so the flavor is deep and aromatic rather than just hot. If you prefer milder food, tell your server and the kitchen will adjust the spice level for you.\n\nThe menu centers on three dishes our regulars come back for. Chicken biryani [price] is layered with seeded basmati rice, slow-cooked chicken, mint and fried onions, and it comes with raita and salna. Chettinad chicken [price] is a dry-roasted pepper curry that pairs well with parotta or steamed rice. Dosa [price] is a thin, crisp rice-and-lentil crepe served with sambar and fresh chutneys, with masala, ghee roast and onion versions available.\n\nAll of our meat is halal. On weekdays we run a lunch buffet with rotating curries, biryani, dosa made to order and dessert, a quick option if you are coming from class or the office. We stay open until 11 PM, so dinner after a late lab or a game is easy.\n\nYou will find us in Richardson, TX 75080, a short drive from the UT Dallas campus. Dine in, pick up, or call ahead for large group orders. Hours: open daily from 11 AM to 11 PM. See the full menu with current prices on our menu page, and check our Google Business Profile for photos and today's specials.\n\nQuestions before you visit? Read the FAQ below or call us. We would love to cook for you."
+        "title_tag": "Seekh Kabab | Tikka N Kabab, North Dallas",
+        "meta_description": "Seekh Kabab at Tikka N Kabab, 7859 McCallum Blvd, Dallas TX 75252. Open daily 11 AM-9:30 PM. Call (469) 857-3000.",
+        "h1": "Seekh Kabab at Tikka N Kabab",
+        "page_copy": "Looking for seekh kabab North Dallas? Kababs are in our name. Ask us about seekh kabab [owner: confirm seekh kabab item and price before publishing].\n\nTikka N Kabab is at 7859 McCallum Blvd Ste 106, Dallas, TX 75252. We are open every day from 11 AM to 9:30 PM, and you can call us at (469) 857-3000 to place an order or ask a question before you come in.\n\nOur menu includes Chicken Samosa (2 pc) $2.99, Veg Samosa (2 pc) $3.99, Onion Bhaji (pakoda) $5.99, Dal Puri (4) $4.99 and Chicken 65 $9.99. Every item is cooked to order in our kitchen, so it reaches you hot and crisp. If you are new to this food, start with a plate of samosas and add Chicken 65 if you like heat; if you prefer something milder, Dal Puri and Veg Samosa are good choices.\n\nMany of our guests come from the neighborhoods around McCallum Blvd, Campbell Rd and Coit Rd, from Richardson, and from the UT Dallas campus about two miles away. It is easy to stop by for a snack, pick up food for a group, or sit down for a simple meal with friends or family.\n\nGoogle reviewers currently rate Tikka N Kabab 4.2 stars across more than 400 reviews. We read every review and use the feedback to keep improving our food and service. If you visit, we would be grateful for an honest review that mentions what you ordered, because it helps other people nearby find dishes they will enjoy.\n\nBefore you visit, check our Google Business Profile for photos of the food and the latest posts. Menu prices shown here can change; please call to confirm. Website: [website]. [Owner: add halal status, catering and delivery details here only once confirmed.]\n\nCome by Tikka N Kabab today for seekh kabab and the rest of our menu. We look forward to cooking for you."
       },
       "aeo_faqs": [
         {
-          "q": "Does Sample Chettinad Kitchen have a lunch buffet?",
-          "a": "Yes, a South Indian lunch buffet runs on weekdays."
+          "q": "Where can I get seekh kabab near UT Dallas?",
+          "a": "Tikka N Kabab at 7859 McCallum Blvd Ste 106, Dallas, TX 75252, about 2 miles from UTD. Kababs are in our name. Ask us about seekh kabab [owner: confirm seekh kabab item and price before publishing]."
         },
         {
-          "q": "What is on the lunch buffet?",
-          "a": "Biryani, rotating Chettinad curries, a vegetarian dish, made-to-order dosa and dessert."
+          "q": "What are Tikka N Kabab's hours?",
+          "a": "Open daily 11 AM to 9:30 PM."
         },
         {
-          "q": "Is the buffet good for a quick lunch near UT Dallas?",
-          "a": "Yes. It is a few minutes from campus and designed for a one-hour lunch."
+          "q": "How do I order from Tikka N Kabab?",
+          "a": "Call (469) 857-3000 or visit 7859 McCallum Blvd Ste 106, Dallas, TX 75252."
         }
       ]
     },
     {
       "rank": 5,
-      "keyword": "chettinad chicken richardson",
-      "intent_group": "dish",
+      "keyword": "Indian restaurant near UT Dallas",
+      "intent_group": "cuisine_near_me",
       "gbp": {
         "categories": [
-          "South Indian restaurant",
+          "Pakistani restaurant",
           "Indian restaurant",
-          "Halal restaurant"
+          "Kebab shop"
         ],
-        "description_addition": "Signature dish highlighted in the description in plain language, e.g. 'Known for Chettinad-style chicken biryani and pepper chicken.'",
+        "description_addition": "We are a short drive from the UT Dallas campus, so it is an easy trip for students, staff and visitors.",
         "menu_items": [
-          "Chicken Biryani",
-          "Chettinad Chicken",
-          "Masala Dosa",
-          "Goat Biryani"
+          "Chicken 65",
+          "Chicken Samosa (2 pc)",
+          "Veg Samosa (2 pc)",
+          "Onion Bhaji (Pakoda)",
+          "Dal Puri (4)"
         ],
         "photos": [
-          "Close-up of the dish/experience for 'chettinad chicken richardson' in natural light",
-          "Interior with guests (with permission)",
-          "Exterior + signage so people recognize the storefront",
-          "Menu board showing prices"
+          "Close-up of Indian food near UT Dallas in natural light",
+          "Storefront and signage on McCallum Blvd",
+          "Menu board with prices",
+          "Counter/dining area (with permission)"
         ],
         "posts": [
-          "Google Post: photo + 2 lines about chettinad chicken richardson with a 'Call' button",
-          "Weekly 'today's special' post mentioning hours (open till 11 PM)"
+          "Photo of Indian food near UT Dallas + 2 lines + 'Call' button",
+          "Weekly post with hours: 11 AM-9:30 PM daily"
         ],
-        "review_request": "Add a QR code on receipts/tables: 'Enjoyed your meal? An honest Google review helps us a lot.' Ask every customer the same way; no discounts or gifts for reviews, and never ask for a specific rating or wording."
+        "review_request": "QR code at the counter and on receipts: 'Enjoyed your food? An honest Google review helps us a lot.' Ask everyone the same way; no discounts or gifts, never ask for a rating or specific words."
       },
       "website": {
-        "title_tag": "Chettinad Chicken in Richardson, TX",
-        "meta_description": "Chettinad chicken is the signature dish of our kitchen and the reason we opened in Richardson. It is a dark, pepper-forward curry made with a masala...",
-        "h1": "Chettinad Chicken in Richardson, TX",
-        "page_copy": "Chettinad chicken is the signature dish of our kitchen and the reason we opened in Richardson. It is a dark, pepper-forward curry made with a masala of more than ten spices that we roast and grind ourselves.\n\nOur kitchen follows the cooking of the Chettinad region of Tamil Nadu, known for freshly roasted and ground spices: black pepper, fennel, star anise, dried red chilies, kalpasi (stone flower) and curry leaves. We roast our masalas in small batches every morning, so the flavor is deep and aromatic rather than just hot. If you prefer milder food, tell your server and the kitchen will adjust the spice level for you.\n\nThe menu centers on three dishes our regulars come back for. Chicken biryani [price] is layered with seeded basmati rice, slow-cooked chicken, mint and fried onions, and it comes with raita and salna. Chettinad chicken [price] is a dry-roasted pepper curry that pairs well with parotta or steamed rice. Dosa [price] is a thin, crisp rice-and-lentil crepe served with sambar and fresh chutneys, with masala, ghee roast and onion versions available.\n\nAll of our meat is halal. On weekdays we run a lunch buffet with rotating curries, biryani, dosa made to order and dessert, a quick option if you are coming from class or the office. We stay open until 11 PM, so dinner after a late lab or a game is easy.\n\nYou will find us in Richardson, TX 75080, a short drive from the UT Dallas campus. Dine in, pick up, or call ahead for large group orders. Hours: open daily from 11 AM to 11 PM. See the full menu with current prices on our menu page, and check our Google Business Profile for photos and today's specials.\n\nQuestions before you visit? Read the FAQ below or call us. We would love to cook for you."
+        "title_tag": "Indian food near UT Dallas | Tikka N Kabab, North Dallas",
+        "meta_description": "Indian food near UT Dallas at Tikka N Kabab, 7859 McCallum Blvd, Dallas TX 75252. Open daily 11 AM-9:30 PM. Call (469) 857-3000.",
+        "h1": "Indian food near UT Dallas at Tikka N Kabab",
+        "page_copy": "Looking for Indian restaurant near UT Dallas? We are a short drive from the UT Dallas campus, so it is an easy trip for students, staff and visitors.\n\nTikka N Kabab is at 7859 McCallum Blvd Ste 106, Dallas, TX 75252. We are open every day from 11 AM to 9:30 PM, and you can call us at (469) 857-3000 to place an order or ask a question before you come in.\n\nOur menu includes Chicken Samosa (2 pc) $2.99, Veg Samosa (2 pc) $3.99, Onion Bhaji (pakoda) $5.99, Dal Puri (4) $4.99 and Chicken 65 $9.99. Every item is cooked to order in our kitchen, so it reaches you hot and crisp. If you are new to this food, start with a plate of samosas and add Chicken 65 if you like heat; if you prefer something milder, Dal Puri and Veg Samosa are good choices.\n\nMany of our guests come from the neighborhoods around McCallum Blvd, Campbell Rd and Coit Rd, from Richardson, and from the UT Dallas campus about two miles away. It is easy to stop by for a snack, pick up food for a group, or sit down for a simple meal with friends or family.\n\nGoogle reviewers currently rate Tikka N Kabab 4.2 stars across more than 400 reviews. We read every review and use the feedback to keep improving our food and service. If you visit, we would be grateful for an honest review that mentions what you ordered, because it helps other people nearby find dishes they will enjoy.\n\nBefore you visit, check our Google Business Profile for photos of the food and the latest posts. Menu prices shown here can change; please call to confirm. Website: [website]. [Owner: add halal status, catering and delivery details here only once confirmed.]\n\nCome by Tikka N Kabab today for indian food near ut dallas and the rest of our menu. We look forward to cooking for you."
       },
       "aeo_faqs": [
         {
-          "q": "What is Chettinad chicken?",
-          "a": "A pepper-forward South Indian chicken curry made with freshly roasted Chettinad spices."
+          "q": "Where can I get Indian restaurant near UT Dallas?",
+          "a": "Tikka N Kabab at 7859 McCallum Blvd Ste 106, Dallas, TX 75252, about 2 miles from UTD. We are a short drive from the UT Dallas campus, so it is an easy trip for students, staff and visitors."
         },
         {
-          "q": "Where can I get Chettinad chicken in Richardson?",
-          "a": "Sample Chettinad Kitchen in Richardson, TX 75080 serves it daily."
+          "q": "What are Tikka N Kabab's hours?",
+          "a": "Open daily 11 AM to 9:30 PM."
         },
         {
-          "q": "Is Chettinad chicken very spicy?",
-          "a": "It is peppery; the kitchen can make it milder on request."
+          "q": "How do I order from Tikka N Kabab?",
+          "a": "Call (469) 857-3000 or visit 7859 McCallum Blvd Ste 106, Dallas, TX 75252."
         }
       ]
     },
     {
       "rank": 6,
-      "keyword": "dosa near me",
-      "intent_group": "dish",
+      "keyword": "Pakistani food Richardson",
+      "intent_group": "cuisine_near_me",
       "gbp": {
         "categories": [
-          "South Indian restaurant",
+          "Pakistani restaurant",
           "Indian restaurant",
-          "Halal restaurant"
+          "Kebab shop"
         ],
-        "description_addition": "Signature dish highlighted in the description in plain language, e.g. 'Known for Chettinad-style chicken biryani and pepper chicken.'",
+        "description_addition": "Tikka N Kabab serves Pakistani and Indian favorites in far North Dallas, right next to Richardson.",
         "menu_items": [
-          "Chicken Biryani",
-          "Chettinad Chicken",
-          "Masala Dosa",
-          "Goat Biryani"
+          "Chicken 65",
+          "Chicken Samosa (2 pc)",
+          "Veg Samosa (2 pc)",
+          "Onion Bhaji (Pakoda)",
+          "Dal Puri (4)"
         ],
         "photos": [
-          "Close-up of the dish/experience for 'dosa near me' in natural light",
-          "Interior with guests (with permission)",
-          "Exterior + signage so people recognize the storefront",
-          "Menu board showing prices"
+          "Close-up of Pakistani food near Richardson in natural light",
+          "Storefront and signage on McCallum Blvd",
+          "Menu board with prices",
+          "Counter/dining area (with permission)"
         ],
         "posts": [
-          "Google Post: photo + 2 lines about dosa with a 'Call' button",
-          "Weekly 'today's special' post mentioning hours (open till 11 PM)"
+          "Photo of Pakistani food near Richardson + 2 lines + 'Call' button",
+          "Weekly post with hours: 11 AM-9:30 PM daily"
         ],
-        "review_request": "Add a QR code on receipts/tables: 'Enjoyed your meal? An honest Google review helps us a lot.' Ask every customer the same way; no discounts or gifts for reviews, and never ask for a specific rating or wording."
+        "review_request": "QR code at the counter and on receipts: 'Enjoyed your food? An honest Google review helps us a lot.' Ask everyone the same way; no discounts or gifts, never ask for a rating or specific words."
       },
       "website": {
-        "title_tag": "Crispy Dosa in Richardson, Near UT Dallas",
-        "meta_description": "Craving a hot, crispy dosa nearby? We make every dosa to order on a cast-iron tawa from batter fermented overnight, and serve it with sambar and...",
-        "h1": "Crispy Dosa in Richardson, Near UT Dallas",
-        "page_copy": "Craving a hot, crispy dosa nearby? We make every dosa to order on a cast-iron tawa from batter fermented overnight, and serve it with sambar and coconut, tomato and mint chutneys.\n\nOur kitchen follows the cooking of the Chettinad region of Tamil Nadu, known for freshly roasted and ground spices: black pepper, fennel, star anise, dried red chilies, kalpasi (stone flower) and curry leaves. We roast our masalas in small batches every morning, so the flavor is deep and aromatic rather than just hot. If you prefer milder food, tell your server and the kitchen will adjust the spice level for you.\n\nThe menu centers on three dishes our regulars come back for. Chicken biryani [price] is layered with seeded basmati rice, slow-cooked chicken, mint and fried onions, and it comes with raita and salna. Chettinad chicken [price] is a dry-roasted pepper curry that pairs well with parotta or steamed rice. Dosa [price] is a thin, crisp rice-and-lentil crepe served with sambar and fresh chutneys, with masala, ghee roast and onion versions available.\n\nAll of our meat is halal. On weekdays we run a lunch buffet with rotating curries, biryani, dosa made to order and dessert, a quick option if you are coming from class or the office. We stay open until 11 PM, so dinner after a late lab or a game is easy.\n\nYou will find us in Richardson, TX 75080, a short drive from the UT Dallas campus. Dine in, pick up, or call ahead for large group orders. Hours: open daily from 11 AM to 11 PM. See the full menu with current prices on our menu page, and check our Google Business Profile for photos and today's specials.\n\nQuestions before you visit? Read the FAQ below or call us. We would love to cook for you."
+        "title_tag": "Pakistani food near Richardson | Tikka N Kabab, North Dallas",
+        "meta_description": "Pakistani food near Richardson at Tikka N Kabab, 7859 McCallum Blvd, Dallas TX 75252. Open daily 11 AM-9:30 PM. Call (469) 857-3000.",
+        "h1": "Pakistani food near Richardson at Tikka N Kabab",
+        "page_copy": "Looking for Pakistani food Richardson? Tikka N Kabab serves Pakistani and Indian favorites in far North Dallas, right next to Richardson.\n\nTikka N Kabab is at 7859 McCallum Blvd Ste 106, Dallas, TX 75252. We are open every day from 11 AM to 9:30 PM, and you can call us at (469) 857-3000 to place an order or ask a question before you come in.\n\nOur menu includes Chicken Samosa (2 pc) $2.99, Veg Samosa (2 pc) $3.99, Onion Bhaji (pakoda) $5.99, Dal Puri (4) $4.99 and Chicken 65 $9.99. Every item is cooked to order in our kitchen, so it reaches you hot and crisp. If you are new to this food, start with a plate of samosas and add Chicken 65 if you like heat; if you prefer something milder, Dal Puri and Veg Samosa are good choices.\n\nMany of our guests come from the neighborhoods around McCallum Blvd, Campbell Rd and Coit Rd, from Richardson, and from the UT Dallas campus about two miles away. It is easy to stop by for a snack, pick up food for a group, or sit down for a simple meal with friends or family.\n\nGoogle reviewers currently rate Tikka N Kabab 4.2 stars across more than 400 reviews. We read every review and use the feedback to keep improving our food and service. If you visit, we would be grateful for an honest review that mentions what you ordered, because it helps other people nearby find dishes they will enjoy.\n\nBefore you visit, check our Google Business Profile for photos of the food and the latest posts. Menu prices shown here can change; please call to confirm. Website: [website]. [Owner: add halal status, catering and delivery details here only once confirmed.]\n\nCome by Tikka N Kabab today for pakistani food near richardson and the rest of our menu. We look forward to cooking for you."
       },
       "aeo_faqs": [
         {
-          "q": "Does Sample Chettinad Kitchen make dosa?",
-          "a": "Yes, dosa is made to order and served with sambar and chutneys."
+          "q": "Where can I get Pakistani food near UT Dallas?",
+          "a": "Tikka N Kabab at 7859 McCallum Blvd Ste 106, Dallas, TX 75252, about 2 miles from UTD. Tikka N Kabab serves Pakistani and Indian favorites in far North Dallas, right next to Richardson."
         },
         {
-          "q": "What dosa types are available?",
-          "a": "Plain, masala, onion and ghee roast dosa."
+          "q": "What are Tikka N Kabab's hours?",
+          "a": "Open daily 11 AM to 9:30 PM."
         },
         {
-          "q": "Is dosa vegetarian?",
-          "a": "Yes, dosa is vegetarian and made from fermented rice and lentil batter."
+          "q": "How do I order from Tikka N Kabab?",
+          "a": "Call (469) 857-3000 or visit 7859 McCallum Blvd Ste 106, Dallas, TX 75252."
         }
       ]
     },
     {
       "rank": 7,
-      "keyword": "late night food near ut dallas",
-      "intent_group": "occasion_feature",
+      "keyword": "Indian food 75252",
+      "intent_group": "cuisine_near_me",
       "gbp": {
         "categories": [
-          "South Indian restaurant",
-          "Halal restaurant",
-          "Buffet restaurant"
+          "Pakistani restaurant",
+          "Indian restaurant",
+          "Kebab shop"
         ],
-        "description_addition": "Mention the real feature once: halal meat, weekday lunch buffet, open until 11 PM.",
+        "description_addition": "We are a neighborhood Indian and Pakistani restaurant in the 75252 zip code on McCallum Blvd.",
         "menu_items": [
-          "Lunch Buffet (weekdays)",
-          "Halal Chicken Biryani",
-          "Late-night Dosa"
+          "Chicken 65",
+          "Chicken Samosa (2 pc)",
+          "Veg Samosa (2 pc)",
+          "Onion Bhaji (Pakoda)",
+          "Dal Puri (4)"
         ],
         "photos": [
-          "Close-up of the dish/experience for 'late night food near ut dallas' in natural light",
-          "Interior with guests (with permission)",
-          "Exterior + signage so people recognize the storefront",
-          "Menu board showing prices"
+          "Close-up of Indian food in 75252 in natural light",
+          "Storefront and signage on McCallum Blvd",
+          "Menu board with prices",
+          "Counter/dining area (with permission)"
         ],
         "posts": [
-          "Google Post: photo + 2 lines about late night food with a 'Call' button",
-          "Weekly 'today's special' post mentioning hours (open till 11 PM)"
+          "Photo of Indian food in 75252 + 2 lines + 'Call' button",
+          "Weekly post with hours: 11 AM-9:30 PM daily"
         ],
-        "review_request": "Add a QR code on receipts/tables: 'Enjoyed your meal? An honest Google review helps us a lot.' Ask every customer the same way; no discounts or gifts for reviews, and never ask for a specific rating or wording."
+        "review_request": "QR code at the counter and on receipts: 'Enjoyed your food? An honest Google review helps us a lot.' Ask everyone the same way; no discounts or gifts, never ask for a rating or specific words."
       },
       "website": {
-        "title_tag": "Late-Night South Indian Food Near UT Dallas",
-        "meta_description": "Studying late or just finished practice? We are open until 11 PM every day, a few minutes from UT Dallas, with hot biryani, dosa and Chettinad...",
-        "h1": "Late-Night South Indian Food Near UT Dallas",
-        "page_copy": "Studying late or just finished practice? We are open until 11 PM every day, a few minutes from UT Dallas, with hot biryani, dosa and Chettinad curries for dine-in or pickup.\n\nOur kitchen follows the cooking of the Chettinad region of Tamil Nadu, known for freshly roasted and ground spices: black pepper, fennel, star anise, dried red chilies, kalpasi (stone flower) and curry leaves. We roast our masalas in small batches every morning, so the flavor is deep and aromatic rather than just hot. If you prefer milder food, tell your server and the kitchen will adjust the spice level for you.\n\nThe menu centers on three dishes our regulars come back for. Chicken biryani [price] is layered with seeded basmati rice, slow-cooked chicken, mint and fried onions, and it comes with raita and salna. Chettinad chicken [price] is a dry-roasted pepper curry that pairs well with parotta or steamed rice. Dosa [price] is a thin, crisp rice-and-lentil crepe served with sambar and fresh chutneys, with masala, ghee roast and onion versions available.\n\nAll of our meat is halal. On weekdays we run a lunch buffet with rotating curries, biryani, dosa made to order and dessert, a quick option if you are coming from class or the office. We stay open until 11 PM, so dinner after a late lab or a game is easy.\n\nYou will find us in Richardson, TX 75080, a short drive from the UT Dallas campus. Dine in, pick up, or call ahead for large group orders. Hours: open daily from 11 AM to 11 PM. See the full menu with current prices on our menu page, and check our Google Business Profile for photos and today's specials.\n\nQuestions before you visit? Read the FAQ below or call us. We would love to cook for you."
+        "title_tag": "Indian food in 75252 | Tikka N Kabab, North Dallas",
+        "meta_description": "Indian food in 75252 at Tikka N Kabab, 7859 McCallum Blvd, Dallas TX 75252. Open daily 11 AM-9:30 PM. Call (469) 857-3000.",
+        "h1": "Indian food in 75252 at Tikka N Kabab",
+        "page_copy": "Looking for Indian food 75252? We are a neighborhood Indian and Pakistani restaurant in the 75252 zip code on McCallum Blvd.\n\nTikka N Kabab is at 7859 McCallum Blvd Ste 106, Dallas, TX 75252. We are open every day from 11 AM to 9:30 PM, and you can call us at (469) 857-3000 to place an order or ask a question before you come in.\n\nOur menu includes Chicken Samosa (2 pc) $2.99, Veg Samosa (2 pc) $3.99, Onion Bhaji (pakoda) $5.99, Dal Puri (4) $4.99 and Chicken 65 $9.99. Every item is cooked to order in our kitchen, so it reaches you hot and crisp. If you are new to this food, start with a plate of samosas and add Chicken 65 if you like heat; if you prefer something milder, Dal Puri and Veg Samosa are good choices.\n\nMany of our guests come from the neighborhoods around McCallum Blvd, Campbell Rd and Coit Rd, from Richardson, and from the UT Dallas campus about two miles away. It is easy to stop by for a snack, pick up food for a group, or sit down for a simple meal with friends or family.\n\nGoogle reviewers currently rate Tikka N Kabab 4.2 stars across more than 400 reviews. We read every review and use the feedback to keep improving our food and service. If you visit, we would be grateful for an honest review that mentions what you ordered, because it helps other people nearby find dishes they will enjoy.\n\nBefore you visit, check our Google Business Profile for photos of the food and the latest posts. Menu prices shown here can change; please call to confirm. Website: [website]. [Owner: add halal status, catering and delivery details here only once confirmed.]\n\nCome by Tikka N Kabab today for indian food in 75252 and the rest of our menu. We look forward to cooking for you."
       },
       "aeo_faqs": [
         {
-          "q": "How late is Sample Chettinad Kitchen open?",
-          "a": "Open until 11 PM daily."
+          "q": "Where can I get Indian food near UT Dallas?",
+          "a": "Tikka N Kabab at 7859 McCallum Blvd Ste 106, Dallas, TX 75252, about 2 miles from UTD. We are a neighborhood Indian and Pakistani restaurant in the 75252 zip code on McCallum Blvd."
         },
         {
-          "q": "Is it close to UT Dallas?",
-          "a": "Yes, it is in Richardson, a short drive from campus."
+          "q": "What are Tikka N Kabab's hours?",
+          "a": "Open daily 11 AM to 9:30 PM."
         },
         {
-          "q": "Can I get takeout late at night?",
-          "a": "Yes, pickup is available until closing."
+          "q": "How do I order from Tikka N Kabab?",
+          "a": "Call (469) 857-3000 or visit 7859 McCallum Blvd Ste 106, Dallas, TX 75252."
         }
       ]
     },
     {
       "rank": 8,
-      "keyword": "indian restaurant richardson tx",
-      "intent_group": "cuisine_near_me",
+      "keyword": "cheap Indian food near UTD",
+      "intent_group": "occasion_feature",
       "gbp": {
         "categories": [
-          "South Indian restaurant",
+          "Pakistani restaurant",
           "Indian restaurant",
-          "Tamil restaurant"
+          "Kebab shop"
         ],
-        "description_addition": "State the cuisine and location clearly: 'Chettinad (South Indian) restaurant in Richardson, near UT Dallas.'",
+        "description_addition": "You can eat well here without spending much: samosas start at $2.99, Dal Puri is $4.99, Onion Bhaji is $5.99 and Chicken 65 is $9.99.",
         "menu_items": [
-          "Chettinad Chicken",
-          "Chicken Biryani",
-          "Dosa",
-          "Idli"
+          "Chicken 65",
+          "Chicken Samosa (2 pc)",
+          "Veg Samosa (2 pc)",
+          "Onion Bhaji (Pakoda)",
+          "Dal Puri (4)"
         ],
         "photos": [
-          "Close-up of the dish/experience for 'indian restaurant richardson tx' in natural light",
-          "Interior with guests (with permission)",
-          "Exterior + signage so people recognize the storefront",
-          "Menu board showing prices"
+          "Close-up of Affordable Indian food in natural light",
+          "Storefront and signage on McCallum Blvd",
+          "Menu board with prices",
+          "Counter/dining area (with permission)"
         ],
         "posts": [
-          "Google Post: photo + 2 lines about indian restaurant richardson tx with a 'Call' button",
-          "Weekly 'today's special' post mentioning hours (open till 11 PM)"
+          "Photo of Affordable Indian food + 2 lines + 'Call' button",
+          "Weekly post with hours: 11 AM-9:30 PM daily"
         ],
-        "review_request": "Add a QR code on receipts/tables: 'Enjoyed your meal? An honest Google review helps us a lot.' Ask every customer the same way; no discounts or gifts for reviews, and never ask for a specific rating or wording."
+        "review_request": "QR code at the counter and on receipts: 'Enjoyed your food? An honest Google review helps us a lot.' Ask everyone the same way; no discounts or gifts, never ask for a rating or specific words."
       },
       "website": {
-        "title_tag": "Indian Restaurant in Richardson, TX",
-        "meta_description": "Among Indian restaurants in Richardson, TX, we focus on one region's cooking, Chettinad from South India, instead of a generic menu. That focus shows...",
-        "h1": "Indian Restaurant in Richardson, TX: Chettinad Cuisine",
-        "page_copy": "Among Indian restaurants in Richardson, TX, we focus on one region's cooking, Chettinad from South India, instead of a generic menu. That focus shows up in the spice blends, the biryani and the dosa.\n\nOur kitchen follows the cooking of the Chettinad region of Tamil Nadu, known for freshly roasted and ground spices: black pepper, fennel, star anise, dried red chilies, kalpasi (stone flower) and curry leaves. We roast our masalas in small batches every morning, so the flavor is deep and aromatic rather than just hot. If you prefer milder food, tell your server and the kitchen will adjust the spice level for you.\n\nThe menu centers on three dishes our regulars come back for. Chicken biryani [price] is layered with seeded basmati rice, slow-cooked chicken, mint and fried onions, and it comes with raita and salna. Chettinad chicken [price] is a dry-roasted pepper curry that pairs well with parotta or steamed rice. Dosa [price] is a thin, crisp rice-and-lentil crepe served with sambar and fresh chutneys, with masala, ghee roast and onion versions available.\n\nAll of our meat is halal. On weekdays we run a lunch buffet with rotating curries, biryani, dosa made to order and dessert, a quick option if you are coming from class or the office. We stay open until 11 PM, so dinner after a late lab or a game is easy.\n\nYou will find us in Richardson, TX 75080, a short drive from the UT Dallas campus. Dine in, pick up, or call ahead for large group orders. Hours: open daily from 11 AM to 11 PM. See the full menu with current prices on our menu page, and check our Google Business Profile for photos and today's specials.\n\nQuestions before you visit? Read the FAQ below or call us. We would love to cook for you."
+        "title_tag": "Affordable Indian food | Tikka N Kabab, North Dallas",
+        "meta_description": "Affordable Indian food at Tikka N Kabab, 7859 McCallum Blvd, Dallas TX 75252. Open daily 11 AM-9:30 PM. Call (469) 857-3000.",
+        "h1": "Affordable Indian food at Tikka N Kabab",
+        "page_copy": "Looking for cheap Indian food near UTD? You can eat well here without spending much: samosas start at $2.99, Dal Puri is $4.99, Onion Bhaji is $5.99 and Chicken 65 is $9.99.\n\nTikka N Kabab is at 7859 McCallum Blvd Ste 106, Dallas, TX 75252. We are open every day from 11 AM to 9:30 PM, and you can call us at (469) 857-3000 to place an order or ask a question before you come in.\n\nOur menu includes Chicken Samosa (2 pc) $2.99, Veg Samosa (2 pc) $3.99, Onion Bhaji (pakoda) $5.99, Dal Puri (4) $4.99 and Chicken 65 $9.99. Every item is cooked to order in our kitchen, so it reaches you hot and crisp. If you are new to this food, start with a plate of samosas and add Chicken 65 if you like heat; if you prefer something milder, Dal Puri and Veg Samosa are good choices.\n\nMany of our guests come from the neighborhoods around McCallum Blvd, Campbell Rd and Coit Rd, from Richardson, and from the UT Dallas campus about two miles away. It is easy to stop by for a snack, pick up food for a group, or sit down for a simple meal with friends or family.\n\nGoogle reviewers currently rate Tikka N Kabab 4.2 stars across more than 400 reviews. We read every review and use the feedback to keep improving our food and service. If you visit, we would be grateful for an honest review that mentions what you ordered, because it helps other people nearby find dishes they will enjoy.\n\nBefore you visit, check our Google Business Profile for photos of the food and the latest posts. Menu prices shown here can change; please call to confirm. Website: [website]. [Owner: add halal status, catering and delivery details here only once confirmed.]\n\nCome by Tikka N Kabab today for affordable indian food and the rest of our menu. We look forward to cooking for you."
       },
       "aeo_faqs": [
         {
-          "q": "What Indian cuisine does Sample Chettinad Kitchen specialize in?",
-          "a": "Chettinad cuisine from South India."
+          "q": "Where can I get cheap Indian food near UT Dallas?",
+          "a": "Tikka N Kabab at 7859 McCallum Blvd Ste 106, Dallas, TX 75252, about 2 miles from UTD. You can eat well here without spending much: samosas start at $2.99, Dal Puri is $4.99, Onion Bhaji is $5.99 and Chicken 65 is $9.99."
         },
         {
-          "q": "What are the most popular dishes?",
-          "a": "Chicken biryani, Chettinad chicken and dosa."
+          "q": "What are Tikka N Kabab's hours?",
+          "a": "Open daily 11 AM to 9:30 PM."
         },
         {
-          "q": "Does it take reservations?",
-          "a": "Yes, reservations are accepted, including for groups."
+          "q": "How do I order from Tikka N Kabab?",
+          "a": "Call (469) 857-3000 or visit 7859 McCallum Blvd Ste 106, Dallas, TX 75252."
         }
       ]
     },
     {
       "rank": 9,
-      "keyword": "halal biryani near me",
+      "keyword": "Indian takeout near me",
       "intent_group": "occasion_feature",
       "gbp": {
         "categories": [
-          "South Indian restaurant",
-          "Halal restaurant",
-          "Buffet restaurant"
+          "Pakistani restaurant",
+          "Indian restaurant",
+          "Kebab shop"
         ],
-        "description_addition": "Mention the real feature once: halal meat, weekday lunch buffet, open until 11 PM.",
+        "description_addition": "Order ahead by phone or with Order online on our Google profile, and pick up hot food on your way home.",
         "menu_items": [
-          "Lunch Buffet (weekdays)",
-          "Halal Chicken Biryani",
-          "Late-night Dosa"
+          "Chicken 65",
+          "Chicken Samosa (2 pc)",
+          "Veg Samosa (2 pc)",
+          "Onion Bhaji (Pakoda)",
+          "Dal Puri (4)"
         ],
         "photos": [
-          "Close-up of the dish/experience for 'halal biryani near me' in natural light",
-          "Interior with guests (with permission)",
-          "Exterior + signage so people recognize the storefront",
-          "Menu board showing prices"
+          "Close-up of Indian takeout in natural light",
+          "Storefront and signage on McCallum Blvd",
+          "Menu board with prices",
+          "Counter/dining area (with permission)"
         ],
         "posts": [
-          "Google Post: photo + 2 lines about halal biryani with a 'Call' button",
-          "Weekly 'today's special' post mentioning hours (open till 11 PM)"
+          "Photo of Indian takeout + 2 lines + 'Call' button",
+          "Weekly post with hours: 11 AM-9:30 PM daily"
         ],
-        "review_request": "Add a QR code on receipts/tables: 'Enjoyed your meal? An honest Google review helps us a lot.' Ask every customer the same way; no discounts or gifts for reviews, and never ask for a specific rating or wording."
+        "review_request": "QR code at the counter and on receipts: 'Enjoyed your food? An honest Google review helps us a lot.' Ask everyone the same way; no discounts or gifts, never ask for a rating or specific words."
       },
       "website": {
-        "title_tag": "Halal Biryani in Richardson | Sample Chettinad Kitchen",
-        "meta_description": "Our biryani is made only with halal chicken and goat, cooked dum-style so the rice absorbs the masala. Guests who want halal biryani nearby in...",
-        "h1": "Halal Biryani in Richardson",
-        "page_copy": "Our biryani is made only with halal chicken and goat, cooked dum-style so the rice absorbs the masala. Guests who want halal biryani nearby in Richardson and around UT Dallas order it for dine-in, pickup and parties.\n\nOur kitchen follows the cooking of the Chettinad region of Tamil Nadu, known for freshly roasted and ground spices: black pepper, fennel, star anise, dried red chilies, kalpasi (stone flower) and curry leaves. We roast our masalas in small batches every morning, so the flavor is deep and aromatic rather than just hot. If you prefer milder food, tell your server and the kitchen will adjust the spice level for you.\n\nThe menu centers on three dishes our regulars come back for. Chicken biryani [price] is layered with seeded basmati rice, slow-cooked chicken, mint and fried onions, and it comes with raita and salna. Chettinad chicken [price] is a dry-roasted pepper curry that pairs well with parotta or steamed rice. Dosa [price] is a thin, crisp rice-and-lentil crepe served with sambar and fresh chutneys, with masala, ghee roast and onion versions available.\n\nAll of our meat is halal. On weekdays we run a lunch buffet with rotating curries, biryani, dosa made to order and dessert, a quick option if you are coming from class or the office. We stay open until 11 PM, so dinner after a late lab or a game is easy.\n\nYou will find us in Richardson, TX 75080, a short drive from the UT Dallas campus. Dine in, pick up, or call ahead for large group orders. Hours: open daily from 11 AM to 11 PM. See the full menu with current prices on our menu page, and check our Google Business Profile for photos and today's specials.\n\nQuestions before you visit? Read the FAQ below or call us. We would love to cook for you."
+        "title_tag": "Indian takeout | Tikka N Kabab, North Dallas",
+        "meta_description": "Indian takeout at Tikka N Kabab, 7859 McCallum Blvd, Dallas TX 75252. Open daily 11 AM-9:30 PM. Call (469) 857-3000.",
+        "h1": "Indian takeout at Tikka N Kabab",
+        "page_copy": "Looking for Indian takeout near me? Order ahead by phone or with Order online on our Google profile, and pick up hot food on your way home.\n\nTikka N Kabab is at 7859 McCallum Blvd Ste 106, Dallas, TX 75252. We are open every day from 11 AM to 9:30 PM, and you can call us at (469) 857-3000 to place an order or ask a question before you come in.\n\nOur menu includes Chicken Samosa (2 pc) $2.99, Veg Samosa (2 pc) $3.99, Onion Bhaji (pakoda) $5.99, Dal Puri (4) $4.99 and Chicken 65 $9.99. Every item is cooked to order in our kitchen, so it reaches you hot and crisp. If you are new to this food, start with a plate of samosas and add Chicken 65 if you like heat; if you prefer something milder, Dal Puri and Veg Samosa are good choices.\n\nMany of our guests come from the neighborhoods around McCallum Blvd, Campbell Rd and Coit Rd, from Richardson, and from the UT Dallas campus about two miles away. It is easy to stop by for a snack, pick up food for a group, or sit down for a simple meal with friends or family.\n\nGoogle reviewers currently rate Tikka N Kabab 4.2 stars across more than 400 reviews. We read every review and use the feedback to keep improving our food and service. If you visit, we would be grateful for an honest review that mentions what you ordered, because it helps other people nearby find dishes they will enjoy.\n\nBefore you visit, check our Google Business Profile for photos of the food and the latest posts. Menu prices shown here can change; please call to confirm. Website: [website]. [Owner: add halal status, catering and delivery details here only once confirmed.]\n\nCome by Tikka N Kabab today for indian takeout and the rest of our menu. We look forward to cooking for you."
       },
       "aeo_faqs": [
         {
-          "q": "Is the biryani at Sample Chettinad Kitchen halal?",
-          "a": "Yes, chicken and goat biryani are made with halal meat."
+          "q": "Where can I get Indian takeout near UT Dallas?",
+          "a": "Tikka N Kabab at 7859 McCallum Blvd Ste 106, Dallas, TX 75252, about 2 miles from UTD. Order ahead by phone or with Order online on our Google profile, and pick up hot food on your way home."
         },
         {
-          "q": "Can I order biryani for a party?",
-          "a": "Yes, call ahead for large or party orders."
+          "q": "What are Tikka N Kabab's hours?",
+          "a": "Open daily 11 AM to 9:30 PM."
         },
         {
-          "q": "What comes with the biryani?",
-          "a": "Raita and salna."
+          "q": "How do I order from Tikka N Kabab?",
+          "a": "Call (469) 857-3000 or visit 7859 McCallum Blvd Ste 106, Dallas, TX 75252."
         }
       ]
     },
     {
       "rank": 10,
-      "keyword": "chettinad restaurant near me",
-      "intent_group": "cuisine_near_me",
+      "keyword": "best kabab near Richardson",
+      "intent_group": "occasion_feature",
       "gbp": {
         "categories": [
-          "South Indian restaurant",
+          "Pakistani restaurant",
           "Indian restaurant",
-          "Tamil restaurant"
+          "Kebab shop"
         ],
-        "description_addition": "State the cuisine and location clearly: 'Chettinad (South Indian) restaurant in Richardson, near UT Dallas.'",
+        "description_addition": "Google reviewers rate us 4.2 stars. Come try our kababs and decide for yourself [owner: confirm kabab menu items].",
         "menu_items": [
-          "Chettinad Chicken",
-          "Chicken Biryani",
-          "Dosa",
-          "Idli"
+          "Chicken 65",
+          "Chicken Samosa (2 pc)",
+          "Veg Samosa (2 pc)",
+          "Onion Bhaji (Pakoda)",
+          "Dal Puri (4)"
         ],
         "photos": [
-          "Close-up of the dish/experience for 'chettinad restaurant near me' in natural light",
-          "Interior with guests (with permission)",
-          "Exterior + signage so people recognize the storefront",
-          "Menu board showing prices"
+          "Close-up of Kababs near Richardson in natural light",
+          "Storefront and signage on McCallum Blvd",
+          "Menu board with prices",
+          "Counter/dining area (with permission)"
         ],
         "posts": [
-          "Google Post: photo + 2 lines about chettinad restaurant with a 'Call' button",
-          "Weekly 'today's special' post mentioning hours (open till 11 PM)"
+          "Photo of Kababs near Richardson + 2 lines + 'Call' button",
+          "Weekly post with hours: 11 AM-9:30 PM daily"
         ],
-        "review_request": "Add a QR code on receipts/tables: 'Enjoyed your meal? An honest Google review helps us a lot.' Ask every customer the same way; no discounts or gifts for reviews, and never ask for a specific rating or wording."
+        "review_request": "QR code at the counter and on receipts: 'Enjoyed your food? An honest Google review helps us a lot.' Ask everyone the same way; no discounts or gifts, never ask for a rating or specific words."
       },
       "website": {
-        "title_tag": "A Chettinad Restaurant in Richardson",
-        "meta_description": "Chettinad restaurants are rare in North Texas. We bring the cooking of Karaikudi and the Chettinad region to Richardson: roasted spice masalas,...",
-        "h1": "A Chettinad Restaurant in Richardson",
-        "page_copy": "Chettinad restaurants are rare in North Texas. We bring the cooking of Karaikudi and the Chettinad region to Richardson: roasted spice masalas, pepper chicken, kuzhambu, biryani and dosa.\n\nOur kitchen follows the cooking of the Chettinad region of Tamil Nadu, known for freshly roasted and ground spices: black pepper, fennel, star anise, dried red chilies, kalpasi (stone flower) and curry leaves. We roast our masalas in small batches every morning, so the flavor is deep and aromatic rather than just hot. If you prefer milder food, tell your server and the kitchen will adjust the spice level for you.\n\nThe menu centers on three dishes our regulars come back for. Chicken biryani [price] is layered with seeded basmati rice, slow-cooked chicken, mint and fried onions, and it comes with raita and salna. Chettinad chicken [price] is a dry-roasted pepper curry that pairs well with parotta or steamed rice. Dosa [price] is a thin, crisp rice-and-lentil crepe served with sambar and fresh chutneys, with masala, ghee roast and onion versions available.\n\nAll of our meat is halal. On weekdays we run a lunch buffet with rotating curries, biryani, dosa made to order and dessert, a quick option if you are coming from class or the office. We stay open until 11 PM, so dinner after a late lab or a game is easy.\n\nYou will find us in Richardson, TX 75080, a short drive from the UT Dallas campus. Dine in, pick up, or call ahead for large group orders. Hours: open daily from 11 AM to 11 PM. See the full menu with current prices on our menu page, and check our Google Business Profile for photos and today's specials.\n\nQuestions before you visit? Read the FAQ below or call us. We would love to cook for you."
+        "title_tag": "Kababs near Richardson | Tikka N Kabab, North Dallas",
+        "meta_description": "Kababs near Richardson at Tikka N Kabab, 7859 McCallum Blvd, Dallas TX 75252. Open daily 11 AM-9:30 PM. Call (469) 857-3000.",
+        "h1": "Kababs near Richardson at Tikka N Kabab",
+        "page_copy": "Looking for best kabab near Richardson? Google reviewers rate us 4.2 stars. Come try our kababs and decide for yourself [owner: confirm kabab menu items].\n\nTikka N Kabab is at 7859 McCallum Blvd Ste 106, Dallas, TX 75252. We are open every day from 11 AM to 9:30 PM, and you can call us at (469) 857-3000 to place an order or ask a question before you come in.\n\nOur menu includes Chicken Samosa (2 pc) $2.99, Veg Samosa (2 pc) $3.99, Onion Bhaji (pakoda) $5.99, Dal Puri (4) $4.99 and Chicken 65 $9.99. Every item is cooked to order in our kitchen, so it reaches you hot and crisp. If you are new to this food, start with a plate of samosas and add Chicken 65 if you like heat; if you prefer something milder, Dal Puri and Veg Samosa are good choices.\n\nMany of our guests come from the neighborhoods around McCallum Blvd, Campbell Rd and Coit Rd, from Richardson, and from the UT Dallas campus about two miles away. It is easy to stop by for a snack, pick up food for a group, or sit down for a simple meal with friends or family.\n\nGoogle reviewers currently rate Tikka N Kabab 4.2 stars across more than 400 reviews. We read every review and use the feedback to keep improving our food and service. If you visit, we would be grateful for an honest review that mentions what you ordered, because it helps other people nearby find dishes they will enjoy.\n\nBefore you visit, check our Google Business Profile for photos of the food and the latest posts. Menu prices shown here can change; please call to confirm. Website: [website]. [Owner: add halal status, catering and delivery details here only once confirmed.]\n\nCome by Tikka N Kabab today for kababs near richardson and the rest of our menu. We look forward to cooking for you."
       },
       "aeo_faqs": [
         {
-          "q": "Is there a Chettinad restaurant in Richardson?",
-          "a": "Yes, Sample Chettinad Kitchen in Richardson, TX 75080."
+          "q": "Where can I get best kabab near UT Dallas?",
+          "a": "Tikka N Kabab at 7859 McCallum Blvd Ste 106, Dallas, TX 75252, about 2 miles from UTD. Google reviewers rate us 4.2 stars. Come try our kababs and decide for yourself [owner: confirm kabab menu items]."
         },
         {
-          "q": "What makes Chettinad food different?",
-          "a": "Freshly roasted and ground spices like black pepper, fennel and kalpasi."
+          "q": "What are Tikka N Kabab's hours?",
+          "a": "Open daily 11 AM to 9:30 PM."
         },
         {
-          "q": "What should I order first?",
-          "a": "Chettinad chicken with parotta, or the chicken biryani."
+          "q": "How do I order from Tikka N Kabab?",
+          "a": "Call (469) 857-3000 or visit 7859 McCallum Blvd Ste 106, Dallas, TX 75252."
         }
       ]
     }
   ],
-  "gbp_description": "Sample Chettinad Kitchen is a South Indian restaurant in Richardson, TX, serving the cooking of Tamil Nadu's Chettinad region. Known for chicken biryani, Chettinad pepper chicken and crispy dosa made to order. All meat is halal. Weekday lunch buffet, and we're open daily until 11 PM, a short drive from UT Dallas. Dine in, pickup, and group orders welcome.",
+  "gbp_description": "Tikka N Kabab is a Pakistani and Indian restaurant in far North Dallas on McCallum Blvd, about 2 miles from UT Dallas. Known for crispy Chicken 65, chicken and veg samosas, Onion Bhaji (pakoda) and Dal Puri, all made to order at friendly prices (samosas from $2.99). Open every day 11 AM to 9:30 PM for dine-in and pickup. Call (469) 857-3000.",
   "faqs": [
     {
-      "q": "Is Sample Chettinad Kitchen halal?",
-      "a": "Yes. All chicken and goat served at Sample Chettinad Kitchen are halal."
+      "q": "Where is Tikka N Kabab?",
+      "a": "7859 McCallum Blvd Ste 106, Dallas, TX 75252, in far North Dallas about 2 miles from UT Dallas."
     },
     {
-      "q": "What are the hours of Sample Chettinad Kitchen?",
-      "a": "Open daily from 11 AM to 11 PM."
+      "q": "What are Tikka N Kabab's hours?",
+      "a": "Open every day from 11 AM to 9:30 PM."
     },
     {
-      "q": "Does Sample Chettinad Kitchen have a lunch buffet?",
-      "a": "Yes, a South Indian lunch buffet is served on weekdays."
+      "q": "What is Tikka N Kabab known for?",
+      "a": "Chicken 65 ($9.99), Chicken Samosa ($2.99 for 2), Veg Samosa ($3.99 for 2), Onion Bhaji ($5.99) and Dal Puri ($4.99 for 4)."
     },
     {
-      "q": "Where is Sample Chettinad Kitchen located?",
-      "a": "Richardson, TX 75080, a short drive from UT Dallas."
+      "q": "Is Tikka N Kabab affordable?",
+      "a": "Yes. Samosas start at $2.99 and most snacks are under $6; Chicken 65 is $9.99."
     },
     {
-      "q": "What dishes is Sample Chettinad Kitchen known for?",
-      "a": "Chicken biryani, Chettinad chicken and dosa."
+      "q": "What is Tikka N Kabab's phone number?",
+      "a": "(469) 857-3000."
     }
   ],
   "lint": [
     {
-      "keyword": "chicken biryani near me",
-      "words": 319,
-      "density_pct": 0.0,
+      "keyword": "chicken 65 near me",
+      "words": 333,
+      "density_pct": 1.2,
       "flags": []
     },
     {
-      "keyword": "south indian restaurant near me",
-      "words": 310,
-      "density_pct": 0.0,
+      "keyword": "samosa near UTD",
+      "words": 332,
+      "density_pct": 0.9,
       "flags": []
     },
     {
-      "keyword": "halal indian restaurant richardson",
-      "words": 310,
-      "density_pct": 0.0,
+      "keyword": "chicken tikka Dallas",
+      "words": 326,
+      "density_pct": 0.9,
       "flags": []
     },
     {
-      "keyword": "indian lunch buffet near me",
-      "words": 311,
-      "density_pct": 0.0,
+      "keyword": "seekh kabab North Dallas",
+      "words": 325,
+      "density_pct": 1.2,
       "flags": []
     },
     {
-      "keyword": "chettinad chicken richardson",
-      "words": 313,
-      "density_pct": 0.0,
+      "keyword": "Indian restaurant near UT Dallas",
+      "words": 331,
+      "density_pct": 1.5,
       "flags": []
     },
     {
-      "keyword": "dosa near me",
-      "words": 307,
-      "density_pct": 0.0,
+      "keyword": "Pakistani food Richardson",
+      "words": 323,
+      "density_pct": 0.9,
       "flags": []
     },
     {
-      "keyword": "late night food near ut dallas",
-      "words": 307,
-      "density_pct": 0.0,
+      "keyword": "Indian food 75252",
+      "words": 323,
+      "density_pct": 0.9,
       "flags": []
     },
     {
-      "keyword": "indian restaurant richardson tx",
-      "words": 310,
-      "density_pct": 0.0,
+      "keyword": "cheap Indian food near UTD",
+      "words": 337,
+      "density_pct": 1.5,
       "flags": []
     },
     {
-      "keyword": "halal biryani near me",
-      "words": 314,
-      "density_pct": 0.0,
+      "keyword": "Indian takeout near me",
+      "words": 327,
+      "density_pct": 1.2,
       "flags": []
     },
     {
-      "keyword": "chettinad restaurant near me",
-      "words": 303,
-      "density_pct": 0.0,
+      "keyword": "best kabab near Richardson",
+      "words": 327,
+      "density_pct": 1.2,
       "flags": []
     }
   ],
   "schema_problems": [
-    "Restaurant: telephone is a placeholder - add the real number before publishing (warning)"
+    "Restaurant: website/menu URL is a [website] placeholder - add the real URL before publishing (warning)"
   ]
 }

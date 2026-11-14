@@ -1,2 +1,3 @@
-name,address,cuisine,website,menu_link,phone,hours,features,menu_items
-Sample Chettinad Kitchen,"Richardson, TX 75080",South Indian (Chettinad),https://example.com/sample-chettinad-kitchen,https://example.com/sample-chettinad-kitchen/menu,,Mo-Su 11:00-23:00,halal; lunch buffet; open till 11 PM; near UT Dallas,chicken biryani; chettinad chicken; dosa
+name,address,cuisine,website,menu_link,phone,hours,features,menu_items,lat,lng
+Tikka N Kabab,"7859 McCallum Blvd Ste 106, Dallas, TX 75252","Pakistani, Indian (kabab)",[website],[website]/menu,(469) 857-3000,Mo-Su 11:00-21:30,Google rating 4.2 (407 reviews); near UT Dallas; order online on Google; dine-in and pickup,Chicken Samosa (2pc) $2.99; Veg Samosa (2pc) $3.99; Onion Bhaji (pakoda) $5.99; Dal Puri (4) $4.99; Chicken 65 $9.99,32.9895,-96.7735
+Sample Chettinad Kitchen,"Richardson, TX 75080",South Indian (Chettinad),https://example.com/sample-chettinad-kitchen,https://example.com/sample-chettinad-kitchen/menu,,Mo-Su 11:00-23:00,halal; lunch buffet; open till 11 PM; near UT Dallas,chicken biryani; chettinad chicken; dosa,32.9857,-96.7502
