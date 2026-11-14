@@ -2,7 +2,7 @@
 Run: GEMINI_API_KEY in your environment or a gitignored .env, then `python3 app.py` and open http://localhost:8000
 No key = falls back to the cached Tikka N Kabab demo (labeled)."""
 import csv, json, os, re, sys, tempfile, pathlib, traceback
-from http.server import BaseHTTPRequestHandler, HTTPServer
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer as HTTPServer
 from urllib.parse import urlparse, parse_qs
 ROOT = pathlib.Path(__file__).parent
 sys.path.insert(0, str(ROOT))
