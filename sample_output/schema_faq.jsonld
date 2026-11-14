@@ -1,0 +1,46 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is Sample Chettinad Kitchen halal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. All chicken and goat served at Sample Chettinad Kitchen are halal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the hours of Sample Chettinad Kitchen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Open daily from 11 AM to 11 PM."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Sample Chettinad Kitchen have a lunch buffet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, a South Indian lunch buffet is served on weekdays."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is Sample Chettinad Kitchen located?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Richardson, TX 75080, a short drive from UT Dallas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What dishes is Sample Chettinad Kitchen known for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Chicken biryani, Chettinad chicken and dosa."
+      }
+    }
+  ]
+}

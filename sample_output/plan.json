@@ -1,0 +1,748 @@
+{
+  "restaurant": {
+    "name": "Sample Chettinad Kitchen",
+    "address": "Richardson, TX 75080",
+    "cuisine": "South Indian (Chettinad)",
+    "website": "https://example.com/sample-chettinad-kitchen",
+    "menu_link": "https://example.com/sample-chettinad-kitchen/menu",
+    "phone": "",
+    "hours": "Mo-Su 11:00-23:00",
+    "features": "halal; lunch buffet; open till 11 PM; near UT Dallas",
+    "menu_items": "chicken biryani; chettinad chicken; dosa"
+  },
+  "meta": {
+    "date": "2026-11-14",
+    "mode": "offline",
+    "engine": "cached sample",
+    "source_note": "Hand-written sample output for demo/offline mode (no Gemini call). Prices shown as [price] placeholders; phone and street address must be filled from restaurants.csv before publishing."
+  },
+  "_note": "Hand-written sample output for demo/offline mode (no Gemini call). Prices shown as [price] placeholders; phone and street address must be filled from restaurants.csv before publishing.",
+  "keywords": [
+    {
+      "keyword": "chicken biryani near me",
+      "intent_group": "dish",
+      "est_intent": "high",
+      "intent_score": 10,
+      "why": "Top dish search; people ready to order now"
+    },
+    {
+      "keyword": "chettinad chicken richardson",
+      "intent_group": "dish",
+      "est_intent": "high",
+      "intent_score": 9,
+      "why": "Signature dish + city = strong local intent"
+    },
+    {
+      "keyword": "dosa near me",
+      "intent_group": "dish",
+      "est_intent": "high",
+      "intent_score": 9,
+      "why": "High-volume South Indian dish search"
+    },
+    {
+      "keyword": "best biryani in richardson tx",
+      "intent_group": "dish",
+      "est_intent": "high",
+      "intent_score": 9,
+      "why": "'Best' + dish + city is a classic Maps query"
+    },
+    {
+      "keyword": "masala dosa richardson",
+      "intent_group": "dish",
+      "est_intent": "medium",
+      "intent_score": 7,
+      "why": "Specific dosa variant searchers"
+    },
+    {
+      "keyword": "spicy south indian chicken curry",
+      "intent_group": "dish",
+      "est_intent": "medium",
+      "intent_score": 6,
+      "why": "Describes Chettinad food without knowing the name"
+    },
+    {
+      "keyword": "goat biryani dallas",
+      "intent_group": "dish",
+      "est_intent": "medium",
+      "intent_score": 6,
+      "why": "Broader metro dish search"
+    },
+    {
+      "keyword": "south indian restaurant near me",
+      "intent_group": "cuisine_near_me",
+      "est_intent": "high",
+      "intent_score": 10,
+      "why": "Core cuisine + near me"
+    },
+    {
+      "keyword": "chettinad restaurant near me",
+      "intent_group": "cuisine_near_me",
+      "est_intent": "high",
+      "intent_score": 8,
+      "why": "Exact niche match, low competition"
+    },
+    {
+      "keyword": "indian restaurant richardson tx",
+      "intent_group": "cuisine_near_me",
+      "est_intent": "high",
+      "intent_score": 9,
+      "why": "Broad cuisine + city"
+    },
+    {
+      "keyword": "tamil food near me",
+      "intent_group": "cuisine_near_me",
+      "est_intent": "medium",
+      "intent_score": 7,
+      "why": "Chettinad is Tamil cuisine; diaspora search"
+    },
+    {
+      "keyword": "indian food open now",
+      "intent_group": "cuisine_near_me",
+      "est_intent": "high",
+      "intent_score": 8,
+      "why": "Time-sensitive intent"
+    },
+    {
+      "keyword": "halal indian restaurant richardson",
+      "intent_group": "occasion_feature",
+      "est_intent": "high",
+      "intent_score": 9,
+      "why": "Halal is a must-have filter for many diners"
+    },
+    {
+      "keyword": "indian lunch buffet near me",
+      "intent_group": "occasion_feature",
+      "est_intent": "high",
+      "intent_score": 9,
+      "why": "Lunch buffet is a strong weekday driver"
+    },
+    {
+      "keyword": "late night food near ut dallas",
+      "intent_group": "occasion_feature",
+      "est_intent": "high",
+      "intent_score": 8,
+      "why": "Open till 11 PM + student audience"
+    },
+    {
+      "keyword": "cheap eats near ut dallas",
+      "intent_group": "occasion_feature",
+      "est_intent": "medium",
+      "intent_score": 7,
+      "why": "Students on a budget"
+    },
+    {
+      "keyword": "indian food open late richardson",
+      "intent_group": "occasion_feature",
+      "est_intent": "high",
+      "intent_score": 8,
+      "why": "Late-hours feature + city"
+    },
+    {
+      "keyword": "halal biryani near me",
+      "intent_group": "occasion_feature",
+      "est_intent": "high",
+      "intent_score": 9,
+      "why": "Combines feature + top dish"
+    },
+    {
+      "keyword": "group dinner indian restaurant richardson",
+      "intent_group": "occasion_feature",
+      "est_intent": "medium",
+      "intent_score": 6,
+      "why": "Groups / student orgs"
+    },
+    {
+      "keyword": "vegetarian south indian food richardson",
+      "intent_group": "occasion_feature",
+      "est_intent": "medium",
+      "intent_score": 6,
+      "why": "Dosa makes it veg-friendly"
+    }
+  ],
+  "top10": [
+    {
+      "rank": 1,
+      "keyword": "chicken biryani near me",
+      "intent_group": "dish",
+      "gbp": {
+        "categories": [
+          "South Indian restaurant",
+          "Indian restaurant",
+          "Halal restaurant"
+        ],
+        "description_addition": "Signature dish highlighted in the description in plain language, e.g. 'Known for Chettinad-style chicken biryani and pepper chicken.'",
+        "menu_items": [
+          "Chicken Biryani",
+          "Chettinad Chicken",
+          "Masala Dosa",
+          "Goat Biryani"
+        ],
+        "photos": [
+          "Close-up of the dish/experience for 'chicken biryani near me' in natural light",
+          "Interior with guests (with permission)",
+          "Exterior + signage so people recognize the storefront",
+          "Menu board showing prices"
+        ],
+        "posts": [
+          "Google Post: photo + 2 lines about chicken biryani with a 'Call' button",
+          "Weekly 'today's special' post mentioning hours (open till 11 PM)"
+        ],
+        "review_request": "Add a QR code on receipts/tables: 'Enjoyed your meal? An honest Google review helps us a lot.' Ask every customer the same way; no discounts or gifts for reviews, and never ask for a specific rating or wording."
+      },
+      "website": {
+        "title_tag": "Chicken Biryani in Richardson, Made the Chettinad Way",
+        "meta_description": "Looking for chicken biryani near you in Richardson? Our biryani is cooked in the Chettinad style, with whole spices roasted in-house and seeraga...",
+        "h1": "Chicken Biryani in Richardson, Made the Chettinad Way",
+        "page_copy": "Looking for chicken biryani near you in Richardson? Our biryani is cooked in the Chettinad style, with whole spices roasted in-house and seeraga samba or basmati rice layered over tender halal chicken. It is the dish most guests order on their first visit.\n\nOur kitchen follows the cooking of the Chettinad region of Tamil Nadu, known for freshly roasted and ground spices: black pepper, fennel, star anise, dried red chilies, kalpasi (stone flower) and curry leaves. We roast our masalas in small batches every morning, so the flavor is deep and aromatic rather than just hot. If you prefer milder food, tell your server and the kitchen will adjust the spice level for you.\n\nThe menu centers on three dishes our regulars come back for. Chicken biryani [price] is layered with seeded basmati rice, slow-cooked chicken, mint and fried onions, and it comes with raita and salna. Chettinad chicken [price] is a dry-roasted pepper curry that pairs well with parotta or steamed rice. Dosa [price] is a thin, crisp rice-and-lentil crepe served with sambar and fresh chutneys, with masala, ghee roast and onion versions available.\n\nAll of our meat is halal. On weekdays we run a lunch buffet with rotating curries, biryani, dosa made to order and dessert, a quick option if you are coming from class or the office. We stay open until 11 PM, so dinner after a late lab or a game is easy.\n\nYou will find us in Richardson, TX 75080, a short drive from the UT Dallas campus. Dine in, pick up, or call ahead for large group orders. Hours: open daily from 11 AM to 11 PM. See the full menu with current prices on our menu page, and check our Google Business Profile for photos and today's specials.\n\nQuestions before you visit? Read the FAQ below or call us. We would love to cook for you."
+      },
+      "aeo_faqs": [
+        {
+          "q": "Does Sample Chettinad Kitchen serve chicken biryani?",
+          "a": "Yes. Chicken biryani is a signature dish, made Chettinad-style with halal chicken and served with raita and salna."
+        },
+        {
+          "q": "Is the chicken biryani halal?",
+          "a": "Yes, all meat at Sample Chettinad Kitchen is halal."
+        },
+        {
+          "q": "Can I order biryani for pickup in Richardson?",
+          "a": "Yes. Call ahead or order at the counter for pickup in Richardson, TX 75080."
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "keyword": "south indian restaurant near me",
+      "intent_group": "cuisine_near_me",
+      "gbp": {
+        "categories": [
+          "South Indian restaurant",
+          "Indian restaurant",
+          "Tamil restaurant"
+        ],
+        "description_addition": "State the cuisine and location clearly: 'Chettinad (South Indian) restaurant in Richardson, near UT Dallas.'",
+        "menu_items": [
+          "Chettinad Chicken",
+          "Chicken Biryani",
+          "Dosa",
+          "Idli"
+        ],
+        "photos": [
+          "Close-up of the dish/experience for 'south indian restaurant near me' in natural light",
+          "Interior with guests (with permission)",
+          "Exterior + signage so people recognize the storefront",
+          "Menu board showing prices"
+        ],
+        "posts": [
+          "Google Post: photo + 2 lines about south indian restaurant with a 'Call' button",
+          "Weekly 'today's special' post mentioning hours (open till 11 PM)"
+        ],
+        "review_request": "Add a QR code on receipts/tables: 'Enjoyed your meal? An honest Google review helps us a lot.' Ask every customer the same way; no discounts or gifts for reviews, and never ask for a specific rating or wording."
+      },
+      "website": {
+        "title_tag": "South Indian Food in Richardson, TX",
+        "meta_description": "If you are searching for a South Indian restaurant close to Richardson or UT Dallas, we cook the food of Tamil Nadu's Chettinad region: peppery...",
+        "h1": "South Indian Food in Richardson, TX",
+        "page_copy": "If you are searching for a South Indian restaurant close to Richardson or UT Dallas, we cook the food of Tamil Nadu's Chettinad region: peppery curries, biryani, dosa and idli, made fresh every day.\n\nOur kitchen follows the cooking of the Chettinad region of Tamil Nadu, known for freshly roasted and ground spices: black pepper, fennel, star anise, dried red chilies, kalpasi (stone flower) and curry leaves. We roast our masalas in small batches every morning, so the flavor is deep and aromatic rather than just hot. If you prefer milder food, tell your server and the kitchen will adjust the spice level for you.\n\nThe menu centers on three dishes our regulars come back for. Chicken biryani [price] is layered with seeded basmati rice, slow-cooked chicken, mint and fried onions, and it comes with raita and salna. Chettinad chicken [price] is a dry-roasted pepper curry that pairs well with parotta or steamed rice. Dosa [price] is a thin, crisp rice-and-lentil crepe served with sambar and fresh chutneys, with masala, ghee roast and onion versions available.\n\nAll of our meat is halal. On weekdays we run a lunch buffet with rotating curries, biryani, dosa made to order and dessert, a quick option if you are coming from class or the office. We stay open until 11 PM, so dinner after a late lab or a game is easy.\n\nYou will find us in Richardson, TX 75080, a short drive from the UT Dallas campus. Dine in, pick up, or call ahead for large group orders. Hours: open daily from 11 AM to 11 PM. See the full menu with current prices on our menu page, and check our Google Business Profile for photos and today's specials.\n\nQuestions before you visit? Read the FAQ below or call us. We would love to cook for you."
+      },
+      "aeo_faqs": [
+        {
+          "q": "What kind of food does Sample Chettinad Kitchen serve?",
+          "a": "South Indian food from the Chettinad region of Tamil Nadu: biryani, Chettinad chicken, dosa and more."
+        },
+        {
+          "q": "Where is Sample Chettinad Kitchen?",
+          "a": "Richardson, TX 75080, a short drive from UT Dallas."
+        },
+        {
+          "q": "Does it have vegetarian options?",
+          "a": "Yes. Dosa and several curries are vegetarian."
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "keyword": "halal indian restaurant richardson",
+      "intent_group": "occasion_feature",
+      "gbp": {
+        "categories": [
+          "South Indian restaurant",
+          "Halal restaurant",
+          "Buffet restaurant"
+        ],
+        "description_addition": "Mention the real feature once: halal meat, weekday lunch buffet, open until 11 PM.",
+        "menu_items": [
+          "Lunch Buffet (weekdays)",
+          "Halal Chicken Biryani",
+          "Late-night Dosa"
+        ],
+        "photos": [
+          "Close-up of the dish/experience for 'halal indian restaurant richardson' in natural light",
+          "Interior with guests (with permission)",
+          "Exterior + signage so people recognize the storefront",
+          "Menu board showing prices"
+        ],
+        "posts": [
+          "Google Post: photo + 2 lines about halal indian restaurant richardson with a 'Call' button",
+          "Weekly 'today's special' post mentioning hours (open till 11 PM)"
+        ],
+        "review_request": "Add a QR code on receipts/tables: 'Enjoyed your meal? An honest Google review helps us a lot.' Ask every customer the same way; no discounts or gifts for reviews, and never ask for a specific rating or wording."
+      },
+      "website": {
+        "title_tag": "Halal Indian Restaurant in Richardson",
+        "meta_description": "Every meat dish on our menu is made with halal chicken and goat, so you can order the full menu with confidence. We are a family-style South Indian...",
+        "h1": "Halal Indian Restaurant in Richardson",
+        "page_copy": "Every meat dish on our menu is made with halal chicken and goat, so you can order the full menu with confidence. We are a family-style South Indian restaurant in Richardson serving Chettinad cooking.\n\nOur kitchen follows the cooking of the Chettinad region of Tamil Nadu, known for freshly roasted and ground spices: black pepper, fennel, star anise, dried red chilies, kalpasi (stone flower) and curry leaves. We roast our masalas in small batches every morning, so the flavor is deep and aromatic rather than just hot. If you prefer milder food, tell your server and the kitchen will adjust the spice level for you.\n\nThe menu centers on three dishes our regulars come back for. Chicken biryani [price] is layered with seeded basmati rice, slow-cooked chicken, mint and fried onions, and it comes with raita and salna. Chettinad chicken [price] is a dry-roasted pepper curry that pairs well with parotta or steamed rice. Dosa [price] is a thin, crisp rice-and-lentil crepe served with sambar and fresh chutneys, with masala, ghee roast and onion versions available.\n\nAll of our meat is halal. On weekdays we run a lunch buffet with rotating curries, biryani, dosa made to order and dessert, a quick option if you are coming from class or the office. We stay open until 11 PM, so dinner after a late lab or a game is easy.\n\nYou will find us in Richardson, TX 75080, a short drive from the UT Dallas campus. Dine in, pick up, or call ahead for large group orders. Hours: open daily from 11 AM to 11 PM. See the full menu with current prices on our menu page, and check our Google Business Profile for photos and today's specials.\n\nQuestions before you visit? Read the FAQ below or call us. We would love to cook for you."
+      },
+      "aeo_faqs": [
+        {
+          "q": "Is Sample Chettinad Kitchen halal?",
+          "a": "Yes, all chicken and goat served are halal."
+        },
+        {
+          "q": "Is the lunch buffet halal?",
+          "a": "Yes, every meat dish on the buffet is halal."
+        },
+        {
+          "q": "What halal dishes are popular?",
+          "a": "Chicken biryani and Chettinad chicken are the most ordered halal dishes."
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "keyword": "indian lunch buffet near me",
+      "intent_group": "occasion_feature",
+      "gbp": {
+        "categories": [
+          "South Indian restaurant",
+          "Halal restaurant",
+          "Buffet restaurant"
+        ],
+        "description_addition": "Mention the real feature once: halal meat, weekday lunch buffet, open until 11 PM.",
+        "menu_items": [
+          "Lunch Buffet (weekdays)",
+          "Halal Chicken Biryani",
+          "Late-night Dosa"
+        ],
+        "photos": [
+          "Close-up of the dish/experience for 'indian lunch buffet near me' in natural light",
+          "Interior with guests (with permission)",
+          "Exterior + signage so people recognize the storefront",
+          "Menu board showing prices"
+        ],
+        "posts": [
+          "Google Post: photo + 2 lines about indian lunch buffet with a 'Call' button",
+          "Weekly 'today's special' post mentioning hours (open till 11 PM)"
+        ],
+        "review_request": "Add a QR code on receipts/tables: 'Enjoyed your meal? An honest Google review helps us a lot.' Ask every customer the same way; no discounts or gifts for reviews, and never ask for a specific rating or wording."
+      },
+      "website": {
+        "title_tag": "Weekday South Indian Lunch Buffet in Richardson",
+        "meta_description": "Our weekday lunch buffet is built for people with an hour to eat: biryani, two or three Chettinad curries, a vegetarian dish, dosa made to order at...",
+        "h1": "Weekday South Indian Lunch Buffet in Richardson",
+        "page_copy": "Our weekday lunch buffet is built for people with an hour to eat: biryani, two or three Chettinad curries, a vegetarian dish, dosa made to order at the counter, and dessert, at one set price [price].\n\nOur kitchen follows the cooking of the Chettinad region of Tamil Nadu, known for freshly roasted and ground spices: black pepper, fennel, star anise, dried red chilies, kalpasi (stone flower) and curry leaves. We roast our masalas in small batches every morning, so the flavor is deep and aromatic rather than just hot. If you prefer milder food, tell your server and the kitchen will adjust the spice level for you.\n\nThe menu centers on three dishes our regulars come back for. Chicken biryani [price] is layered with seeded basmati rice, slow-cooked chicken, mint and fried onions, and it comes with raita and salna. Chettinad chicken [price] is a dry-roasted pepper curry that pairs well with parotta or steamed rice. Dosa [price] is a thin, crisp rice-and-lentil crepe served with sambar and fresh chutneys, with masala, ghee roast and onion versions available.\n\nAll of our meat is halal. On weekdays we run a lunch buffet with rotating curries, biryani, dosa made to order and dessert, a quick option if you are coming from class or the office. We stay open until 11 PM, so dinner after a late lab or a game is easy.\n\nYou will find us in Richardson, TX 75080, a short drive from the UT Dallas campus. Dine in, pick up, or call ahead for large group orders. Hours: open daily from 11 AM to 11 PM. See the full menu with current prices on our menu page, and check our Google Business Profile for photos and today's specials.\n\nQuestions before you visit? Read the FAQ below or call us. We would love to cook for you."
+      },
+      "aeo_faqs": [
+        {
+          "q": "Does Sample Chettinad Kitchen have a lunch buffet?",
+          "a": "Yes, a South Indian lunch buffet runs on weekdays."
+        },
+        {
+          "q": "What is on the lunch buffet?",
+          "a": "Biryani, rotating Chettinad curries, a vegetarian dish, made-to-order dosa and dessert."
+        },
+        {
+          "q": "Is the buffet good for a quick lunch near UT Dallas?",
+          "a": "Yes. It is a few minutes from campus and designed for a one-hour lunch."
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "keyword": "chettinad chicken richardson",
+      "intent_group": "dish",
+      "gbp": {
+        "categories": [
+          "South Indian restaurant",
+          "Indian restaurant",
+          "Halal restaurant"
+        ],
+        "description_addition": "Signature dish highlighted in the description in plain language, e.g. 'Known for Chettinad-style chicken biryani and pepper chicken.'",
+        "menu_items": [
+          "Chicken Biryani",
+          "Chettinad Chicken",
+          "Masala Dosa",
+          "Goat Biryani"
+        ],
+        "photos": [
+          "Close-up of the dish/experience for 'chettinad chicken richardson' in natural light",
+          "Interior with guests (with permission)",
+          "Exterior + signage so people recognize the storefront",
+          "Menu board showing prices"
+        ],
+        "posts": [
+          "Google Post: photo + 2 lines about chettinad chicken richardson with a 'Call' button",
+          "Weekly 'today's special' post mentioning hours (open till 11 PM)"
+        ],
+        "review_request": "Add a QR code on receipts/tables: 'Enjoyed your meal? An honest Google review helps us a lot.' Ask every customer the same way; no discounts or gifts for reviews, and never ask for a specific rating or wording."
+      },
+      "website": {
+        "title_tag": "Chettinad Chicken in Richardson, TX",
+        "meta_description": "Chettinad chicken is the signature dish of our kitchen and the reason we opened in Richardson. It is a dark, pepper-forward curry made with a masala...",
+        "h1": "Chettinad Chicken in Richardson, TX",
+        "page_copy": "Chettinad chicken is the signature dish of our kitchen and the reason we opened in Richardson. It is a dark, pepper-forward curry made with a masala of more than ten spices that we roast and grind ourselves.\n\nOur kitchen follows the cooking of the Chettinad region of Tamil Nadu, known for freshly roasted and ground spices: black pepper, fennel, star anise, dried red chilies, kalpasi (stone flower) and curry leaves. We roast our masalas in small batches every morning, so the flavor is deep and aromatic rather than just hot. If you prefer milder food, tell your server and the kitchen will adjust the spice level for you.\n\nThe menu centers on three dishes our regulars come back for. Chicken biryani [price] is layered with seeded basmati rice, slow-cooked chicken, mint and fried onions, and it comes with raita and salna. Chettinad chicken [price] is a dry-roasted pepper curry that pairs well with parotta or steamed rice. Dosa [price] is a thin, crisp rice-and-lentil crepe served with sambar and fresh chutneys, with masala, ghee roast and onion versions available.\n\nAll of our meat is halal. On weekdays we run a lunch buffet with rotating curries, biryani, dosa made to order and dessert, a quick option if you are coming from class or the office. We stay open until 11 PM, so dinner after a late lab or a game is easy.\n\nYou will find us in Richardson, TX 75080, a short drive from the UT Dallas campus. Dine in, pick up, or call ahead for large group orders. Hours: open daily from 11 AM to 11 PM. See the full menu with current prices on our menu page, and check our Google Business Profile for photos and today's specials.\n\nQuestions before you visit? Read the FAQ below or call us. We would love to cook for you."
+      },
+      "aeo_faqs": [
+        {
+          "q": "What is Chettinad chicken?",
+          "a": "A pepper-forward South Indian chicken curry made with freshly roasted Chettinad spices."
+        },
+        {
+          "q": "Where can I get Chettinad chicken in Richardson?",
+          "a": "Sample Chettinad Kitchen in Richardson, TX 75080 serves it daily."
+        },
+        {
+          "q": "Is Chettinad chicken very spicy?",
+          "a": "It is peppery; the kitchen can make it milder on request."
+        }
+      ]
+    },
+    {
+      "rank": 6,
+      "keyword": "dosa near me",
+      "intent_group": "dish",
+      "gbp": {
+        "categories": [
+          "South Indian restaurant",
+          "Indian restaurant",
+          "Halal restaurant"
+        ],
+        "description_addition": "Signature dish highlighted in the description in plain language, e.g. 'Known for Chettinad-style chicken biryani and pepper chicken.'",
+        "menu_items": [
+          "Chicken Biryani",
+          "Chettinad Chicken",
+          "Masala Dosa",
+          "Goat Biryani"
+        ],
+        "photos": [
+          "Close-up of the dish/experience for 'dosa near me' in natural light",
+          "Interior with guests (with permission)",
+          "Exterior + signage so people recognize the storefront",
+          "Menu board showing prices"
+        ],
+        "posts": [
+          "Google Post: photo + 2 lines about dosa with a 'Call' button",
+          "Weekly 'today's special' post mentioning hours (open till 11 PM)"
+        ],
+        "review_request": "Add a QR code on receipts/tables: 'Enjoyed your meal? An honest Google review helps us a lot.' Ask every customer the same way; no discounts or gifts for reviews, and never ask for a specific rating or wording."
+      },
+      "website": {
+        "title_tag": "Crispy Dosa in Richardson, Near UT Dallas",
+        "meta_description": "Craving a hot, crispy dosa nearby? We make every dosa to order on a cast-iron tawa from batter fermented overnight, and serve it with sambar and...",
+        "h1": "Crispy Dosa in Richardson, Near UT Dallas",
+        "page_copy": "Craving a hot, crispy dosa nearby? We make every dosa to order on a cast-iron tawa from batter fermented overnight, and serve it with sambar and coconut, tomato and mint chutneys.\n\nOur kitchen follows the cooking of the Chettinad region of Tamil Nadu, known for freshly roasted and ground spices: black pepper, fennel, star anise, dried red chilies, kalpasi (stone flower) and curry leaves. We roast our masalas in small batches every morning, so the flavor is deep and aromatic rather than just hot. If you prefer milder food, tell your server and the kitchen will adjust the spice level for you.\n\nThe menu centers on three dishes our regulars come back for. Chicken biryani [price] is layered with seeded basmati rice, slow-cooked chicken, mint and fried onions, and it comes with raita and salna. Chettinad chicken [price] is a dry-roasted pepper curry that pairs well with parotta or steamed rice. Dosa [price] is a thin, crisp rice-and-lentil crepe served with sambar and fresh chutneys, with masala, ghee roast and onion versions available.\n\nAll of our meat is halal. On weekdays we run a lunch buffet with rotating curries, biryani, dosa made to order and dessert, a quick option if you are coming from class or the office. We stay open until 11 PM, so dinner after a late lab or a game is easy.\n\nYou will find us in Richardson, TX 75080, a short drive from the UT Dallas campus. Dine in, pick up, or call ahead for large group orders. Hours: open daily from 11 AM to 11 PM. See the full menu with current prices on our menu page, and check our Google Business Profile for photos and today's specials.\n\nQuestions before you visit? Read the FAQ below or call us. We would love to cook for you."
+      },
+      "aeo_faqs": [
+        {
+          "q": "Does Sample Chettinad Kitchen make dosa?",
+          "a": "Yes, dosa is made to order and served with sambar and chutneys."
+        },
+        {
+          "q": "What dosa types are available?",
+          "a": "Plain, masala, onion and ghee roast dosa."
+        },
+        {
+          "q": "Is dosa vegetarian?",
+          "a": "Yes, dosa is vegetarian and made from fermented rice and lentil batter."
+        }
+      ]
+    },
+    {
+      "rank": 7,
+      "keyword": "late night food near ut dallas",
+      "intent_group": "occasion_feature",
+      "gbp": {
+        "categories": [
+          "South Indian restaurant",
+          "Halal restaurant",
+          "Buffet restaurant"
+        ],
+        "description_addition": "Mention the real feature once: halal meat, weekday lunch buffet, open until 11 PM.",
+        "menu_items": [
+          "Lunch Buffet (weekdays)",
+          "Halal Chicken Biryani",
+          "Late-night Dosa"
+        ],
+        "photos": [
+          "Close-up of the dish/experience for 'late night food near ut dallas' in natural light",
+          "Interior with guests (with permission)",
+          "Exterior + signage so people recognize the storefront",
+          "Menu board showing prices"
+        ],
+        "posts": [
+          "Google Post: photo + 2 lines about late night food with a 'Call' button",
+          "Weekly 'today's special' post mentioning hours (open till 11 PM)"
+        ],
+        "review_request": "Add a QR code on receipts/tables: 'Enjoyed your meal? An honest Google review helps us a lot.' Ask every customer the same way; no discounts or gifts for reviews, and never ask for a specific rating or wording."
+      },
+      "website": {
+        "title_tag": "Late-Night South Indian Food Near UT Dallas",
+        "meta_description": "Studying late or just finished practice? We are open until 11 PM every day, a few minutes from UT Dallas, with hot biryani, dosa and Chettinad...",
+        "h1": "Late-Night South Indian Food Near UT Dallas",
+        "page_copy": "Studying late or just finished practice? We are open until 11 PM every day, a few minutes from UT Dallas, with hot biryani, dosa and Chettinad curries for dine-in or pickup.\n\nOur kitchen follows the cooking of the Chettinad region of Tamil Nadu, known for freshly roasted and ground spices: black pepper, fennel, star anise, dried red chilies, kalpasi (stone flower) and curry leaves. We roast our masalas in small batches every morning, so the flavor is deep and aromatic rather than just hot. If you prefer milder food, tell your server and the kitchen will adjust the spice level for you.\n\nThe menu centers on three dishes our regulars come back for. Chicken biryani [price] is layered with seeded basmati rice, slow-cooked chicken, mint and fried onions, and it comes with raita and salna. Chettinad chicken [price] is a dry-roasted pepper curry that pairs well with parotta or steamed rice. Dosa [price] is a thin, crisp rice-and-lentil crepe served with sambar and fresh chutneys, with masala, ghee roast and onion versions available.\n\nAll of our meat is halal. On weekdays we run a lunch buffet with rotating curries, biryani, dosa made to order and dessert, a quick option if you are coming from class or the office. We stay open until 11 PM, so dinner after a late lab or a game is easy.\n\nYou will find us in Richardson, TX 75080, a short drive from the UT Dallas campus. Dine in, pick up, or call ahead for large group orders. Hours: open daily from 11 AM to 11 PM. See the full menu with current prices on our menu page, and check our Google Business Profile for photos and today's specials.\n\nQuestions before you visit? Read the FAQ below or call us. We would love to cook for you."
+      },
+      "aeo_faqs": [
+        {
+          "q": "How late is Sample Chettinad Kitchen open?",
+          "a": "Open until 11 PM daily."
+        },
+        {
+          "q": "Is it close to UT Dallas?",
+          "a": "Yes, it is in Richardson, a short drive from campus."
+        },
+        {
+          "q": "Can I get takeout late at night?",
+          "a": "Yes, pickup is available until closing."
+        }
+      ]
+    },
+    {
+      "rank": 8,
+      "keyword": "indian restaurant richardson tx",
+      "intent_group": "cuisine_near_me",
+      "gbp": {
+        "categories": [
+          "South Indian restaurant",
+          "Indian restaurant",
+          "Tamil restaurant"
+        ],
+        "description_addition": "State the cuisine and location clearly: 'Chettinad (South Indian) restaurant in Richardson, near UT Dallas.'",
+        "menu_items": [
+          "Chettinad Chicken",
+          "Chicken Biryani",
+          "Dosa",
+          "Idli"
+        ],
+        "photos": [
+          "Close-up of the dish/experience for 'indian restaurant richardson tx' in natural light",
+          "Interior with guests (with permission)",
+          "Exterior + signage so people recognize the storefront",
+          "Menu board showing prices"
+        ],
+        "posts": [
+          "Google Post: photo + 2 lines about indian restaurant richardson tx with a 'Call' button",
+          "Weekly 'today's special' post mentioning hours (open till 11 PM)"
+        ],
+        "review_request": "Add a QR code on receipts/tables: 'Enjoyed your meal? An honest Google review helps us a lot.' Ask every customer the same way; no discounts or gifts for reviews, and never ask for a specific rating or wording."
+      },
+      "website": {
+        "title_tag": "Indian Restaurant in Richardson, TX",
+        "meta_description": "Among Indian restaurants in Richardson, TX, we focus on one region's cooking, Chettinad from South India, instead of a generic menu. That focus shows...",
+        "h1": "Indian Restaurant in Richardson, TX: Chettinad Cuisine",
+        "page_copy": "Among Indian restaurants in Richardson, TX, we focus on one region's cooking, Chettinad from South India, instead of a generic menu. That focus shows up in the spice blends, the biryani and the dosa.\n\nOur kitchen follows the cooking of the Chettinad region of Tamil Nadu, known for freshly roasted and ground spices: black pepper, fennel, star anise, dried red chilies, kalpasi (stone flower) and curry leaves. We roast our masalas in small batches every morning, so the flavor is deep and aromatic rather than just hot. If you prefer milder food, tell your server and the kitchen will adjust the spice level for you.\n\nThe menu centers on three dishes our regulars come back for. Chicken biryani [price] is layered with seeded basmati rice, slow-cooked chicken, mint and fried onions, and it comes with raita and salna. Chettinad chicken [price] is a dry-roasted pepper curry that pairs well with parotta or steamed rice. Dosa [price] is a thin, crisp rice-and-lentil crepe served with sambar and fresh chutneys, with masala, ghee roast and onion versions available.\n\nAll of our meat is halal. On weekdays we run a lunch buffet with rotating curries, biryani, dosa made to order and dessert, a quick option if you are coming from class or the office. We stay open until 11 PM, so dinner after a late lab or a game is easy.\n\nYou will find us in Richardson, TX 75080, a short drive from the UT Dallas campus. Dine in, pick up, or call ahead for large group orders. Hours: open daily from 11 AM to 11 PM. See the full menu with current prices on our menu page, and check our Google Business Profile for photos and today's specials.\n\nQuestions before you visit? Read the FAQ below or call us. We would love to cook for you."
+      },
+      "aeo_faqs": [
+        {
+          "q": "What Indian cuisine does Sample Chettinad Kitchen specialize in?",
+          "a": "Chettinad cuisine from South India."
+        },
+        {
+          "q": "What are the most popular dishes?",
+          "a": "Chicken biryani, Chettinad chicken and dosa."
+        },
+        {
+          "q": "Does it take reservations?",
+          "a": "Yes, reservations are accepted, including for groups."
+        }
+      ]
+    },
+    {
+      "rank": 9,
+      "keyword": "halal biryani near me",
+      "intent_group": "occasion_feature",
+      "gbp": {
+        "categories": [
+          "South Indian restaurant",
+          "Halal restaurant",
+          "Buffet restaurant"
+        ],
+        "description_addition": "Mention the real feature once: halal meat, weekday lunch buffet, open until 11 PM.",
+        "menu_items": [
+          "Lunch Buffet (weekdays)",
+          "Halal Chicken Biryani",
+          "Late-night Dosa"
+        ],
+        "photos": [
+          "Close-up of the dish/experience for 'halal biryani near me' in natural light",
+          "Interior with guests (with permission)",
+          "Exterior + signage so people recognize the storefront",
+          "Menu board showing prices"
+        ],
+        "posts": [
+          "Google Post: photo + 2 lines about halal biryani with a 'Call' button",
+          "Weekly 'today's special' post mentioning hours (open till 11 PM)"
+        ],
+        "review_request": "Add a QR code on receipts/tables: 'Enjoyed your meal? An honest Google review helps us a lot.' Ask every customer the same way; no discounts or gifts for reviews, and never ask for a specific rating or wording."
+      },
+      "website": {
+        "title_tag": "Halal Biryani in Richardson | Sample Chettinad Kitchen",
+        "meta_description": "Our biryani is made only with halal chicken and goat, cooked dum-style so the rice absorbs the masala. Guests who want halal biryani nearby in...",
+        "h1": "Halal Biryani in Richardson",
+        "page_copy": "Our biryani is made only with halal chicken and goat, cooked dum-style so the rice absorbs the masala. Guests who want halal biryani nearby in Richardson and around UT Dallas order it for dine-in, pickup and parties.\n\nOur kitchen follows the cooking of the Chettinad region of Tamil Nadu, known for freshly roasted and ground spices: black pepper, fennel, star anise, dried red chilies, kalpasi (stone flower) and curry leaves. We roast our masalas in small batches every morning, so the flavor is deep and aromatic rather than just hot. If you prefer milder food, tell your server and the kitchen will adjust the spice level for you.\n\nThe menu centers on three dishes our regulars come back for. Chicken biryani [price] is layered with seeded basmati rice, slow-cooked chicken, mint and fried onions, and it comes with raita and salna. Chettinad chicken [price] is a dry-roasted pepper curry that pairs well with parotta or steamed rice. Dosa [price] is a thin, crisp rice-and-lentil crepe served with sambar and fresh chutneys, with masala, ghee roast and onion versions available.\n\nAll of our meat is halal. On weekdays we run a lunch buffet with rotating curries, biryani, dosa made to order and dessert, a quick option if you are coming from class or the office. We stay open until 11 PM, so dinner after a late lab or a game is easy.\n\nYou will find us in Richardson, TX 75080, a short drive from the UT Dallas campus. Dine in, pick up, or call ahead for large group orders. Hours: open daily from 11 AM to 11 PM. See the full menu with current prices on our menu page, and check our Google Business Profile for photos and today's specials.\n\nQuestions before you visit? Read the FAQ below or call us. We would love to cook for you."
+      },
+      "aeo_faqs": [
+        {
+          "q": "Is the biryani at Sample Chettinad Kitchen halal?",
+          "a": "Yes, chicken and goat biryani are made with halal meat."
+        },
+        {
+          "q": "Can I order biryani for a party?",
+          "a": "Yes, call ahead for large or party orders."
+        },
+        {
+          "q": "What comes with the biryani?",
+          "a": "Raita and salna."
+        }
+      ]
+    },
+    {
+      "rank": 10,
+      "keyword": "chettinad restaurant near me",
+      "intent_group": "cuisine_near_me",
+      "gbp": {
+        "categories": [
+          "South Indian restaurant",
+          "Indian restaurant",
+          "Tamil restaurant"
+        ],
+        "description_addition": "State the cuisine and location clearly: 'Chettinad (South Indian) restaurant in Richardson, near UT Dallas.'",
+        "menu_items": [
+          "Chettinad Chicken",
+          "Chicken Biryani",
+          "Dosa",
+          "Idli"
+        ],
+        "photos": [
+          "Close-up of the dish/experience for 'chettinad restaurant near me' in natural light",
+          "Interior with guests (with permission)",
+          "Exterior + signage so people recognize the storefront",
+          "Menu board showing prices"
+        ],
+        "posts": [
+          "Google Post: photo + 2 lines about chettinad restaurant with a 'Call' button",
+          "Weekly 'today's special' post mentioning hours (open till 11 PM)"
+        ],
+        "review_request": "Add a QR code on receipts/tables: 'Enjoyed your meal? An honest Google review helps us a lot.' Ask every customer the same way; no discounts or gifts for reviews, and never ask for a specific rating or wording."
+      },
+      "website": {
+        "title_tag": "A Chettinad Restaurant in Richardson",
+        "meta_description": "Chettinad restaurants are rare in North Texas. We bring the cooking of Karaikudi and the Chettinad region to Richardson: roasted spice masalas,...",
+        "h1": "A Chettinad Restaurant in Richardson",
+        "page_copy": "Chettinad restaurants are rare in North Texas. We bring the cooking of Karaikudi and the Chettinad region to Richardson: roasted spice masalas, pepper chicken, kuzhambu, biryani and dosa.\n\nOur kitchen follows the cooking of the Chettinad region of Tamil Nadu, known for freshly roasted and ground spices: black pepper, fennel, star anise, dried red chilies, kalpasi (stone flower) and curry leaves. We roast our masalas in small batches every morning, so the flavor is deep and aromatic rather than just hot. If you prefer milder food, tell your server and the kitchen will adjust the spice level for you.\n\nThe menu centers on three dishes our regulars come back for. Chicken biryani [price] is layered with seeded basmati rice, slow-cooked chicken, mint and fried onions, and it comes with raita and salna. Chettinad chicken [price] is a dry-roasted pepper curry that pairs well with parotta or steamed rice. Dosa [price] is a thin, crisp rice-and-lentil crepe served with sambar and fresh chutneys, with masala, ghee roast and onion versions available.\n\nAll of our meat is halal. On weekdays we run a lunch buffet with rotating curries, biryani, dosa made to order and dessert, a quick option if you are coming from class or the office. We stay open until 11 PM, so dinner after a late lab or a game is easy.\n\nYou will find us in Richardson, TX 75080, a short drive from the UT Dallas campus. Dine in, pick up, or call ahead for large group orders. Hours: open daily from 11 AM to 11 PM. See the full menu with current prices on our menu page, and check our Google Business Profile for photos and today's specials.\n\nQuestions before you visit? Read the FAQ below or call us. We would love to cook for you."
+      },
+      "aeo_faqs": [
+        {
+          "q": "Is there a Chettinad restaurant in Richardson?",
+          "a": "Yes, Sample Chettinad Kitchen in Richardson, TX 75080."
+        },
+        {
+          "q": "What makes Chettinad food different?",
+          "a": "Freshly roasted and ground spices like black pepper, fennel and kalpasi."
+        },
+        {
+          "q": "What should I order first?",
+          "a": "Chettinad chicken with parotta, or the chicken biryani."
+        }
+      ]
+    }
+  ],
+  "gbp_description": "Sample Chettinad Kitchen is a South Indian restaurant in Richardson, TX, serving the cooking of Tamil Nadu's Chettinad region. Known for chicken biryani, Chettinad pepper chicken and crispy dosa made to order. All meat is halal. Weekday lunch buffet, and we're open daily until 11 PM, a short drive from UT Dallas. Dine in, pickup, and group orders welcome.",
+  "faqs": [
+    {
+      "q": "Is Sample Chettinad Kitchen halal?",
+      "a": "Yes. All chicken and goat served at Sample Chettinad Kitchen are halal."
+    },
+    {
+      "q": "What are the hours of Sample Chettinad Kitchen?",
+      "a": "Open daily from 11 AM to 11 PM."
+    },
+    {
+      "q": "Does Sample Chettinad Kitchen have a lunch buffet?",
+      "a": "Yes, a South Indian lunch buffet is served on weekdays."
+    },
+    {
+      "q": "Where is Sample Chettinad Kitchen located?",
+      "a": "Richardson, TX 75080, a short drive from UT Dallas."
+    },
+    {
+      "q": "What dishes is Sample Chettinad Kitchen known for?",
+      "a": "Chicken biryani, Chettinad chicken and dosa."
+    }
+  ],
+  "lint": [
+    {
+      "keyword": "chicken biryani near me",
+      "words": 319,
+      "density_pct": 0.0,
+      "flags": []
+    },
+    {
+      "keyword": "south indian restaurant near me",
+      "words": 310,
+      "density_pct": 0.0,
+      "flags": []
+    },
+    {
+      "keyword": "halal indian restaurant richardson",
+      "words": 310,
+      "density_pct": 0.0,
+      "flags": []
+    },
+    {
+      "keyword": "indian lunch buffet near me",
+      "words": 311,
+      "density_pct": 0.0,
+      "flags": []
+    },
+    {
+      "keyword": "chettinad chicken richardson",
+      "words": 313,
+      "density_pct": 0.0,
+      "flags": []
+    },
+    {
+      "keyword": "dosa near me",
+      "words": 307,
+      "density_pct": 0.0,
+      "flags": []
+    },
+    {
+      "keyword": "late night food near ut dallas",
+      "words": 307,
+      "density_pct": 0.0,
+      "flags": []
+    },
+    {
+      "keyword": "indian restaurant richardson tx",
+      "words": 310,
+      "density_pct": 0.0,
+      "flags": []
+    },
+    {
+      "keyword": "halal biryani near me",
+      "words": 314,
+      "density_pct": 0.0,
+      "flags": []
+    },
+    {
+      "keyword": "chettinad restaurant near me",
+      "words": 303,
+      "density_pct": 0.0,
+      "flags": []
+    }
+  ],
+  "schema_problems": [
+    "Restaurant: telephone is a placeholder - add the real number before publishing (warning)"
+  ]
+}

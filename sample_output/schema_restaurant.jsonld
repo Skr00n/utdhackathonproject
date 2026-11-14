@@ -1,0 +1,68 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Sample Chettinad Kitchen",
+  "servesCuisine": [
+    "South Indian",
+    "Chettinad"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "US",
+    "addressLocality": "Richardson",
+    "addressRegion": "TX",
+    "postalCode": "75080"
+  },
+  "telephone": "+1-000-000-0000 (replace with real number)",
+  "openingHours": [
+    "Mo-Su 11:00-23:00"
+  ],
+  "menu": "https://example.com/sample-chettinad-kitchen/menu",
+  "acceptsReservations": "True",
+  "url": "https://example.com/sample-chettinad-kitchen",
+  "priceRange": "$$",
+  "description": "Sample Chettinad Kitchen is a South Indian restaurant in Richardson, TX, serving the cooking of Tamil Nadu's Chettinad region. Known for chicken biryani, Chettinad pepper chicken and crispy dosa made to order. All meat is halal. Weekday lunch buffet, and we're open daily until 11 PM, a short drive from UT Dallas. Dine in, pickup, and group orders welcome.",
+  "hasMenu": {
+    "@type": "Menu",
+    "hasMenuSection": {
+      "@type": "MenuSection",
+      "name": "Signature dishes",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Chicken Biryani"
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Chettinad Chicken"
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Dosa"
+        }
+      ]
+    }
+  },
+  "amenityFeature": [
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "halal",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "lunch buffet",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "open till 11 PM",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "near UT Dallas",
+      "value": true
+    }
+  ]
+}

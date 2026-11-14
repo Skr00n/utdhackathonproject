@@ -1,0 +1,21 @@
+keyword,intent_group,est_intent,intent_score,in_top10,why
+chicken biryani near me,dish,high,10,True,Top dish search; people ready to order now
+chettinad chicken richardson,dish,high,9,True,Signature dish + city = strong local intent
+dosa near me,dish,high,9,True,High-volume South Indian dish search
+best biryani in richardson tx,dish,high,9,False,'Best' + dish + city is a classic Maps query
+masala dosa richardson,dish,medium,7,False,Specific dosa variant searchers
+spicy south indian chicken curry,dish,medium,6,False,Describes Chettinad food without knowing the name
+goat biryani dallas,dish,medium,6,False,Broader metro dish search
+south indian restaurant near me,cuisine_near_me,high,10,True,Core cuisine + near me
+chettinad restaurant near me,cuisine_near_me,high,8,True,"Exact niche match, low competition"
+indian restaurant richardson tx,cuisine_near_me,high,9,True,Broad cuisine + city
+tamil food near me,cuisine_near_me,medium,7,False,Chettinad is Tamil cuisine; diaspora search
+indian food open now,cuisine_near_me,high,8,False,Time-sensitive intent
+halal indian restaurant richardson,occasion_feature,high,9,True,Halal is a must-have filter for many diners
+indian lunch buffet near me,occasion_feature,high,9,True,Lunch buffet is a strong weekday driver
+late night food near ut dallas,occasion_feature,high,8,True,Open till 11 PM + student audience
+cheap eats near ut dallas,occasion_feature,medium,7,False,Students on a budget
+indian food open late richardson,occasion_feature,high,8,False,Late-hours feature + city
+halal biryani near me,occasion_feature,high,9,True,Combines feature + top dish
+group dinner indian restaurant richardson,occasion_feature,medium,6,False,Groups / student orgs
+vegetarian south indian food richardson,occasion_feature,medium,6,False,Dosa makes it veg-friendly
