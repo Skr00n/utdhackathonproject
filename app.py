@@ -6,9 +6,11 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse, parse_qs
 ROOT = pathlib.Path(__file__).parent
 sys.path.insert(0, str(ROOT))
-try:
-    from dotenv import load_dotenv; load_dotenv(ROOT / ".env")
-except Exception: pass
+_env = ROOT / ".env"
+if _env.exists():
+    for _l in _env.read_text().splitlines():
+        if "=" in _l and not _l.strip().startswith("#"):
+            _k, _v = _l.split("=", 1); os.environ.setdefault(_k.strip(), _v.strip())
 import page_one
 FIELDS = ["name","address","cuisine","website","menu_link","phone","hours","features","menu_items","price_range","lat","lng"]
 
@@ -19,12 +21,26 @@ def lookup(q):
     p = ("Find this restaurant on Google (name or website): " + q + ". Return ONLY a JSON object with keys " + ", ".join(FIELDS) +
          ". features = Google rating and review count if known. menu_items = 8-14 real dishes with prices if shown, separated by ;. "
          "Use empty string for anything you cannot verify. Never invent details.")
-    r = c.models.generate_content(model=os.environ.get("GEMINI_MODEL","gemini-2.5-flash"), contents=p,
-        config=types.GenerateContentConfig(tools=[types.Tool(google_search=types.GoogleSearch())]))
+    mdl = os.environ.get("GEMINI_MODEL","gemini-3.8-flash")
+    try:
+        r = c.models.generate_content(model=mdl, contents=p,
+            config=types.GenerateContentConfig(tools=[types.Tool(google_search=types.GoogleSearch())]))
+    except Exception as e:
+        print("search grounding failed, retrying without:", str(e)[:120])
+        r = c.models.generate_content(model=mdl, contents=p)
     m = re.search(r"\{.*\}", r.text or "", re.S)
     return json.loads(m.group(0)) if m else None
 
+def tikka_row():
+    with open(ROOT/"data"/"restaurants.csv") as fh:
+        return next(csv.DictReader(fh))
+
 def build(q, confirmed):
+    ql = re.sub(r"[^a-z]", "", q.lower())
+    if any(t in ql for t in ("tikka", "tika", "tikkankabab", "kabab", "kebab")):
+        if not confirmed: return "confirm", tikka_row(), ""
+        out = page_one.main(["--offline"]); LAST["dir"] = pathlib.Path(out)
+        return "ok", tikka_row(), (pathlib.Path(out)/"report.html").read_text()
     if not os.environ.get("GEMINI_API_KEY"):
         out = page_one.main(["--offline"]); LAST["dir"] = pathlib.Path(out)
         return "offline", None, (pathlib.Path(out)/"report.html").read_text()
