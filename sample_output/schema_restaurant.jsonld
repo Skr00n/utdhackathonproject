@@ -5,7 +5,9 @@
   "servesCuisine": [
     "Pakistani",
     "Indian",
-    "kabab"
+    "BBQ",
+    "kabab",
+    "biryani"
   ],
   "address": {
     "@type": "PostalAddress",
@@ -19,9 +21,9 @@
   "openingHours": [
     "Mo-Su 11:00-21:30"
   ],
-  "menu": "[website]/menu",
-  "url": "[website]",
-  "description": "Tikka N Kabab is a Pakistani and Indian restaurant in far North Dallas on McCallum Blvd, about 2 miles from UT Dallas. Known for crispy Chicken 65, chicken and veg samosas, Onion Bhaji (pakoda) and Dal Puri, all made to order at friendly prices (samosas from $2.99). Open every day 11 AM to 9:30 PM for dine-in and pickup. Call (469) 857-3000.",
+  "menu": "https://www.tikkankababtx.com/4qn8js97/restaurant/menu",
+  "url": "https://www.tikkankababtx.com",
+  "description": "Tikka N Kabab is a Pakistani and Indian restaurant in far North Dallas on McCallum Blvd, about 2 miles from UT Dallas. Known for Chicken 65, Butter Chicken, Chicken Tikka Masala, Beef Nihari, BBQ/grill and kababs, biryani and samosas, at friendly prices (samosas $3.99, curries $12.99). Open every day 11 AM to 9:30 PM. Order online at tikkankababtx.com or call (469) 857-3000.",
   "hasMenu": {
     "@type": "Menu",
     "hasMenuSection": {
@@ -30,16 +32,7 @@
       "hasMenuItem": [
         {
           "@type": "MenuItem",
-          "name": "Chicken Samosa (2pc)",
-          "offers": {
-            "@type": "Offer",
-            "price": "2.99",
-            "priceCurrency": "USD"
-          }
-        },
-        {
-          "@type": "MenuItem",
-          "name": "Veg Samosa (2pc)",
+          "name": "Chicken Samosa (2)",
           "offers": {
             "@type": "Offer",
             "price": "3.99",
@@ -48,21 +41,24 @@
         },
         {
           "@type": "MenuItem",
-          "name": "Onion Bhaji (pakoda)",
+          "name": "Beef Samosa (2)",
           "offers": {
             "@type": "Offer",
-            "price": "5.99",
+            "price": "3.99",
             "priceCurrency": "USD"
           }
         },
         {
           "@type": "MenuItem",
-          "name": "Dal Puri (4)",
-          "offers": {
-            "@type": "Offer",
-            "price": "4.99",
-            "priceCurrency": "USD"
-          }
+          "name": "Veg Samosa (2)"
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Onion Bhajji (Pakoda)"
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Dal Puri (4)"
         },
         {
           "@type": "MenuItem",
@@ -72,6 +68,63 @@
             "price": "9.99",
             "priceCurrency": "USD"
           }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Gobhi Manchurian"
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Butter Chicken",
+          "offers": {
+            "@type": "Offer",
+            "price": "12.99",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Chicken Tikka Masala",
+          "offers": {
+            "@type": "Offer",
+            "price": "12.99",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Chicken Kadahi",
+          "offers": {
+            "@type": "Offer",
+            "price": "12.99",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Chicken Keema",
+          "offers": {
+            "@type": "Offer",
+            "price": "12.99",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Beef Nihari"
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Shrimp Masala",
+          "offers": {
+            "@type": "Offer",
+            "price": "14.99",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Lahori Fish"
         }
       ]
     }

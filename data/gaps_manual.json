@@ -6,7 +6,12 @@
   "reviews (count/rating)": "Our 4.2 (407 reviews) beats Bawarchi 3.6 (2,650) and Yummy Spice & Rice 3.9 (1,003), ties Malabar 4.2. Gap is review COUNT, not rating. Fix: honest review ask to every real customer (text below), no incentives.",
   "review words": "Not checked yet. Fix: ask customers to mention what they ordered (never script wording).",
   "hours": "Ours: daily 11 AM-9:30 PM. Fix: confirm on GBP + add holiday hours.",
-  "website": "Competitors have menus online AI can quote; Yummy Spice shows a description line ('Classic Indian food in casual quarters'), ours shows none. We have Order online, but no website listed ([website]). Fix: add the GBP description + publish the Chicken 65 page below.",
+  "website": "Site title tag says 'Best Hamburgers in Dallas' (wrong cuisine), and Chicken 65 isn't on any page AI cites; competitors' menus are. Yummy Spice shows a GBP description line, ours shows none. Fix: new title tag + GBP description + Chicken 65 page with Menu schema.",
   "posts": "Not checked yet. Fix: Week 1 Google post features Chicken 65 at $9.99."
+ },
+ "_featured": "BIGGEST REAL GAP (found on the live site): the website's title tag reads \"Best Hamburgers in Dallas, TX | New Tikka N Kabab | Menu\". It tells Google and AI assistants this is a hamburger place, so it can't match searches for Pakistani/Indian food, biryani or kabab. Fix today (5 minutes in the site builder): change the title to \"Tikka N Kabab | Pakistani & Indian Food, Biryani & Kabab | North Dallas near UTD\".",
+ "_title_fix": "Tikka N Kabab | Pakistani & Indian Food, Biryani & Kabab | North Dallas near UTD",
+ "*": {
+  "website": "Site title tag says 'Best Hamburgers in Dallas, TX | New Tikka N Kabab | Menu' (wrong cuisine). Fix: title 'Tikka N Kabab | Pakistani & Indian Food, Biryani & Kabab | North Dallas near UTD' + publish the keyword page below with Menu/FAQ schema."
  }
 }

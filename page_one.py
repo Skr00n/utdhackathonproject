@@ -32,13 +32,13 @@ SAMPLE_JSON = ROOT / "sample_output" / "tikka_n_kabab.plan.json"   # offline fal
 SAMPLE_RESTAURANT = {
     "name": "Tikka N Kabab",
     "address": "7859 McCallum Blvd Ste 106, Dallas, TX 75252",
-    "cuisine": "Pakistani, Indian (kabab)",
-    "website": "[website]",
-    "menu_link": "[website]/menu",
+    "cuisine": "Pakistani, Indian (BBQ, kabab, biryani)",
+    "website": "https://www.tikkankababtx.com",
+    "menu_link": "https://www.tikkankababtx.com/4qn8js97/restaurant/menu",
     "phone": "(469) 857-3000",
     "hours": "Mo-Su 11:00-21:30",
     "features": "Google rating 4.2 (407 reviews); near UT Dallas; order online on Google; dine-in and pickup",
-    "menu_items": "Chicken Samosa (2pc) $2.99; Veg Samosa (2pc) $3.99; Onion Bhaji (pakoda) $5.99; Dal Puri (4) $4.99; Chicken 65 $9.99",
+    "menu_items": "Chicken Samosa (2) $3.99; Beef Samosa (2) $3.99; Veg Samosa (2); Onion Bhajji (Pakoda); Dal Puri (4); Chicken 65 $9.99; Gobhi Manchurian; Butter Chicken $12.99; Chicken Tikka Masala $12.99; Chicken Kadahi $12.99; Chicken Keema $12.99; Beef Nihari; Shrimp Masala $14.99; Lahori Fish",
     "price_range": "$",   # from real menu prices ($2.99-$9.99)
     "lat": "32.9895",     # approx. Maps pin (Coit Rd/Waterview, just west of UTD); verify
     "lng": "-96.7735",

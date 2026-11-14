@@ -200,8 +200,10 @@ def apply_manual(stands: list[dict], manual: dict, gaps_path=None) -> int:
     n = 0
     gm = {}
     if gaps_path and Path(gaps_path).exists():  # optional by-hand gap notes: {keyword: {area: text}}
-        gm = {k.lower(): v for k, v in json.loads(Path(gaps_path).read_text()).items()}
+        gm = {k.lower(): v for k, v in json.loads(Path(gaps_path).read_text()).items() if not k.startswith("_")}
     for s in stands:
+        if "*" in gm:  # applies to every keyword
+            s["gaps"] = {**s["gaps"], **gm["*"]}
         if s["keyword"].lower() in gm:
             s["gaps"] = {**s["gaps"], **gm[s["keyword"].lower()]}
         m = manual.get(s["keyword"].lower())
@@ -360,6 +362,7 @@ def write_grid(outdir: Path, r: dict, rows: list[dict]):
 def thirty_day_plan(fixes: dict) -> list[tuple[str, str]]:
     return [
         ("Day 1", "Record 'where it stands' baseline (Maps, page 1, AI) for all 10 keywords; save rank_grid.csv."),
+        ("Day 1", "Fix the website title tag (currently 'Best Hamburgers in Dallas') to the new title in section 4."),
         ("Day 1-2", "Update Google Business Profile: primary/secondary categories, new description, hours incl. holidays."),
         ("Day 2-3", "Add keyword-rich menu descriptions to the GBP menu and website; upload 10 real photos."),
         ("Day 3", "Start review asks: send the review text to real customers after each visit (no incentives)."),
@@ -414,10 +417,15 @@ def write_pdf(outdir: Path, r: dict, plan: dict, stands: list[dict], fixes: dict
              "search google.com (is the site on page 1?), ask Gemini/ChatGPT the keyword as a question (is the restaurant named?). No paid SEO tools. "
              "Values marked (est.) are SAMPLE estimates until data/rankings_manual.csv is filled in.", small),
            Paragraph("3. Gap analysis vs the #1 result", ss["Heading2"])]
+    if fixes.get("featured_gap"):
+        ft = Table([[Paragraph("<b>" + esc(fixes["featured_gap"]) + "</b>", body)]], colWidths=[7.2*inch])
+        ft.setStyle(TableStyle([("BACKGROUND", (0, 0), (-1, -1), colors.HexColor("#fee2e2")), ("BOX", (0, 0), (-1, -1), 1, colors.HexColor("#dc2626"))]))
+        st += [ft, Spacer(1, 6)]
     for s in stands[:10]:
         st += [Paragraph(f"<b>{esc(s['keyword'])}</b> (winner: {esc(s['top3'][0])})", body),
                table([["Area", "Gap and fix"]] + [[a, s["gaps"].get(a, "")] for a in GAP_AREAS], [1.4*inch, 5.8*inch]), Spacer(1, 4)]
     st += [PageBreak(), Paragraph("4. Fixes ready to paste", ss["Heading2"]),
+           *([Paragraph("Website title tag (fix first)", ss["Heading3"]), P(fixes["website_title_tag"])] if fixes.get("website_title_tag") else []),
            Paragraph("Google Business Profile description", ss["Heading3"]), P(fixes["description"]),
            Paragraph("4 weekly Google posts", ss["Heading3"])] + [P(f"• {x}") for x in fixes["weekly_posts"]]
     st += [Paragraph("Keyword-rich menu descriptions", ss["Heading3"])] + [P(f"• {m['item']}: {m['description']}") for m in fixes["menu_descriptions"]]
@@ -472,6 +480,12 @@ def run_handout(outdir: Path, r: dict, plan: dict, meta: dict, model: str, live:
     n_manual = apply_manual(stands, manual, Path(manual_path).with_name("gaps_manual.json") if manual_path else None)
     print(f"✓ Manual rankings applied for {n_manual}/{len(stands)} keywords" if n_manual else "! No manual rankings filled in yet; where-it-stands shows " + ("Gemini estimates" if live else "'to be checked by hand'"))
     fixes = build_fixes(r, plan)
+    gp = Path(manual_path).with_name("gaps_manual.json") if manual_path else None
+    feat = json.loads(gp.read_text()) if gp and gp.exists() else {}
+    if feat.get("_featured"):
+        fixes["featured_gap"] = feat["_featured"]
+    if feat.get("_title_fix"):
+        fixes["website_title_tag"] = feat["_title_fix"]
     try:
         lat, lng = float(r.get("lat") or 0), float(r.get("lng") or 0)
     except ValueError:

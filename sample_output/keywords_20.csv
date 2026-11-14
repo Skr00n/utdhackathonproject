@@ -1,21 +1,21 @@
 keyword,intent_group,est_intent,intent_score,in_top10,why
-chicken 65 near me,dish,high,9,True,Specific dish search from someone ready to order; Chicken 65 is on the menu at $9.99
-samosa near UTD,dish,high,9,True,Cheap snack search from students; samosas from $2.99
-chicken tikka Dallas,dish,high,8,True,Signature dish in the restaurant's name; big Dallas search
-seekh kabab North Dallas,dish,medium,7,True,Kabab dish + neighborhood; matches the name
-Indian restaurant near UT Dallas,cuisine_near_me,high,9,True,Cuisine + campus landmark; Maps-pack search
-Pakistani food Richardson,cuisine_near_me,high,8,True,Cuisine + neighbor city; few Pakistani competitors
-Indian food 75252,cuisine_near_me,medium,7,True,Zip-code search people type in Maps
-cheap Indian food near UTD,occasion_feature,high,9,True,Budget need; samosas $2.99-$3.99 and Chicken 65 $9.99 fit honestly
-Indian takeout near me,occasion_feature,high,8,True,Takeout need; Order online is on the Google profile
-best kabab near Richardson,occasion_feature,medium,7,True,Comparison search AI assistants answer; 4.2 rating helps
-onion bhaji near me,dish,medium,6,False,Named dish with low competition ($5.99)
-dal puri dallas,dish,medium,6,False,Niche dish many places don't list ($4.99)
-pakistani restaurant near me,cuisine_near_me,high,8,False,Core cuisine + near me
-indian restaurant north dallas,cuisine_near_me,medium,7,False,Cuisine + neighborhood
-veg samosa near me,dish,medium,6,False,Vegetarian variant of the samosa search
-pakoda near me,dish,medium,5,False,Alternate name for onion bhaji
-indian food open now dallas,occasion_feature,medium,6,False,Open-now need; hours 11 AM-9:30 PM daily
-indian appetizers near me,dish,medium,5,False,Matches the snack-heavy menu
+chicken 65 near me,dish,high,9,True,Dish search from someone ready to order; Chicken 65 is $9.99
+butter chicken near UTD,dish,high,9,True,Most-searched curry + campus; Butter Chicken $12.99
+beef nihari Dallas,dish,high,8,True,Pakistani signature dish few places serve; on the menu
+chicken tikka masala Richardson,dish,high,8,True,Classic curry + neighbor city; $12.99
+Pakistani restaurant North Dallas,cuisine_near_me,high,9,True,Core cuisine + neighborhood; Maps-pack search
+Indian restaurant near UT Dallas,cuisine_near_me,high,9,True,Cuisine + campus landmark
+Indian BBQ kabab 75252,cuisine_near_me,medium,7,True,BBQ/grill menu + zip code; matches the name
+cheap Indian food near UTD,occasion_feature,high,9,True,"Budget need; samosas $3.99, Chicken 65 $9.99"
+Indian takeout near me,occasion_feature,high,8,True,Takeout need; Order online on Google + website
+samosa near me,occasion_feature,high,8,True,"Snack need; chicken, beef and veg samosas"
+chicken kadahi near me,dish,medium,7,False,Pakistani curry search; $12.99
+shrimp masala dallas,dish,medium,6,False,Seafood curry; $14.99
+lahori fish near me,dish,medium,6,False,"Lahore-style fried fish; niche, easy to win"
+chicken biryani north dallas,dish,high,8,False,Biryani is a top Indian/Pakistani search; Biryani/Rice on menu
 halal restaurant near utd,occasion_feature,medium,5,False,Popular need - ONLY target if halal is confirmed (unknown today)
+gobhi manchurian near me,dish,medium,5,False,Indo-Chinese veg favorite
+chicken keema dallas,dish,medium,5,False,Minced chicken curry; $12.99
+indian food open now dallas,occasion_feature,medium,6,False,Open-now need; 11 AM-9:30 PM daily
+chaat near me,dish,medium,5,False,Chaat category on the menu
 indian dinner richardson,cuisine_near_me,low,4,False,Neighbor city search

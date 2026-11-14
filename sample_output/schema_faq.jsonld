@@ -23,7 +23,7 @@
       "name": "What is Tikka N Kabab known for?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Chicken 65 ($9.99), Chicken Samosa ($2.99 for 2), Veg Samosa ($3.99 for 2), Onion Bhaji ($5.99) and Dal Puri ($4.99 for 4)."
+        "text": "Pakistani and Indian food: Chicken 65 ($9.99), Butter Chicken and Chicken Tikka Masala ($12.99), Beef Nihari, BBQ/grill kababs, biryani and samosas ($3.99 for 2)."
       }
     },
     {
@@ -31,15 +31,15 @@
       "name": "Is Tikka N Kabab affordable?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Samosas start at $2.99 and most snacks are under $6; Chicken 65 is $9.99."
+        "text": "Yes. Samosas are $3.99 for two, Chicken 65 is $9.99 and most curries are $12.99."
       }
     },
     {
       "@type": "Question",
-      "name": "What is Tikka N Kabab's phone number?",
+      "name": "Can I order Tikka N Kabab online?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "(469) 857-3000."
+        "text": "Yes, at https://www.tikkankababtx.com or with Order online on Google. Phone: (469) 857-3000."
       }
     }
   ]

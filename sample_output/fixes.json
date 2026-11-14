@@ -1,62 +1,107 @@
 {
-  "description": "Tikka N Kabab is a Pakistani and Indian restaurant in far North Dallas on McCallum Blvd, about 2 miles from UT Dallas. Known for crispy Chicken 65, chicken and veg samosas, Onion Bhaji (pakoda) and Dal Puri, all made to order at friendly prices (samosas from $2.99). Open every day 11 AM to 9:30 PM for dine-in and pickup. Call (469) 857-3000.",
+  "description": "Tikka N Kabab is a Pakistani and Indian restaurant in far North Dallas on McCallum Blvd, about 2 miles from UT Dallas. Known for Chicken 65, Butter Chicken, Chicken Tikka Masala, Beef Nihari, BBQ/grill and kababs, biryani and samosas, at friendly prices (samosas $3.99, curries $12.99). Open every day 11 AM to 9:30 PM. Order online at tikkankababtx.com or call (469) 857-3000.",
   "weekly_posts": [
-    "Week 1 - Chicken 65: Crispy, made to order, $9.99. Open daily Mo-Su 11:00-21:30. Tap Call to order: (469) 857-3000. [photo of the dish]",
-    "Week 2 - Snack time: Chicken Samosa (2pc) $2.99, Veg Samosa (2pc) $3.99. Perfect for a quick bite near UT Dallas. [photo of samosas]",
-    "Week 3 - Try something new: Dal Puri (4) $4.99 and Onion Bhaji (pakoda) $5.99. Visit us at 7859 McCallum Blvd Ste 106, Dallas, TX 75252. [photo]",
+    "Week 1 - Lahori Fish: Crispy, made to order, [price]. Open daily Mo-Su 11:00-21:30. Tap Call to order: (469) 857-3000. [photo of the dish]",
+    "Week 2 - Snack time: Chicken Samosa (2) $3.99, Beef Samosa (2) $3.99. Perfect for a quick bite near UT Dallas. [photo of samosas]",
+    "Week 3 - Try something new: Onion Bhajji (Pakoda) [price] and Veg Samosa (2) [price]. Visit us at 7859 McCallum Blvd Ste 106, Dallas, TX 75252. [photo]",
     "Week 4 - Thank you, neighbors: we read every review. If you visited, an honest review helps others find us. Open daily Mo-Su 11:00-21:30. [storefront photo]"
   ],
   "menu_descriptions": [
     {
-      "item": "Chicken Samosa (2pc)",
-      "price": "$2.99",
-      "description": "Chicken Samosa (2pc) - made to order at Tikka N Kabab in North Dallas. $2.99. (Targets: 'chicken 65 near me')"
-    },
-    {
-      "item": "Veg Samosa (2pc)",
+      "item": "Chicken Samosa (2)",
       "price": "$3.99",
-      "description": "Veg Samosa (2pc) - made to order at Tikka N Kabab in North Dallas. $3.99."
+      "description": "Chicken Samosa (2) - made to order at Tikka N Kabab in North Dallas. $3.99. (Targets: 'chicken 65 near me')"
     },
     {
-      "item": "Onion Bhaji (pakoda)",
-      "price": "$5.99",
-      "description": "Onion Bhaji (pakoda) - made to order at Tikka N Kabab in North Dallas. $5.99."
+      "item": "Beef Samosa (2)",
+      "price": "$3.99",
+      "description": "Beef Samosa (2) - made to order at Tikka N Kabab in North Dallas. $3.99. (Targets: 'beef nihari Dallas')"
+    },
+    {
+      "item": "Veg Samosa (2)",
+      "price": "[price]",
+      "description": "Veg Samosa (2) - made to order at Tikka N Kabab in North Dallas. [price]."
+    },
+    {
+      "item": "Onion Bhajji (Pakoda)",
+      "price": "[price]",
+      "description": "Onion Bhajji (Pakoda) - made to order at Tikka N Kabab in North Dallas. [price]."
     },
     {
       "item": "Dal Puri (4)",
-      "price": "$4.99",
-      "description": "Dal Puri (4) - made to order at Tikka N Kabab in North Dallas. $4.99. (Targets: 'chicken tikka Dallas')"
+      "price": "[price]",
+      "description": "Dal Puri (4) - made to order at Tikka N Kabab in North Dallas. [price]. (Targets: 'beef nihari Dallas')"
     },
     {
       "item": "Chicken 65",
       "price": "$9.99",
       "description": "Chicken 65 - made to order at Tikka N Kabab in North Dallas. $9.99. (Targets: 'chicken 65 near me')"
+    },
+    {
+      "item": "Gobhi Manchurian",
+      "price": "[price]",
+      "description": "Gobhi Manchurian - made to order at Tikka N Kabab in North Dallas. [price]."
+    },
+    {
+      "item": "Butter Chicken",
+      "price": "$12.99",
+      "description": "Butter Chicken - made to order at Tikka N Kabab in North Dallas. $12.99. (Targets: 'butter chicken near UTD')"
+    },
+    {
+      "item": "Chicken Tikka Masala",
+      "price": "$12.99",
+      "description": "Chicken Tikka Masala - made to order at Tikka N Kabab in North Dallas. $12.99. (Targets: 'chicken 65 near me')"
+    },
+    {
+      "item": "Chicken Kadahi",
+      "price": "$12.99",
+      "description": "Chicken Kadahi - made to order at Tikka N Kabab in North Dallas. $12.99. (Targets: 'chicken 65 near me')"
+    },
+    {
+      "item": "Chicken Keema",
+      "price": "$12.99",
+      "description": "Chicken Keema - made to order at Tikka N Kabab in North Dallas. $12.99. (Targets: 'chicken 65 near me')"
+    },
+    {
+      "item": "Beef Nihari",
+      "price": "[price]",
+      "description": "Beef Nihari - made to order at Tikka N Kabab in North Dallas. [price]. (Targets: 'beef nihari Dallas')"
+    },
+    {
+      "item": "Shrimp Masala",
+      "price": "$14.99",
+      "description": "Shrimp Masala - made to order at Tikka N Kabab in North Dallas. $14.99."
+    },
+    {
+      "item": "Lahori Fish",
+      "price": "[price]",
+      "description": "Lahori Fish - made to order at Tikka N Kabab in North Dallas. [price]."
     }
   ],
   "pages": {
     "Dish": {
       "keyword": "chicken 65 near me",
       "title_tag": "Chicken 65 | Tikka N Kabab, North Dallas",
-      "meta_description": "Chicken 65 at Tikka N Kabab, 7859 McCallum Blvd, Dallas TX 75252. Open daily 11 AM-9:30 PM. Call (469) 857-3000.",
+      "meta_description": "Chicken 65 at Tikka N Kabab, 7859 McCallum Blvd, Dallas TX 75252 near UTD. Open daily 11 AM-9:30 PM. Order online or call (469) 857-3000.",
       "h1": "Chicken 65 at Tikka N Kabab",
-      "page_copy": "Looking for chicken 65 near me? Chicken 65 is a spicy, crispy fried chicken dish from South India, and it is one of the best-value plates on our menu at $9.99.\n\nTikka N Kabab is at 7859 McCallum Blvd Ste 106, Dallas, TX 75252. We are open every day from 11 AM to 9:30 PM, and you can call us at (469) 857-3000 to place an order or ask a question before you come in.\n\nOur menu includes Chicken Samosa (2 pc) $2.99, Veg Samosa (2 pc) $3.99, Onion Bhaji (pakoda) $5.99, Dal Puri (4) $4.99 and Chicken 65 $9.99. Every item is cooked to order in our kitchen, so it reaches you hot and crisp. If you are new to this food, start with a plate of samosas and add Chicken 65 if you like heat; if you prefer something milder, Dal Puri and Veg Samosa are good choices.\n\nMany of our guests come from the neighborhoods around McCallum Blvd, Campbell Rd and Coit Rd, from Richardson, and from the UT Dallas campus about two miles away. It is easy to stop by for a snack, pick up food for a group, or sit down for a simple meal with friends or family.\n\nGoogle reviewers currently rate Tikka N Kabab 4.2 stars across more than 400 reviews. We read every review and use the feedback to keep improving our food and service. If you visit, we would be grateful for an honest review that mentions what you ordered, because it helps other people nearby find dishes they will enjoy.\n\nBefore you visit, check our Google Business Profile for photos of the food and the latest posts. Menu prices shown here can change; please call to confirm. Website: [website]. [Owner: add halal status, catering and delivery details here only once confirmed.]\n\nCome by Tikka N Kabab today for chicken 65 and the rest of our menu. We look forward to cooking for you.",
-      "url": "[website]/chicken-65-near-me"
+      "page_copy": "Looking for chicken 65 near me? Chicken 65 is a spicy, crispy fried chicken appetizer, and one of the best-value plates on our menu at $9.99.\n\nTikka N Kabab is at 7859 McCallum Blvd Ste 106, Dallas, TX 75252. We are open every day from 11 AM to 9:30 PM, and you can call us at (469) 857-3000 to place an order or ask a question before you come in.\n\nOur menu includes appetizers like Chicken Samosa and Beef Samosa ($3.99 for 2), Veg Samosa, Onion Bhajji (Pakoda), Dal Puri and Chicken 65 ($9.99); curries like Butter Chicken, Chicken Tikka Masala, Chicken Kadahi and Chicken Keema ($12.99 each), Beef Nihari and Shrimp Masala ($14.99); plus Lahori Fish, Gobhi Manchurian, biryani, BBQ/grill, wraps, chaat, naan and paratha, dessert and drinks. Every item is cooked to order in our kitchen, so it reaches you hot and crisp. If you are new to this food, start with a plate of samosas and add Chicken 65 if you like heat; if you prefer something milder, Dal Puri and Veg Samosa are good choices.\n\nMany of our guests come from the neighborhoods around McCallum Blvd, Campbell Rd and Coit Rd, from Richardson, and from the UT Dallas campus about two miles away. It is easy to stop by for a snack, pick up food for a group, or sit down for a simple meal with friends or family.\n\nGoogle reviewers currently rate Tikka N Kabab 4.2 stars across more than 400 reviews. We read every review and use the feedback to keep improving our food and service. If you visit, we would be grateful for an honest review that mentions what you ordered, because it helps other people nearby find dishes they will enjoy.\n\nBefore you visit, check our Google Business Profile for photos of the food and the latest posts. Menu prices shown here can change; please call to confirm. Full menu and online ordering: https://www.tikkankababtx.com. [Owner: add halal status and catering details here only once confirmed.]\n\nCome by Tikka N Kabab today for chicken 65 and the rest of our menu. We look forward to cooking for you.",
+      "url": "https://www.tikkankababtx.com/chicken-65-near-me"
     },
     "Cuisine + area": {
-      "keyword": "Indian restaurant near UT Dallas",
-      "title_tag": "Indian food near UT Dallas | Tikka N Kabab, North Dallas",
-      "meta_description": "Indian food near UT Dallas at Tikka N Kabab, 7859 McCallum Blvd, Dallas TX 75252. Open daily 11 AM-9:30 PM. Call (469) 857-3000.",
-      "h1": "Indian food near UT Dallas at Tikka N Kabab",
-      "page_copy": "Looking for Indian restaurant near UT Dallas? We are a short drive from the UT Dallas campus, so it is an easy trip for students, staff and visitors.\n\nTikka N Kabab is at 7859 McCallum Blvd Ste 106, Dallas, TX 75252. We are open every day from 11 AM to 9:30 PM, and you can call us at (469) 857-3000 to place an order or ask a question before you come in.\n\nOur menu includes Chicken Samosa (2 pc) $2.99, Veg Samosa (2 pc) $3.99, Onion Bhaji (pakoda) $5.99, Dal Puri (4) $4.99 and Chicken 65 $9.99. Every item is cooked to order in our kitchen, so it reaches you hot and crisp. If you are new to this food, start with a plate of samosas and add Chicken 65 if you like heat; if you prefer something milder, Dal Puri and Veg Samosa are good choices.\n\nMany of our guests come from the neighborhoods around McCallum Blvd, Campbell Rd and Coit Rd, from Richardson, and from the UT Dallas campus about two miles away. It is easy to stop by for a snack, pick up food for a group, or sit down for a simple meal with friends or family.\n\nGoogle reviewers currently rate Tikka N Kabab 4.2 stars across more than 400 reviews. We read every review and use the feedback to keep improving our food and service. If you visit, we would be grateful for an honest review that mentions what you ordered, because it helps other people nearby find dishes they will enjoy.\n\nBefore you visit, check our Google Business Profile for photos of the food and the latest posts. Menu prices shown here can change; please call to confirm. Website: [website]. [Owner: add halal status, catering and delivery details here only once confirmed.]\n\nCome by Tikka N Kabab today for indian food near ut dallas and the rest of our menu. We look forward to cooking for you.",
-      "url": "[website]/indian-restaurant-near-ut-dallas"
+      "keyword": "Pakistani restaurant North Dallas",
+      "title_tag": "Pakistani food in North Dallas | Tikka N Kabab, North Dallas",
+      "meta_description": "Pakistani food in North Dallas at Tikka N Kabab, 7859 McCallum Blvd, Dallas TX 75252 near UTD. Open daily 11 AM-9:30 PM. Order online or call (469) 857-300",
+      "h1": "Pakistani food in North Dallas at Tikka N Kabab",
+      "page_copy": "Looking for Pakistani restaurant North Dallas? Tikka N Kabab serves Pakistani and Indian food in far North Dallas: curries, biryani, BBQ/grill, wraps and chaat.\n\nTikka N Kabab is at 7859 McCallum Blvd Ste 106, Dallas, TX 75252. We are open every day from 11 AM to 9:30 PM, and you can call us at (469) 857-3000 to place an order or ask a question before you come in.\n\nOur menu includes appetizers like Chicken Samosa and Beef Samosa ($3.99 for 2), Veg Samosa, Onion Bhajji (Pakoda), Dal Puri and Chicken 65 ($9.99); curries like Butter Chicken, Chicken Tikka Masala, Chicken Kadahi and Chicken Keema ($12.99 each), Beef Nihari and Shrimp Masala ($14.99); plus Lahori Fish, Gobhi Manchurian, biryani, BBQ/grill, wraps, chaat, naan and paratha, dessert and drinks. Every item is cooked to order in our kitchen, so it reaches you hot and crisp. If you are new to this food, start with a plate of samosas and add Chicken 65 if you like heat; if you prefer something milder, Dal Puri and Veg Samosa are good choices.\n\nMany of our guests come from the neighborhoods around McCallum Blvd, Campbell Rd and Coit Rd, from Richardson, and from the UT Dallas campus about two miles away. It is easy to stop by for a snack, pick up food for a group, or sit down for a simple meal with friends or family.\n\nGoogle reviewers currently rate Tikka N Kabab 4.2 stars across more than 400 reviews. We read every review and use the feedback to keep improving our food and service. If you visit, we would be grateful for an honest review that mentions what you ordered, because it helps other people nearby find dishes they will enjoy.\n\nBefore you visit, check our Google Business Profile for photos of the food and the latest posts. Menu prices shown here can change; please call to confirm. Full menu and online ordering: https://www.tikkankababtx.com. [Owner: add halal status and catering details here only once confirmed.]\n\nCome by Tikka N Kabab today for pakistani food in north dallas and the rest of our menu. We look forward to cooking for you.",
+      "url": "https://www.tikkankababtx.com/pakistani-restaurant-north-dallas"
     },
     "Need / occasion": {
       "keyword": "cheap Indian food near UTD",
       "title_tag": "Affordable Indian food | Tikka N Kabab, North Dallas",
-      "meta_description": "Affordable Indian food at Tikka N Kabab, 7859 McCallum Blvd, Dallas TX 75252. Open daily 11 AM-9:30 PM. Call (469) 857-3000.",
+      "meta_description": "Affordable Indian food at Tikka N Kabab, 7859 McCallum Blvd, Dallas TX 75252 near UTD. Open daily 11 AM-9:30 PM. Order online or call (469) 857-3000.",
       "h1": "Affordable Indian food at Tikka N Kabab",
-      "page_copy": "Looking for cheap Indian food near UTD? You can eat well here without spending much: samosas start at $2.99, Dal Puri is $4.99, Onion Bhaji is $5.99 and Chicken 65 is $9.99.\n\nTikka N Kabab is at 7859 McCallum Blvd Ste 106, Dallas, TX 75252. We are open every day from 11 AM to 9:30 PM, and you can call us at (469) 857-3000 to place an order or ask a question before you come in.\n\nOur menu includes Chicken Samosa (2 pc) $2.99, Veg Samosa (2 pc) $3.99, Onion Bhaji (pakoda) $5.99, Dal Puri (4) $4.99 and Chicken 65 $9.99. Every item is cooked to order in our kitchen, so it reaches you hot and crisp. If you are new to this food, start with a plate of samosas and add Chicken 65 if you like heat; if you prefer something milder, Dal Puri and Veg Samosa are good choices.\n\nMany of our guests come from the neighborhoods around McCallum Blvd, Campbell Rd and Coit Rd, from Richardson, and from the UT Dallas campus about two miles away. It is easy to stop by for a snack, pick up food for a group, or sit down for a simple meal with friends or family.\n\nGoogle reviewers currently rate Tikka N Kabab 4.2 stars across more than 400 reviews. We read every review and use the feedback to keep improving our food and service. If you visit, we would be grateful for an honest review that mentions what you ordered, because it helps other people nearby find dishes they will enjoy.\n\nBefore you visit, check our Google Business Profile for photos of the food and the latest posts. Menu prices shown here can change; please call to confirm. Website: [website]. [Owner: add halal status, catering and delivery details here only once confirmed.]\n\nCome by Tikka N Kabab today for affordable indian food and the rest of our menu. We look forward to cooking for you.",
-      "url": "[website]/cheap-indian-food-near-utd"
+      "page_copy": "Looking for cheap Indian food near UTD? You can eat well here without spending much: samosas are $3.99 for two and Chicken 65 is $9.99.\n\nTikka N Kabab is at 7859 McCallum Blvd Ste 106, Dallas, TX 75252. We are open every day from 11 AM to 9:30 PM, and you can call us at (469) 857-3000 to place an order or ask a question before you come in.\n\nOur menu includes appetizers like Chicken Samosa and Beef Samosa ($3.99 for 2), Veg Samosa, Onion Bhajji (Pakoda), Dal Puri and Chicken 65 ($9.99); curries like Butter Chicken, Chicken Tikka Masala, Chicken Kadahi and Chicken Keema ($12.99 each), Beef Nihari and Shrimp Masala ($14.99); plus Lahori Fish, Gobhi Manchurian, biryani, BBQ/grill, wraps, chaat, naan and paratha, dessert and drinks. Every item is cooked to order in our kitchen, so it reaches you hot and crisp. If you are new to this food, start with a plate of samosas and add Chicken 65 if you like heat; if you prefer something milder, Dal Puri and Veg Samosa are good choices.\n\nMany of our guests come from the neighborhoods around McCallum Blvd, Campbell Rd and Coit Rd, from Richardson, and from the UT Dallas campus about two miles away. It is easy to stop by for a snack, pick up food for a group, or sit down for a simple meal with friends or family.\n\nGoogle reviewers currently rate Tikka N Kabab 4.2 stars across more than 400 reviews. We read every review and use the feedback to keep improving our food and service. If you visit, we would be grateful for an honest review that mentions what you ordered, because it helps other people nearby find dishes they will enjoy.\n\nBefore you visit, check our Google Business Profile for photos of the food and the latest posts. Menu prices shown here can change; please call to confirm. Full menu and online ordering: https://www.tikkankababtx.com. [Owner: add halal status and catering details here only once confirmed.]\n\nCome by Tikka N Kabab today for affordable indian food and the rest of our menu. We look forward to cooking for you.",
+      "url": "https://www.tikkankababtx.com/cheap-indian-food-near-utd"
     }
   },
   "faqs": [
@@ -70,17 +115,19 @@
     },
     {
       "q": "What is Tikka N Kabab known for?",
-      "a": "Chicken 65 ($9.99), Chicken Samosa ($2.99 for 2), Veg Samosa ($3.99 for 2), Onion Bhaji ($5.99) and Dal Puri ($4.99 for 4)."
+      "a": "Pakistani and Indian food: Chicken 65 ($9.99), Butter Chicken and Chicken Tikka Masala ($12.99), Beef Nihari, BBQ/grill kababs, biryani and samosas ($3.99 for 2)."
     },
     {
       "q": "Is Tikka N Kabab affordable?",
-      "a": "Yes. Samosas start at $2.99 and most snacks are under $6; Chicken 65 is $9.99."
+      "a": "Yes. Samosas are $3.99 for two, Chicken 65 is $9.99 and most curries are $12.99."
     },
     {
-      "q": "What is Tikka N Kabab's phone number?",
-      "a": "(469) 857-3000."
+      "q": "Can I order Tikka N Kabab online?",
+      "a": "Yes, at https://www.tikkankababtx.com or with Order online on Google. Phone: (469) 857-3000."
     }
   ],
   "review_sms": "Hi! Thanks for eating at Tikka N Kabab. If you have a minute, an honest Google review really helps a small local restaurant like ours: [review link]. Mentioning what you ordered helps others find it. Thank you! - the Tikka N Kabab team",
-  "review_rules": "Send only to real customers. No discounts, gifts or contests for reviews, never ask for 5 stars or specific wording, never review-gate."
+  "review_rules": "Send only to real customers. No discounts, gifts or contests for reviews, never ask for 5 stars or specific wording, never review-gate.",
+  "featured_gap": "BIGGEST REAL GAP (found on the live site): the website's title tag reads \"Best Hamburgers in Dallas, TX | New Tikka N Kabab | Menu\". It tells Google and AI assistants this is a hamburger place, so it can't match searches for Pakistani/Indian food, biryani or kabab. Fix today (5 minutes in the site builder): change the title to \"Tikka N Kabab | Pakistani & Indian Food, Biryani & Kabab | North Dallas near UTD\".",
+  "website_title_tag": "Tikka N Kabab | Pakistani & Indian Food, Biryani & Kabab | North Dallas near UTD"
 }

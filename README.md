@@ -69,7 +69,7 @@ Incognito window → search each keyword on google.com/maps (our position or "no
 
 ### Live vs simulated (honesty)
 - Live (key set): keyword plan + content from Gemini; optional AI check + grid estimates from Gemini (labeled "estimate").
-- Offline: cached Tikka N Kabab plan written only from real facts collected by the team (address, phone, hours, 4.2 rating, 5 menu items + prices). Unknowns stay `[website]` etc. Rank-grid rings are SIMULATED. Nothing offline is presented as a live lookup.
+- Offline: cached Tikka N Kabab plan written only from real facts collected by the team (address, phone, hours, 4.2 rating / 407 reviews, menu + prices from tikkankababtx.com). Prices not shown online stay `[price]`. Rank-grid rings are SIMULATED. Nothing offline is presented as a live lookup.
 
 ## Judging rubric (real scoring) → where it's covered
 

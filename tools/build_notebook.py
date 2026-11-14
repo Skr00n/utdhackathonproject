@@ -45,10 +45,10 @@ code("""
 RESTAURANT = {
     'name': 'Tikka N Kabab',
     'address': '7859 McCallum Blvd Ste 106, Dallas, TX 75252',
-    'cuisine': 'Pakistani, Indian (kabab)',
-    'menu_items': 'Chicken Samosa (2pc) $2.99; Veg Samosa (2pc) $3.99; Onion Bhaji (pakoda) $5.99; Dal Puri (4) $4.99; Chicken 65 $9.99',  # separate with ;
-    'website': '[website]',          # unknown: leave placeholder until confirmed
-    'menu_link': '[website]/menu',
+    'cuisine': 'Pakistani, Indian (BBQ, kabab, biryani)',
+    'menu_items': 'Chicken Samosa (2) $3.99; Beef Samosa (2) $3.99; Veg Samosa (2); Onion Bhajji (Pakoda); Dal Puri (4); Chicken 65 $9.99; Gobhi Manchurian; Butter Chicken $12.99; Chicken Tikka Masala $12.99; Chicken Kadahi $12.99; Chicken Keema $12.99; Beef Nihari; Shrimp Masala $14.99; Lahori Fish',  # separate with ;
+    'website': 'https://www.tikkankababtx.com',   # official site (name on site: New Tikka N Kabab)
+    'menu_link': 'https://www.tikkankababtx.com/4qn8js97/restaurant/menu',
     'phone': '(469) 857-3000',
     'hours': 'Mo-Su 11:00-21:30',
     'features': 'Google rating 4.2 (407 reviews); near UT Dallas; order online on Google; dine-in and pickup',
@@ -84,7 +84,7 @@ Fill the table below and run it. It saves `data/rankings_manual.csv` and rebuild
 `AI check (Gemini)` is an optional automatic extra when a key is set."""),
 code("""
 MANUAL = [  # keyword, maps_position, maps_top3, page1_yes_no, ai_names_it, notes
-    # ('samosa near UTD', '7', 'Place A; Place B; Place C', 'no', 'no', 'winner has 2x photos'),
+    # ('samosa near me', '7', 'Place A; Place B; Place C', 'no', 'no', 'winner has 2x photos'),
     # 'chicken 65 near me' AI check is already in data/rankings_manual.csv (ChatGPT did not name us)
 ]
 AI_CHECK = True   # optional Gemini auto-check (only runs if a key is set)
