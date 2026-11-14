@@ -26,7 +26,7 @@ def lookup(q):
 
 def build(q, confirmed):
     if not os.environ.get("GEMINI_API_KEY"):
-        out = page_one.main(["--offline"])
+        out = page_one.main(["--offline"]); LAST["dir"] = pathlib.Path(out)
         return "offline", None, (pathlib.Path(out)/"report.html").read_text()
     info = lookup(q)
     if not info: return "notfound", None, ""
@@ -34,10 +34,11 @@ def build(q, confirmed):
     d = tempfile.mkdtemp(); f = pathlib.Path(d)/"r.csv"
     with open(f,"w",newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=FIELDS); w.writeheader(); w.writerow({k: str(info.get(k,"") or "") for k in FIELDS})
-    out = page_one.main(["--csv", str(f), "--row", "0", "--simulate-grid"])
+    out = page_one.main(["--csv", str(f), "--row", "0", "--simulate-grid"]); LAST["dir"] = pathlib.Path(out)
     return "ok", info, (pathlib.Path(out)/"report.html").read_text()
 
 PAGE = (ROOT/"index.html").read_text()
+LAST = {"dir": None}
 
 class H(BaseHTTPRequestHandler):
     def _send(self, code, body, ctype="text/html; charset=utf-8"):
@@ -51,6 +52,17 @@ class H(BaseHTTPRequestHandler):
                 self._send(200, json.dumps({"status": status, "info": info, "report": html}), "application/json")
             except Exception as e:
                 traceback.print_exc(); self._send(500, json.dumps({"status": "error", "error": str(e)}), "application/json")
+        elif u.path == "/api/download":
+            kind = (parse_qs(u.query).get("f") or ["pdf"])[0]
+            d = LAST["dir"]
+            name = {"pdf": "page_one_plan.pdf", "html": "report.html"}.get(kind, "page_one_plan.pdf")
+            fp = d / name if d else None
+            if kind == "pdf" and fp and not fp.exists(): fp = d / "page_one_plan.html"; name = "page_one_plan.html"
+            if not fp or not fp.exists(): return self._send(404, "Build a report first.", "text/plain")
+            b = fp.read_bytes(); self.send_response(200)
+            self.send_header("Content-Type", "application/pdf" if name.endswith(".pdf") else "text/html")
+            self.send_header("Content-Disposition", 'attachment; filename="' + name + '"')
+            self.send_header("Content-Length", str(len(b))); self.end_headers(); self.wfile.write(b)
         else:
             self._send(200, PAGE)
     def log_message(self, *a): pass
