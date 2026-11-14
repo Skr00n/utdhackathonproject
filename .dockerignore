@@ -1,0 +1,15 @@
+.git
+.env
+.env.*
+!.env.example
+__pycache__
+*.pyc
+.venv
+venv
+out
+var
+cache
+*.log
+*.zip
+.pytest_cache
+.ipynb_checkpoints

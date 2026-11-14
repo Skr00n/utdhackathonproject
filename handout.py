@@ -40,25 +40,11 @@ def city_of(addr: str) -> str:
 
 
 # ----------------------------------------------------------------------------- Gemini helpers
-def _client():
-    from google import genai
-    import os
-    return genai.Client(api_key=os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY"))
-
-
 def _ask(model: str, prompt: str, grounded: bool = False, max_tokens: int = 4000) -> tuple[str, bool]:
-    """Returns (text, grounded_used). Tries Google Search grounding, falls back to plain."""
-    from google.genai import types
-    client = _client()
-    if grounded:
-        try:
-            cfg = types.GenerateContentConfig(tools=[types.Tool(google_search=types.GoogleSearch())],
-                                              temperature=0.2, max_output_tokens=max_tokens)
-            return (client.models.generate_content(model=model, contents=prompt, config=cfg).text or ""), True
-        except Exception as e:
-            print(f"  ! grounding unavailable ({type(e).__name__}); asking without search")
-    cfg = types.GenerateContentConfig(temperature=0.2, max_output_tokens=max_tokens)
-    return (client.models.generate_content(model=model, contents=prompt, config=cfg).text or ""), False
+    """Returns (text, grounded_used). Uses the robust layer (retries, backoff, model fallback)."""
+    import gemini_client
+    res = gemini_client.generate(prompt, grounded=grounded, max_tokens=max_tokens, temperature=0.2)
+    return res.text, res.grounded
 
 
 def _json_from(text: str):
@@ -103,7 +89,7 @@ def _sample_gap(t: dict, s: int, r: dict) -> str:
     opts = [f"Likely: winners have more reviews that mention '{kw}' (verify)",
             f"Likely: winners list '{kw}' as a named menu item with a photo (verify)",
             "Likely: winners post weekly on Google; check our last post date (verify)",
-            "Likely: winners have a web page for this search; we have no website listed (verify)",
+            "Likely: winners have a dedicated web page for this search (verify)",
             "Likely: winners use a more specific primary category (verify)"]
     return opts[s % len(opts)]
 
@@ -113,7 +99,7 @@ def _sample_gap_table(t: dict, s: int, r: dict) -> dict:
     cats = t.get("gbp", {}).get("categories", [])
     rating = re.search(r"rating\s*([0-9.]+)", r.get("features", ""))
     return {
-        "categories": f"Check winner's primary category. Fix: primary '{cats[0] if cats else 'Restaurant'}' + secondary {', '.join(cats[1:3])} (today: generic 'Restaurant').",
+        "categories": f"Check winner's primary category. Fix: primary '{cats[0] if cats else 'Restaurant'}' + secondary {', '.join(cats[1:3])} (verify your current category first).",
         "menu items": f"Check if winner lists '{kw}' by name. Fix: add every menu item with price + 1-line description (below).",
         "photos": "Compare photo count + recency. Fix: upload 10 real food/storefront photos now, 3 per week.",
         "reviews (count/rating)": f"Compare winner's count/rating vs ours ({rating.group(1) if rating else '?'} stars). Fix: ask every real customer (text below).",
@@ -362,7 +348,8 @@ def write_grid(outdir: Path, r: dict, rows: list[dict]):
 def thirty_day_plan(fixes: dict) -> list[tuple[str, str]]:
     return [
         ("Day 1", "Record 'where it stands' baseline (Maps, page 1, AI) for all 10 keywords; save rank_grid.csv."),
-        ("Day 1", "Fix the website title tag (currently 'Best Hamburgers in Dallas') to the new title in section 4."),
+        *([("Day 1", "Fix the website title tag to the new title in section 4: " + fixes["website_title_tag"])] if fixes.get("website_title_tag")
+          else [("Day 1", "Check your website title tag: it should name your cuisine and area (see the page titles in section 4).")]),
         ("Day 1-2", "Update Google Business Profile: primary/secondary categories, new description, hours incl. holidays."),
         ("Day 2-3", "Add keyword-rich menu descriptions to the GBP menu and website; upload 10 real photos."),
         ("Day 3", "Start review asks: send the review text to real customers after each visit (no incentives)."),
@@ -451,7 +438,24 @@ def write_pdf(outdir: Path, r: dict, plan: dict, stands: list[dict], fixes: dict
     kws = list(dict.fromkeys(x["keyword"] for x in grid_rows))
     avg = lambda kw, mi: sum(x["rank"] for x in grid_rows if x["keyword"] == kw and x["miles"] == mi) / max(1, sum(1 for x in grid_rows if x["keyword"] == kw and x["miles"] == mi))
     st.append(table([["Keyword", "Center", "1 mi", "3 mi", "5 mi"]] + [[k] + [f"{avg(k, m):.1f}" for m in (0, 1, 3, 5)] for k in kws], [2.8*inch, 1.1*inch, 1.1*inch, 1.1*inch, 1.1*inch]))
+    cmp = fixes.get("compare")
+    if cmp:
+        tg = cmp.get("target", {})
+        nf = lambda v: "not found" if v is None else (f"{v:,}" if isinstance(v, int) else str(v))
+        mark = lambda c, f: " †" if (c.get("field_sources") or {}).get(f) else ""
+        st += [PageBreak(), Paragraph("How you compare", ss["Heading2"]),
+               P(f"Similar restaurants within ~20 miles. Source mode: {cmp.get('mode')} ({cmp.get('engine')}). 'not found' = could not be verified. "
+                 "† = filled by a Gemini + Google Search lookup (unverified).", small),
+               table([["Restaurant", "Distance", "Rating", "Reviews", "Category", "Target keywords they appear for", "Source"]] +
+                     [[r["name"] + " (you)", "-", nf(tg.get("rating")), nf(tg.get("review_count")), nf(tg.get("category")), "see section 2", tg.get("source", "")]] +
+                     [[c["name"], (nf(c.get("distance_mi")) + " mi" if c.get("distance_mi") is not None else "not found") + mark(c, "distance_mi"),
+                       nf(c.get("rating")) + mark(c, "rating"), nf(c.get("review_count")) + mark(c, "review_count"), nf(c.get("category")) + mark(c, "category"),
+                       ", ".join(c.get("keywords_ranked") or []) or "not found", c.get("source", "")] for c in cmp.get("competitors", [])],
+                     [1.5*inch, 0.6*inch, 0.5*inch, 0.6*inch, 1.0*inch, 1.5*inch, 1.5*inch]),
+               Paragraph("Compare and contrast", ss["Heading3"])] + [P("• " + f) for f in cmp["analysis"]["findings"]]
     st += [Paragraph("6. 30-day plan", ss["Heading2"]), table([["When", "Action"]] + [list(x) for x in thirty_day_plan(fixes)], [0.9*inch, 6.3*inch]),
+           Paragraph("Close the gap", ss["Heading3"]),
+           *[P(f"{i}. {s}") for i, s in enumerate(fixes.get("close_the_gap") or ["No competitor gaps with verifiable data yet."], 1)],
            Spacer(1, 8), P("Honest methods only: no fake reviews, no incentives for reviews, no fake clicks, no keyword stuffing.", small)]
     p = outdir / "page_one_plan.pdf"
     SimpleDocTemplate(str(p), pagesize=letter, leftMargin=0.6*inch, rightMargin=0.6*inch, topMargin=0.6*inch, bottomMargin=0.6*inch,
@@ -463,7 +467,8 @@ def render_plan_html(r, plan, stands, fixes, grid_rows, meta) -> str:
     rows = "".join(f"<tr><td>{esc(s['keyword'])}</td><td>{esc(s['maps_today'])}</td><td>{esc(s['page1'])}</td><td>{esc(s['ai_names_it'])}</td><td>{esc(s['biggest_gap'])}</td></tr>" for s in stands)
     return (f"<!doctype html><meta charset=utf-8><title>Page One Plan</title><h1>Page One Plan: {esc(r['name'])}</h1><p>Mode: {esc(meta.get('mode'))}. Source: {esc(stands[0]['source'] if stands else '')}</p>"
             f"<h2>Where it stands</h2><table border=1><tr><th>Keyword</th><th>Maps today</th><th>Page 1?</th><th>AI names it?</th><th>Biggest gap</th></tr>{rows}</table>"
-            f"<h2>Fixes</h2><pre>{esc(json.dumps(fixes, indent=2))}</pre><h2>30-day plan</h2><ul>{''.join(f'<li><b>{a}</b> {esc(b)}</li>' for a, b in thirty_day_plan(fixes))}</ul>")
+            f"<h2>Fixes</h2><pre>{esc(json.dumps(fixes, indent=2))}</pre><h2>30-day plan</h2><ul>{''.join(f'<li><b>{a}</b> {esc(b)}</li>' for a, b in thirty_day_plan(fixes))}</ul>"
+            f"<h3>Close the gap</h3><ol>{''.join(f'<li>{esc(s)}</li>' for s in fixes.get('close_the_gap') or [])}</ol>")
 
 
 def baseline_html(b: dict) -> str:
@@ -477,8 +482,39 @@ def baseline_html(b: dict) -> str:
 
 
 # ----------------------------------------------------------------------------- orchestrator
+def default_competitors(r: dict):
+    """Tikka demo: team hand-check seed (+ committed enrichment of empty fields, if present)."""
+    import competitors as cmpmod
+    if (r.get("name") or "").lower() != "tikka n kabab":
+        return None
+    enriched = Path(__file__).resolve().parent / "data" / "competitors_tikka_enriched.json"
+    if enriched.exists():
+        try:
+            return json.loads(enriched.read_text())
+        except ValueError:
+            pass
+    return cmpmod.tikka_seed()
+
+
+def compare_target(r: dict, cmp: dict | None) -> dict:
+    """Target's own rating/reviews/category. Priority: confirmed restaurant facts (confirm card / hand check),
+    then the competitor lookup. Never guessed."""
+    looked = (cmp or {}).get("target") or {}
+    feats = r.get("features", "") or ""
+    t = {}
+    m = re.match(r"^\s*([1-5](?:\.\d+)?)\s*$", str(r.get("rating") or "")) or re.search(r"rating\s*([1-5](?:\.\d)?)", feats, re.I)
+    t["rating"] = float(m.group(1)) if m else looked.get("rating")
+    m = re.match(r"^\s*(\d+)\s*$", str(r.get("review_count") or "")) or re.search(r"\(?\s*([\d,]+)\s*reviews", feats, re.I)
+    t["review_count"] = int(m.group(1).replace(",", "")) if m else looked.get("review_count")
+    t["category"] = r.get("category") or looked.get("category")
+    from_facts = bool(r.get("rating") or r.get("review_count") or "rating" in feats.lower())
+    t["source"] = looked.get("source") if (looked and not from_facts) else (
+        looked.get("source") if (cmp or {}).get("mode", "").startswith("seed") else "Restaurant facts from the Gemini + Google Search lookup (unverified)")
+    return t
+
+
 def run_handout(outdir: Path, r: dict, plan: dict, meta: dict, model: str, live: bool, simulate_grid: bool = False,
-                manual_path=None, ai_check: bool = True) -> dict:
+                manual_path=None, ai_check: bool = True, competitors=None) -> dict:
     stands = None
     manual = load_manual(manual_path)
     if manual_path and not Path(manual_path).exists():
@@ -526,6 +562,29 @@ def run_handout(outdir: Path, r: dict, plan: dict, meta: dict, model: str, live:
         w = csv.writer(f); w.writerow(["keyword", "group", "maps_today", "page1", "ai_names_it", "ai_check_gemini", "top3", "biggest_gap", "source"] + GAP_AREAS)
         for s in stands:
             w.writerow([s["keyword"], s["group"], s["maps_today"], s["page1"], s["ai_names_it"], s.get("ai_check_gemini", "not run"), " | ".join(s["top3"]), s["biggest_gap"], s["source"]] + [s["gaps"].get(a, "") for a in GAP_AREAS])
+    import competitors as cmpmod
+    kws = [x["keyword"] for x in plan["top10"]]
+    if callable(competitors):  # web app: fetch with the final 10 keywords (cached + error-safe in the caller)
+        try:
+            competitors = competitors(r, kws)
+        except Exception as e:
+            print(f"! Competitor lookup failed ({type(e).__name__}); report has no comparison table")
+            competitors = {"target": {}, "competitors": [], "mode": "failed", "engine": "",
+                           "warning": "The competitor lookup failed this time, so no comparison data is shown. Rebuild later to retry."}
+    cmp = competitors if competitors is not None else default_competitors(r)
+    if cmp is not None:
+        cmp = dict(cmp, target=compare_target(r, cmp))
+        analysis = cmpmod.analyze(r, cmp, kws, stands)
+        fixes["compare"] = {**cmp, "analysis": analysis}
+        fixes["close_the_gap"] = analysis["close_the_gap"]
+    rp = outdir / "report.html"
+    if rp.exists():
+        txt = rp.read_text()
+        extra = (cmpmod.render_html(r, cmp, fixes["compare"]["analysis"], kws) if cmp is not None else "") + \
+            cmpmod.render_plan_html(thirty_day_plan(fixes), fixes.get("close_the_gap", []))
+        marker = "<h2>5. Honest methods</h2>"
+        txt = txt.replace(marker, extra + marker, 1) if marker in txt else txt.replace("</body>", extra + "</body>", 1)
+        rp.write_text(txt)
     (outdir / "fixes.json").write_text(json.dumps(fixes, indent=2))
     pdf = write_pdf(outdir, r, plan, stands, fixes, grid_rows, meta)
     print(f"✓ Where it stands: {len(stands)} keywords ({stands[0]['source']})")

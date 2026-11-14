@@ -33,19 +33,35 @@ button:hover{transform:translateY(-1px);box-shadow:0 12px 30px rgba(255,107,53,.
 .bar span{font-weight:600;font-size:15px}.bar .dl{display:flex;gap:8px}.bar button{padding:10px 16px;font-size:14px}
 iframe{width:100%;height:80vh;border:0;display:block}
 small{display:block;margin-top:34px;color:#64748b;font-size:13px}
+.sb{position:relative}
+#dd{display:none;position:absolute;left:0;right:0;top:calc(100% + 8px);z-index:5;text-align:left;background:#fff;color:var(--ink);border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.5);overflow:hidden}
+#dd .it{display:block;width:100%;text-align:left;background:#fff;color:var(--ink);border:0;border-bottom:1px solid #eef2f7;border-radius:0;box-shadow:none;padding:12px 16px;font:500 15px Inter,sans-serif;cursor:pointer}
+#dd .it:hover,#dd .it.act{background:#fff7ed;transform:none;box-shadow:none}#dd .it b{display:block;font-size:16px}#dd .it small{display:block;margin:3px 0 0;color:#475569;font-size:13px}
+#dd .it .src{color:#94a3b8;font-size:12px}#dd .msg{padding:14px 16px;color:#475569;font-size:14px}#dd .msg.e{color:#b91c1c}
+#err{display:none;margin:22px auto 0;max-width:560px;text-align:left;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.45);color:#fecaca;border-radius:14px;padding:16px 18px;font-size:15px;line-height:1.5}
+#err .bt{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}#err button{padding:10px 16px;font-size:14px}
+#cf input.e{width:100%;font:500 15px Inter,sans-serif;border:1px solid #e2e8f0;border-radius:8px;padding:7px 9px;color:var(--ink);background:#f8fafc}
+#cf input.e:focus{outline:2px solid var(--o);background:#fff}#cf .r span{flex:1}#cf .note{font-size:13px;color:#64748b;margin:-6px 0 10px}#cf .src{font-size:12px;color:#64748b;margin-top:10px;word-break:break-all}
+.ld div .t{float:right;font-size:12px;color:var(--mut)}
+#cmp{display:none;text-align:left;padding:18px;background:#0f172a;border-bottom:1px solid #1e293b;color:#cbd5e1;font-size:14px}
+#cmp h4{margin:0 0 10px;color:#fff;font-size:16px}#cmp .tw{overflow-x:auto}#cmp table{border-collapse:collapse;width:100%;min-width:520px}
+#cmp td,#cmp th{padding:6px 8px;border-bottom:1px solid #1e293b;text-align:left}#cmp th{color:#94a3b8;font-weight:600}#cmp tr.you td{color:#fed7aa;font-weight:600}
+#cmp ul{margin:10px 0 0;padding-left:18px}#cmp .nf{color:#64748b}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#111827;color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;display:none;z-index:9}
+button:disabled{opacity:.6;cursor:wait;transform:none}
+@media(max-width:720px){.w{padding:24px 14px 40px}.bar{flex-direction:column;align-items:stretch}.bar .dl{flex-wrap:wrap}.bar .dl a,.bar .dl>button{flex:1}.bar button{width:100%}iframe{height:70vh}#cf .r{flex-direction:column;gap:4px}#cf .r b{width:auto}.stats{flex-wrap:wrap}p.s{font-size:16px}}
 @media(max-width:720px){h1{font-size:38px}.f{grid-template-columns:1fr 1fr}form{flex-direction:column}.stats{gap:20px}}
 </style></head><body><div class="bg"></div>
 <nav><div class="logo">Page<span>One</span> Builder</div><div class="pill">SEO + AEO for local restaurants</div></nav>
 <div class="w" id="wrap">
 <div class="badge">● Google Maps · Google Search · ChatGPT &amp; Gemini</div>
 <h1>Get your restaurant <em>on Page One</em></h1>
-<p class="s">Paste a restaurant name or website. We find the 10 keywords hungry customers search, show where you stand today, and write every fix, ready to paste.</p>
-<form id="f"><input id="q" placeholder="Restaurant name or website, e.g. Tikka N Kabab Dallas" required><button>Build my plan →</button></form>
-<div class="try">Try: <a data-q="Tikka N Kabab Dallas">Tikka N Kabab Dallas</a> · <a data-q="tikkankababtx.com">tikkankababtx.com</a></div>
-<div id="m"></div>
-<div class="ld" id="ld"><div>🔎 Finding the restaurant on Google</div><div>🗝️ Picking the 10 keywords people search</div><div>📍 Checking Maps, Google and AI answers</div><div>✍️ Writing your fixes and 30-day plan</div></div>
-<div id="cf"></div>
-<div id="rep"><div class="bar"><span id="rt">Your Page One plan</span><div class="dl"><a href="/api/download?f=pdf" download><button type="button">⬇ Download PDF</button></a><a href="/api/download?f=html" download><button type="button" class="g">⬇ HTML report</button></a></div></div><iframe id="fr"></iframe></div>
+<p class="s">Type a restaurant name or website, then pick it from the list. We find the 10 keywords hungry customers search, show where you stand today, and write every fix, ready to paste.</p>
+<div class="sb"><form id="f" autocomplete="off"><input id="q" placeholder="Restaurant name or website, e.g. city + name" required aria-label="Restaurant name or website" aria-autocomplete="list" aria-controls="dd" role="combobox" aria-expanded="false"><button>Find my restaurant →</button></form><div id="dd" role="listbox"></div></div>
+<div id="m" role="status" aria-live="polite"></div>
+<div id="err" role="alert"></div>
+<div class="ld" id="ld"><div data-s="lookup">🔎 Getting your restaurant's details from Google</div><div data-s="keywords">🗝️ Picking the 10 keywords people search</div><div data-s="writing">✍️ Writing pages, FAQs and schema</div><div data-s="checks">📍 Preparing where-it-stands checks and rank grid</div><div data-s="competitors">🥊 Comparing nearby competitors</div><div data-s="done">📄 Building your PDF</div></div>
+<div id="rep"><div class="bar"><span id="rt">Your Page One plan</span><div class="dl"><button type="button" id="share" class="g">🔗 Copy share link</button><a id="dpdf" href="#" download><button type="button">⬇ Download PDF</button></a><a id="dhtml" href="#" download><button type="button" class="g">⬇ HTML report</button></a></div></div><div id="cmp"></div><iframe id="fr" title="Page One report"></iframe></div>
 <div id="land">
 <div class="f"><div class="c"><i>🗝️</i><b>10 keywords</b>Dishes, cuisine plus area, and real needs, each with why it matters.</div><div class="c"><i>📍</i><b>Where you stand</b>Maps top 3, Google page 1 and what AI assistants say.</div><div class="c"><i>🔍</i><b>Gap analysis</b>What the winners have that you don't.</div><div class="c"><i>✍️</i><b>Paste-ready fixes</b>Description, posts, menu copy, FAQs, schema and a review text.</div></div>
 <div class="stats"><div><b>10</b>keywords</div><div><b>7</b>fix types</div><div><b>30-day</b>plan</div><div><b>1, 3, 5 mi</b>rank grid</div></div>
@@ -53,19 +69,59 @@ small{display:block;margin-top:34px;color:#64748b;font-size:13px}
 <small>Honest methods only: no fake reviews, no fake clicks.</small>
 </div>
 <script>
-const $=id=>document.getElementById(id),m=$('m'),cf=$('cf'),rep=$('rep'),ld=$('ld');let Q='',T;
-function esc(t){return String(t||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
-function steps(from){const d=[...ld.children];ld.style.display='block';let i=from;d.forEach((x,j)=>{x.className=j<from?'ok':''});clearInterval(T);
- const tick=()=>{d.forEach((x,j)=>x.className=j<i?'ok':j==i?'on':'');if(i<d.length-1)i++};tick();T=setInterval(tick,1600)}
-function stop(){clearInterval(T);ld.style.display='none'}
-async function go(confirm){m.textContent='';steps(confirm?1:0);$('land').style.display='none';
- let d;try{const r=await fetch('/api/build?q='+encodeURIComponent(Q)+'&confirm='+(confirm?1:0));d=await r.json()}catch(e){d={status:'error',error:e}}
- stop();
- if(d.status==='confirm'){const i=d.info;cf.style.display='block';
-  cf.innerHTML='<h3>Is this your restaurant?</h3>'+['name','address','cuisine','website','phone','hours','features'].map(k=>'<div class="r"><b>'+k+'</b><span>'+esc(i[k])+'</span></div>').join('')+'<div class="bt"><button id="y">Yes, build my plan</button><button id="n" class="g">No, search again</button></div>';
-  $('y').onclick=()=>{cf.style.display='none';go(true)};$('n').onclick=()=>{cf.style.display='none';m.textContent='Try a more specific name or paste the website.';$('q').focus()};return}
- if(d.status==='ok'||d.status==='offline'){m.textContent=d.status==='offline'?'Demo mode: showing the Tikka N Kabab sample plan.':'';$('wrap').style.maxWidth='1150px';rep.style.display='block';$('fr').srcdoc=d.report;rep.scrollIntoView({behavior:'smooth'});return}
- m.textContent=d.status==='notfound'?'Could not find that restaurant. Try the website URL.':'Something went wrong: '+(d.error||'unknown')}
-$('f').onsubmit=e=>{e.preventDefault();Q=$('q').value.trim();rep.style.display='none';cf.style.display='none';go(false)};
-document.querySelectorAll('.try a').forEach(a=>a.onclick=()=>{$('q').value=a.dataset.q;$('f').requestSubmit()});
+const $=id=>document.getElementById(id),m=$('m'),rep=$('rep'),ld=$('ld'),er=$('err'),dd=$('dd'),qi=$('q');
+const ORDER=['lookup','keywords','writing','checks','competitors','done'];let T0=0,TK=null,DEB=null,CUR=null,LASTQ='',ITEMS=[],ACT=-1;const MEMO={};
+function esc(t){return String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function toast(t){const x=document.querySelector('.toast')||document.body.appendChild(Object.assign(document.createElement('div'),{className:'toast'}));x.textContent=t;x.style.display='block';clearTimeout(x._t);x._t=setTimeout(()=>x.style.display='none',2200)}
+function stage(s){ld.style.display='block';const i=ORDER.indexOf(s);[...ld.children].forEach((x,j)=>{x.className=j<i?'ok':j==i?'on':'';const t=x.querySelector('.t');if(t)t.remove();if(j==i){const e=document.createElement('span');e.className='t';e.textContent=Math.round((Date.now()-T0)/1000)+'s';x.appendChild(e)}})}
+function busy(on){document.querySelectorAll('#f button').forEach(b=>{b.disabled=on;b.textContent=on?'Working…':'Find my restaurant →'})}
+function stop(){clearInterval(TK);ld.style.display='none';busy(false)}
+function fail(msg,sample){stop();er.style.display='block';er.innerHTML='<b>We couldn\'t finish that.</b><br>'+esc(msg||'Something went wrong.')+'<div class="bt">'+(sample?'<button id="td" class="g">See a sample report instead</button>':'')+'<button id="ta">Try again</button></div>';
+ if(sample)$('td').onclick=()=>{er.style.display='none';build({lookup_id:'demo'})};$('ta').onclick=()=>{er.style.display='none';qi.focus()}}
+async function api(path,body,ms=120000,signal){const c=new AbortController();const t=setTimeout(()=>c.abort(),ms);if(signal)signal.addEventListener('abort',()=>c.abort());
+ try{const r=await fetch(path,body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),signal:c.signal}:{signal:c.signal});
+  let d;try{d=await r.json()}catch(e){d={status:'error',message:'The server sent an unexpected reply ('+r.status+').'}}if(!r.ok&&d.status!=='error')d={status:'error',message:'Server error '+r.status};return d}
+ catch(e){return{status:'error',kind:e.name==='AbortError'?'aborted':'network',message:e.name==='AbortError'?'That took too long. Please try again.':'Could not reach the server. Check your connection.'}}finally{clearTimeout(t)}}
+function reset(){er.style.display='none';rep.style.display='none';m.textContent=''}
+function ddShow(html){dd.innerHTML=html;dd.style.display=html?'block':'none';qi.setAttribute('aria-expanded',html?'true':'false')}
+function norm(q){return q.toLowerCase().replace(/[^\w\s.]/g,' ').replace(/\s+/g,' ').trim()}
+async function search(q,now){q=q.trim();if(q.length<3){ddShow('');return}const k=norm(q);if(!now&&k===LASTQ)return;LASTQ=k;
+ if(CUR)CUR.abort();const ac=new AbortController();CUR=ac;
+ ddShow('<div class="msg">🔎 Searching Google for real matches…</div>');
+ const d=MEMO[k]||await api('/api/candidates?q='+encodeURIComponent(q),null,120000,ac.signal);if(ac.signal.aborted||d.kind==='aborted')return;
+ if(d.status==='ok'){MEMO[k]=d;ITEMS=d.candidates;ACT=-1;
+  ddShow(ITEMS.map((c,i)=>'<button type="button" role="option" class="it" data-i="'+i+'"><b>'+esc(c.name)+'</b><small>'+esc(c.address)+'</small><small>'+
+   (c.rating!=null?'★ '+esc(c.rating)+(c.review_count!=null?' ('+Number(c.review_count).toLocaleString()+' reviews)':'')+' · ':'')+(c.category?esc(c.category)+' · ':'')+'<span class="src">source: '+esc((c.source_url.match(/^https?:\/\/([^/]+)/)||[])[1]||'link')+'</span></small></button>').join('')+'<div class="msg">Not listed? Check the spelling or add the city.</div>');
+  dd.querySelectorAll('.it').forEach(b=>b.onclick=()=>pick(ITEMS[+b.dataset.i]));return}
+ if(d.status==='none'){MEMO[k]=d;ddShow('<div class="msg">'+esc(d.message)+'</div>');return}
+ ddShow('');LASTQ='';fail(d.message,d.demo_available!==false&&['no_key','quota','overloaded','timeout'].includes(d.kind))}
+function pick(c){ddShow('');qi.value=c.name;m.textContent='Building the plan for '+c.name+' · '+c.address;build({candidate_id:c.candidate_id})}
+async function build(body){reset();$('land').style.display='none';busy(true);T0=Date.now();let S=body.lookup_id?'done':'lookup';stage(S);TK=setInterval(()=>stage(S),1000);
+ let d=await api('/api/build',body,60000);
+ if(d.status==='queued'){let n=0;while(true){await new Promise(r=>setTimeout(r,1500));n++;
+   const j=await api('/api/jobs/'+d.job_id,null,20000);if(j.status==='error'&&j.kind!=='not_found'){if(n<4)continue;fail(j.message,false);return}
+   if(j.state==='ok'){d={status:'ok',report_id:j.report_id};break}if(j.state==='error'||j.kind==='not_found'){fail(j.message,['quota','overloaded','timeout','no_key'].includes(j.kind));return}
+   if(j.stage&&ORDER.includes(j.stage))S=j.stage;if(Date.now()-T0>330000){fail('This is taking much longer than usual. Please try again in a few minutes.',true);return}}}
+ if(d.status!=='ok'){fail(d.message,d.demo_available!==false&&['no_key','quota','overloaded','timeout'].includes(d.kind));return}S='done';await show(d.report_id,true)}
+function nf(v,f){return v===null||v===undefined||v===''?'<span class="nf">not found</span>':esc(f?f(v):v)}
+function renderCmp(s){const c=$('cmp');if(!s||!s.competitors||(!s.competitors.length&&!s.warning)){c.style.display='none';return}c.style.display='block';const t=s.target||{};
+ c.innerHTML='<h4>🥊 How you compare <span style="font-weight:400;color:#94a3b8;font-size:13px">('+esc(s.competitor_mode==='live'?'from Gemini + Google Search, unverified':s.competitor_mode==='failed'?'lookup failed':'team hand check')+')</span></h4>'+(s.warning?'<p>⚠ '+esc(s.warning)+'</p>':'')+
+ (s.competitors.length?'<div class="tw"><table><tr><th>Restaurant</th><th>Rating</th><th>Reviews</th><th>Category</th><th>Your keywords they appear for</th></tr><tr class="you"><td>You</td><td>'+nf(t.rating)+'</td><td>'+nf(t.review_count,v=>v.toLocaleString())+'</td><td>'+nf(t.category)+'</td><td>—</td></tr>'+
+ s.competitors.map(x=>'<tr><td>'+esc(x.name)+'</td><td>'+nf(x.rating)+'</td><td>'+nf(x.review_count,v=>v.toLocaleString())+'</td><td>'+nf(x.category)+'</td><td>'+((x.keywords_ranked||[]).length?esc(x.keywords_ranked.join(', ')):'<span class="nf">not found</span>')+'</td></tr>').join('')+'</table></div>':'')+
+ ((s.close_the_gap||[]).length?'<b style="display:block;margin-top:12px;color:#fff">Close the gap</b><ul>'+s.close_the_gap.slice(0,4).map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>':'')+'<p style="margin:10px 0 0;color:#94a3b8">Full table and keyword coverage are in the report below.</p>'}
+async function show(rid,push){const d=await api('/api/reports/'+encodeURIComponent(rid),null,20000);stop();
+ if(d.status==='error'){fail(d.message,false);return}$('land').style.display='none';
+ m.textContent=d.mode==='demo'?'Sample report (offline example). Search above to build one for your restaurant.':'';$('wrap').style.maxWidth='1150px';
+ $('rt').textContent='Page One plan: '+(d.info&&d.info.name||'');$('dpdf').href=d.downloads.pdf;$('dhtml').href=d.downloads.html;
+ const url=location.origin+d.url;$('share').onclick=async()=>{try{await navigator.clipboard.writeText(url);toast('Link copied: '+url)}catch(e){prompt('Copy this link:',url)}};
+ renderCmp(d.summary);rep.style.display='block';$('fr').src=d.report_url;if(push&&location.pathname!==d.url)history.pushState({rid},'',d.url);rep.scrollIntoView({behavior:'smooth'})}
+qi.maxLength=200;
+qi.addEventListener('input',()=>{clearTimeout(DEB);er.style.display='none';const v=qi.value;if(v.trim().length<3){if(CUR)CUR.abort();LASTQ='';ddShow('');return}DEB=setTimeout(()=>search(v,false),400)});
+qi.addEventListener('keydown',e=>{const its=[...dd.querySelectorAll('.it')];if(!its.length||dd.style.display==='none')return;
+ if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();ACT=(ACT+(e.key==='ArrowDown'?1:-1)+its.length)%its.length;its.forEach((x,i)=>x.classList.toggle('act',i===ACT))}
+ else if(e.key==='Enter'&&ACT>=0){e.preventDefault();pick(ITEMS[ACT])}else if(e.key==='Escape'){ddShow('')}});
+document.addEventListener('click',e=>{if(!e.target.closest('.sb'))ddShow('')});
+$('f').onsubmit=e=>{e.preventDefault();clearTimeout(DEB);const q=qi.value.trim();if(q.length<3){m.textContent='Type at least 3 characters.';return}m.textContent='';search(q,true)};
+const mm=location.pathname.match(/^\/r\/([A-Za-z0-9_-]{6,40})$/);if(mm){$('land').style.display='none';busy(true);T0=Date.now();stage('done');show(mm[1],false)}
+window.onpopstate=()=>location.reload();
 </script></body></html>

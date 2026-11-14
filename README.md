@@ -36,7 +36,7 @@ python page_one.py --offline                            # demo mode: cached Tikk
 python page_one.py --lat 32.99 --lng -96.78             # set the rank-grid center
 python page_one.py --simulate-grid                      # live mode but skip ~10 Gemini rank-grid calls (faster)
 python page_one.py --no-ai-check                        # skip the optional Gemini auto-check
-python page_one.py --model gemini-2.5-flash             # or set GEMINI_MODEL
+python page_one.py --model gemini-3.8-flash             # or set GEMINI_MODEL
 ```
 
 If no key is found or the API call fails, the tool automatically falls back to the cached sample so the demo never dies.
@@ -44,6 +44,58 @@ If no key is found or the API call fails, the tool automatically falls back to t
 **Colab:** open `page_one_builder.ipynb`, add `GEMINI_API_KEY` in the 🔑 Secrets panel, edit the Restaurant cell, Run all. Cells follow the handout: Setup → Restaurant → Keywords → Where it stands → Gaps → Fixes → Rank grid → Export PDF.
 
 CSV columns: `name,address,cuisine,website,menu_link` (required) and optional `phone,hours,features,menu_items,price_range,lat,lng` (lists separated by `;`; `Item $9.99` becomes a priced MenuItem).
+
+## Web app (production build)
+
+Type a restaurant name or website (typos ok) → a dropdown shows up to 5 REAL matches from Gemini +
+Google Search (name, full street address, rating/reviews if found, source link; anything without a
+street address or a source is dropped) → click yours → the report builds for that exact place in the
+background with real progress steps → shareable link `/r/<id>` with PDF/HTML downloads. If nothing real
+matches, it says so and builds nothing. The offline Tikka N Kabab sample is only offered when live
+search is unavailable (no key, quota, outage).
+
+**What's in a report:** 10 keywords, paste-ready fixes, schema, where-it-stands (to be checked by hand),
+rank grid (SIMULATED unless a real rank provider is configured), **How you compare** (up to 8 similar
+restaurants within ~20 mi: rating, reviews, category, which of your 10 keywords they appear for) and a
+**30-day plan** ending in **Close the gap** steps tied to those competitor findings.
+
+**Honesty rules in code:** lookup values come only from search results and are labeled "unverified";
+anything missing shows "not found" / blank, never a guess. Ratings/reviews outside valid ranges are
+dropped. Tikka's hand-check data (title tag, gaps, baseline audit) is never applied to other restaurants.
+If Gemini fails, you get a clear error and a "Try the demo" button, never a silently swapped report.
+
+### Run locally
+
+```bash
+python3 -m venv .venv && . .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env        # put your own GEMINI_API_KEY in .env (gitignored). Leave blank = demo only.
+python app.py               # http://localhost:8000
+```
+
+Tests (no network, no key used): `pip install -r requirements-dev.txt && python -m pytest -q`
+Key scan before every push: `tools/scan_keys.sh --history`
+
+API: `GET /api/candidates?q=` · `POST /api/build {candidate_id}` → `{job_id}` (`{lookup_id:"demo"}` = offline sample) · `GET /api/jobs/<id>` ·
+`GET /api/reports/<id>` · `GET /api/reports/<id>/report.html` · `GET /api/reports/<id>/download?f=pdf|html` · `GET /healthz`
+
+Reliability: retries with exponential backoff on 429/5xx, model fallback list (`GEMINI_MODEL`,
+`GEMINI_FALLBACK_MODELS`), per-call timeout and a total time budget, on-disk cache (candidates by
+normalized query, details/competitors/reports by picked place), input limits, per-IP rate limit.
+All settings are in `.env.example`.
+
+### Deploy to Railway
+
+Not deployed yet. When the owner says yes:
+
+1. Railway → New Project → Deploy from GitHub repo (this repo). It builds the `Dockerfile` (`railway.json`).
+2. Variables: `GEMINI_API_KEY` (a key with billing on), optional `GEMINI_MODEL`. `PORT` is set by Railway.
+3. Add a Volume mounted at `/data` so reports and share links survive restarts (`DATA_DIR=/data`).
+4. Keep 1 replica (jobs and rate limits are in memory). Health check: `/healthz`.
+5. Settings → Networking → Generate Domain to get the public link.
+
+Real rank data is off. `providers.py` has a stub interface (`RANK_PROVIDER=serp|places`), not
+implemented on purpose; pick a vendor and approve the cost first.
 
 ## Keys rule
 The key is read only from the `GEMINI_API_KEY` environment variable, a local `.env` (gitignored), or Colab secrets. No key appears anywhere in this repo; `.env.example` contains a placeholder only.
@@ -82,4 +134,4 @@ Incognito window → search each keyword on google.com/maps (our position or "no
 | Stretch + polish | 10 | rank grid map (1/3/5 mi), single submission PDF, landing page |
 
 ## Files
-`page_one.py` (the whole tool, one file) · `page_one_builder.ipynb` (Colab) · `handout.py` (steps 2–6: where it stands, gaps, fixes, rank grid, PDF) · `data/restaurants.csv` · `data/rankings_manual.csv` + `data/gaps_manual.json` (by-hand checks) · `sample_output/` (offline Tikka N Kabab outputs incl. `page_one_plan.pdf`) · `tools/make_tikka_plan.py` (how the offline plan was written) · `tools/build_notebook.py` (rebuilds the notebook with no outputs; re-run after editing code or the manual CSV) · `TEAM.md`
+`app.py` (FastAPI web app) · `index.html` (UI) · `gemini_client.py` (retries/fallback) · `core.py` (validation, cache, rate limit, report store) · `competitors.py` (How you compare) · `providers.py` (optional rank provider stub, off) · `tests/` · `Dockerfile`, `railway.json`, `Procfile` · `tools/scan_keys.sh` · `tools/enrich_demo_competitors.py` · `data/competitors_tikka.json` (team hand-check competitors) · `page_one.py` (CLI tool) · `page_one_builder.ipynb` (Colab) · `handout.py` (steps 2–6: where it stands, gaps, fixes, rank grid, PDF) · `data/restaurants.csv` · `data/rankings_manual.csv` + `data/gaps_manual.json` (by-hand checks) · `sample_output/` (offline Tikka N Kabab outputs incl. `page_one_plan.pdf`) · `tools/make_tikka_plan.py` (how the offline plan was written) · `tools/build_notebook.py` (rebuilds the notebook with no outputs; re-run after editing code or the manual CSV) · `TEAM.md`

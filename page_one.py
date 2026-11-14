@@ -147,29 +147,19 @@ def focus_keywords(name: str) -> list[dict]:
         return [r for r in csv.DictReader(f) if r.get("restaurant", "").lower() == (name or "").lower()]
 
 
-def call_gemini(restaurant: dict, model: str) -> dict:
-    from google import genai
-    from google.genai import types
-
-    client = genai.Client(api_key=get_api_key())
-    cfg = dict(response_mime_type="application/json", temperature=0.4, max_output_tokens=32000)
-    try:
-        cfg["thinking_config"] = types.ThinkingConfig(thinking_budget=0)
-        config = types.GenerateContentConfig(**cfg)
-    except Exception:
-        cfg.pop("thinking_config", None)
-        config = types.GenerateContentConfig(**cfg)
-    resp = client.models.generate_content(
-        model=model,
-        contents=PROMPT.format(restaurant=json.dumps(restaurant, indent=2)) + (
-            "\nIMPORTANT: the top10 MUST be exactly these keywords (with these intent_groups), in this order; include them among the 20: "
-            + json.dumps([{"keyword": f["keyword"], "intent_group": f["group"]} for f in focus_keywords(restaurant.get("name"))])
-            if focus_keywords(restaurant.get("name")) else ""),
-        config=config,
-    )
-    text = (resp.text or "").strip()
-    text = re.sub(r"^```(?:json)?|```$", "", text).strip()
-    return json.loads(text)
+def call_gemini(restaurant: dict, model: str | None = None) -> dict:
+    """Keyword plan from Gemini via the robust layer (retries, backoff, model fallback, timeouts)."""
+    import gemini_client
+    if model:
+        os.environ.setdefault("GEMINI_MODEL", model)
+    fk = focus_keywords(restaurant.get("name"))
+    prompt = PROMPT.format(restaurant=json.dumps(restaurant, indent=2)) + (
+        "\nIMPORTANT: the top10 MUST be exactly these keywords (with these intent_groups), in this order; include them among the 20: "
+        + json.dumps([{"keyword": f["keyword"], "intent_group": f["group"]} for f in fk]) if fk else "")
+    res = gemini_client.generate(prompt, json_mode=True, max_tokens=32000, temperature=0.4)
+    plan = gemini_client.extract_json(res.text)
+    plan["_engine"] = res.model
+    return plan
 
 # ----------------------------------------------------------------------------
 # Schema (built deterministically from real data, then validated)
@@ -503,13 +493,13 @@ def check_plan_shape(plan: dict):
     plan.setdefault("gbp_description", "")
 
 
-def main(argv=None):
+def main(argv=None, progress=None, competitors=None):
     ap = argparse.ArgumentParser(description="Page One Builder: 10 keywords on Google Maps (SEO + AEO)")
     ap.add_argument("--restaurant", help="restaurant name (built-in sample, or looked up in --csv)")
     ap.add_argument("--csv", help="restaurants.csv (name,address,cuisine,website,menu_link[,phone,hours,features,menu_items])")
     ap.add_argument("--row", type=int, help="0-indexed CSV row")
     ap.add_argument("--offline", action="store_true", help="use cached sample output (no API key / wifi needed)")
-    ap.add_argument("--model", default=os.environ.get("GEMINI_MODEL", "gemini-2.5-flash"))
+    ap.add_argument("--model", default=os.environ.get("GEMINI_MODEL", "gemini-3.8-flash"))
     ap.add_argument("--out", default=str(ROOT / "out"))
     ap.add_argument("--lat", help="restaurant latitude (for the rank grid map)")
     ap.add_argument("--lng", help="restaurant longitude (for the rank grid map)")
@@ -518,7 +508,10 @@ def main(argv=None):
     ap.add_argument("--no-ai-check", action="store_true", help="skip the optional Gemini auto-check (AI check (Gemini)) and grid estimates")
     ap.add_argument("--no-extras", action="store_true", help="skip handout steps 2-6 (where it stands, gaps, fixes, rank grid, PDF)")
     ap.add_argument("--all", action="store_true", help="batch: run every row of --csv and write out/index.html")
+    ap.add_argument("--require-live", action="store_true", help="raise instead of silently falling back to the cached sample (web app)")
+    ap.add_argument("--outdir", help="exact output directory (default: <out>/<slug>)")
     a = ap.parse_args(argv)
+    say = progress or (lambda stage: None)
 
     if a.all:
         if not a.csv:
@@ -548,15 +541,22 @@ def main(argv=None):
     meta = {"date": date.today().isoformat()}
     plan = None
     if not a.offline:
+        say("keywords")
         if not get_api_key():
+            if a.require_live:
+                import gemini_client
+                raise gemini_client.GeminiError("no_key")
             print("! GEMINI_API_KEY not found (env, .env, or Colab secrets). Falling back to --offline sample output.")
         else:
             try:
-                print(f"→ Asking {a.model} for 20 keywords + 10-keyword plan for {r['name']} ...")
+                print(f"→ Asking Gemini for 20 keywords + 10-keyword plan for {r['name']} ...")
                 plan = call_gemini(r, a.model)
+                engine = plan.pop("_engine", a.model)
                 check_plan_shape(plan)
-                meta.update(mode="live", engine=a.model)
+                meta.update(mode="live", engine=engine)
             except Exception as e:
+                if a.require_live:
+                    raise
                 print(f"! Gemini call failed ({type(e).__name__}: {str(e)[:200]}). Falling back to offline sample output.")
                 plan = None
     if plan is None:
@@ -572,7 +572,8 @@ def main(argv=None):
     problems = validate_schema(rest_ld, faq_ld)
     lint = lint_plan(plan)
 
-    outdir = Path(a.out) / slugify(r["name"])
+    say("writing")
+    outdir = Path(a.outdir) if a.outdir else Path(a.out) / slugify(r["name"])
     outdir.mkdir(parents=True, exist_ok=True)
     (outdir / "plan.json").write_text(json.dumps({"restaurant": r, "meta": meta, **plan, "lint": lint, "schema_problems": problems}, indent=2))
     (outdir / "schema_restaurant.jsonld").write_text(json.dumps(rest_ld, indent=2))
@@ -598,8 +599,9 @@ def main(argv=None):
     if not a.no_extras:
         try:
             import handout
+            say("checks")
             handout.run_handout(outdir, r, plan, meta, a.model, live=(meta.get("mode") == "live"), simulate_grid=a.simulate_grid,
-                                 manual_path=a.manual, ai_check=not a.no_ai_check)
+                                 manual_path=a.manual, ai_check=not a.no_ai_check, competitors=competitors)
         except Exception as e:  # never break the core flow
             import traceback; traceback.print_exc()
             print(f"! Handout extras failed ({type(e).__name__}: {e}); core outputs above are still valid.")

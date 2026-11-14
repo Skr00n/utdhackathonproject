@@ -4,7 +4,9 @@ import base64, io, json, zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-FILES = ["page_one.py", "handout.py", "data/restaurants.csv", "data/rankings_manual.csv", "data/gaps_manual.json", "data/focus_keywords.csv", "data/baseline_site_audit.json", "sample_output/tikka_n_kabab.plan.json", "sample_output/sample_chettinad_kitchen.plan.json"]
+FILES = ["page_one.py", "handout.py", "gemini_client.py", "competitors.py", "data/competitors_tikka.json", "data/restaurants.csv", "data/rankings_manual.csv", "data/gaps_manual.json", "data/focus_keywords.csv", "data/baseline_site_audit.json", "sample_output/tikka_n_kabab.plan.json", "sample_output/sample_chettinad_kitchen.plan.json"]
+if (ROOT / "data" / "competitors_tikka_enriched.json").exists():
+    FILES.append("data/competitors_tikka_enriched.json")
 buf = io.BytesIO()
 with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
     for f in FILES:
@@ -26,12 +28,15 @@ md("## 0. Setup"),
 code("%pip install -q google-genai python-dotenv reportlab"),
 code(f"""
 import os, sys, io, base64, zipfile, pathlib
-# Key: Colab secret GEMINI_API_KEY, else environment / .env. Never hard-code it.
+# Key: ONLY from Colab Secrets (🔑 panel, name GEMINI_API_KEY). Never paste or hard-code it.
 try:
     from google.colab import userdata
-    os.environ['GEMINI_API_KEY'] = userdata.get('GEMINI_API_KEY') or os.environ.get('GEMINI_API_KEY', '')
+    _k = userdata.get('GEMINI_API_KEY')
+    if _k:
+        os.environ['GEMINI_API_KEY'] = _k
+    del _k
 except Exception:
-    pass
+    print('Not in Colab or no secret set: running offline (Tikka N Kabab demo).')
 print('Gemini key found:', bool(os.environ.get('GEMINI_API_KEY')))
 # Code: use the repo files if present, else unpack the embedded copy
 if not pathlib.Path('page_one.py').exists():
@@ -62,16 +67,13 @@ md("## 1b. Find any restaurant: type a name or website URL, confirm, then build 
 code("""
 import json, re, os
 def lookup_restaurant(query):
-    # Gemini + Google Search grounding: find the real business details. Key comes from Colab Secrets only.
-    from google import genai
-    from google.genai import types
-    client = genai.Client(api_key=os.environ['GEMINI_API_KEY'])
+    # Gemini + Google Search grounding via the robust layer (retries, backoff, model fallback).
+    import gemini_client
     prompt = ('Find this restaurant on Google (name or website): ' + query + '. Return ONLY a JSON object with keys '
-              'name, address, cuisine, website, menu_link, phone, hours, features (Google rating + review count if known), '
-              'menu_items (8-14 real dishes with prices if shown, separated by ;), price_range, lat, lng. '
+              'name, address, cuisine, website, menu_link, phone, hours, features (only what the official site or Google listing states), '
+              'menu_items (8-14 real dishes with prices only if shown, separated by ;), price_range, lat, lng, rating, review_count, category. '
               'Use empty string for anything you cannot verify. Never invent details.')
-    r = client.models.generate_content(model=os.environ.get('GEMINI_MODEL', 'gemini-2.5-flash'), contents=prompt,
-        config=types.GenerateContentConfig(tools=[types.Tool(google_search=types.GoogleSearch())]))
+    r = gemini_client.generate(prompt, grounded=True, max_tokens=4000, temperature=0.1)
     m = re.search(r'\\{.*\\}', r.text or '', re.S)
     return json.loads(m.group(0)) if m else None
 
@@ -141,7 +143,7 @@ with open(mp, 'w', newline='') as f:
     for k, v in rows.items(): w.writerow([k] + v[:5])
 print(open(mp).read()[:1500])
 if MANUAL:
-    handout.run_handout(outdir, plan['restaurant'], plan, plan['meta'], os.environ.get('GEMINI_MODEL', 'gemini-2.5-flash'),
+    handout.run_handout(outdir, plan['restaurant'], plan, plan['meta'], os.environ.get('GEMINI_MODEL', 'gemini-3.8-flash'),
                         live=(plan['meta'].get('mode') == 'live' and AI_CHECK), manual_path='data/rankings_manual.csv')
 else:
     print('Add rows to MANUAL to update; rows already in data/rankings_manual.csv were used in the run above.')
