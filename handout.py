@@ -416,7 +416,14 @@ def write_pdf(outdir: Path, r: dict, plan: dict, stands: list[dict], fixes: dict
            P("How the by-hand check works: incognito window, search each keyword on google.com/maps (position or 'not in top 20', who is #1-#3), "
              "search google.com (is the site on page 1?), ask Gemini/ChatGPT the keyword as a question (is the restaurant named?). No paid SEO tools. "
              "Values marked (est.) are SAMPLE estimates until data/rankings_manual.csv is filled in.", small),
-           Paragraph("3. Gap analysis vs the #1 result", ss["Heading2"])]
+           ]
+    b = fixes.get("baseline")
+    if b:
+        st += [Paragraph(esc(b["title"]), ss["Heading2"]), P("Source: " + b["source"], small),
+               table([["Metric", "Value"]] + [list(x) for x in b["metrics"]], [3.2*inch, 4.0*inch]), Spacer(1, 4),
+               P(b["positions_note"], small), table([["Keyword", "Position"]] + [list(x) for x in b["positions"]], [3.2*inch, 4.0*inch]),
+               P(b["competitor"]), Paragraph("<b>" + esc(b["insight"]) + "</b>", body)] + [P("• " + x) for x in b["fixes"]]
+    st += [Paragraph("3. Gap analysis vs the #1 result", ss["Heading2"])]
     if fixes.get("featured_gap"):
         ft = Table([[Paragraph("<b>" + esc(fixes["featured_gap"]) + "</b>", body)]], colWidths=[7.2*inch])
         ft.setStyle(TableStyle([("BACKGROUND", (0, 0), (-1, -1), colors.HexColor("#fee2e2")), ("BOX", (0, 0), (-1, -1), 1, colors.HexColor("#dc2626"))]))
@@ -459,6 +466,16 @@ def render_plan_html(r, plan, stands, fixes, grid_rows, meta) -> str:
             f"<h2>Fixes</h2><pre>{esc(json.dumps(fixes, indent=2))}</pre><h2>30-day plan</h2><ul>{''.join(f'<li><b>{a}</b> {esc(b)}</li>' for a, b in thirty_day_plan(fixes))}</ul>")
 
 
+def baseline_html(b: dict) -> str:
+    m = "".join(f"<tr><td>{esc(k)}</td><td>{esc(v)}</td></tr>" for k, v in b["metrics"])
+    pz = "".join(f"<tr><td>{esc(k)}</td><td>{esc(v)}</td></tr>" for k, v in b["positions"])
+    fx = "".join(f"<li>{esc(x)}</li>" for x in b["fixes"])
+    return (f"<h2>{esc(b['title'])}</h2><div class='card'><p class='muted'>Source: {esc(b['source'])}</p>"
+            f"<table><tr><th>Metric</th><th>Value</th></tr>{m}</table><h3>{esc(b['positions_note'])}</h3>"
+            f"<table><tr><th>Keyword</th><th>Position</th></tr>{pz}</table><p>{esc(b['competitor'])}</p>"
+            f"<p><b>{esc(b['insight'])}</b></p><ul>{fx}</ul></div>")
+
+
 # ----------------------------------------------------------------------------- orchestrator
 def run_handout(outdir: Path, r: dict, plan: dict, meta: dict, model: str, live: bool, simulate_grid: bool = False,
                 manual_path=None, ai_check: bool = True) -> dict:
@@ -484,6 +501,14 @@ def run_handout(outdir: Path, r: dict, plan: dict, meta: dict, model: str, live:
     feat = json.loads(gp.read_text()) if gp and gp.exists() else {}
     if feat.get("_featured"):
         fixes["featured_gap"] = feat["_featured"]
+    bp = Path(manual_path).with_name("baseline_semrush.json") if manual_path else None
+    baseline = json.loads(bp.read_text()) if bp and bp.exists() else None
+    fixes["baseline"] = baseline
+    if baseline and (outdir / "report.html").exists():
+        rp = outdir / "report.html"; txt = rp.read_text()
+        bh = baseline_html(baseline)
+        txt = txt.replace("<h2>2. The 10-keyword plan</h2>", bh + "<h2>2. The 10-keyword plan</h2>", 1) if "<h2>2. The 10-keyword plan</h2>" in txt else txt.replace("</body>", bh + "</body>", 1)
+        rp.write_text(txt)
     if feat.get("_title_fix"):
         fixes["website_title_tag"] = feat["_title_fix"]
     try:

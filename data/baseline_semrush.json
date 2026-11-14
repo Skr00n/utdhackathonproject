@@ -1,0 +1,24 @@
+{
+ "title": "Baseline (Semrush, Nov 13-14, 2026)",
+ "source": "Semrush (team screenshot) for tikkankababtx.com",
+ "metrics": [
+  ["Organic traffic", "15 / month (down 89.51%)"],
+  ["Organic keywords", "19"],
+  ["Authority Score", "8 (low authority)"],
+  ["Referring domains", "783"],
+  ["AI Visibility", "n/a, 0 citations"],
+  ["Mentions in ChatGPT / AI Overview / AI Mode / Gemini", "n/a / n/a / n/a / n/a"],
+  ["Site health", "89% (22 errors, 80 warnings, 40 pages crawled)"]
+ ],
+ "positions": [
+  ["tikka n kabab", "#2 (3.43% visibility)"],
+  ["best indian restaurants dallas", "not ranking (0%)"],
+  ["indian food dallas", "not ranking (0%)"],
+  ["indian food near me", "not ranking (0%)"],
+  ["indian restaurant in dallas tx", "not ranking (0%)"]
+ ],
+ "positions_note": "Position tracking: Dallas, Google",
+ "competitor": "Top competitor: O'Desi Aroma (odesiaroma.com), the SEO leader, ~9.8K organic traffic; leads local search coverage.",
+ "insight": "Tikka N Kabab only ranks for its own name: zero for generic and dish searches and zero AI visibility. That is exactly what Page One Builder fixes.",
+ "fixes": ["Fix the 22 site errors Semrush found", "Fix the title tag ('Best Hamburgers in Dallas' -> Pakistani & Indian food)", "Add Restaurant + Menu + FAQ schema (generated here)", "Build one page per keyword group (generated here)"]
+}
