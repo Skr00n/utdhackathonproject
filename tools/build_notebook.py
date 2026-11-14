@@ -57,6 +57,46 @@ RESTAURANT = {
     'lng': '-96.7735',
 }
 OFFLINE = False   # True = cached sample (no API call). Also auto-falls back if no key / Gemini fails.
+"""),
+md("## 1b. Find any restaurant: type a name or website URL, confirm, then build (press Enter on blank = keep Tikka N Kabab)"),
+code("""
+import json, re, os
+def lookup_restaurant(query):
+    # Gemini + Google Search grounding: find the real business details. Key comes from Colab Secrets only.
+    from google import genai
+    from google.genai import types
+    client = genai.Client(api_key=os.environ['GEMINI_API_KEY'])
+    prompt = ('Find this restaurant on Google (name or website): ' + query + '. Return ONLY a JSON object with keys '
+              'name, address, cuisine, website, menu_link, phone, hours, features (Google rating + review count if known), '
+              'menu_items (8-14 real dishes with prices if shown, separated by ;), price_range, lat, lng. '
+              'Use empty string for anything you cannot verify. Never invent details.')
+    r = client.models.generate_content(model=os.environ.get('GEMINI_MODEL', 'gemini-2.5-flash'), contents=prompt,
+        config=types.GenerateContentConfig(tools=[types.Tool(google_search=types.GoogleSearch())]))
+    m = re.search(r'\\{.*\\}', r.text or '', re.S)
+    return json.loads(m.group(0)) if m else None
+
+query = input('Restaurant name or website URL (blank = Tikka N Kabab demo): ').strip()
+if query:
+    try:
+        found = lookup_restaurant(query)
+    except Exception as e:
+        found = None; print('Lookup failed:', e)
+    if found:
+        print('\\nFound:')
+        for k in ['name', 'address', 'cuisine', 'website', 'phone', 'hours', 'features', 'menu_items']:
+            print(f'  {k:11}: {found.get(k, "")}')
+        if input('\\nIs this the right restaurant? (y/n): ').strip().lower().startswith('y'):
+            RESTAURANT = {k: str(found.get(k, '') or '') for k in RESTAURANT}
+            OFFLINE = False
+            print('Confirmed:', RESTAURANT['name'])
+        else:
+            print('Not confirmed. Keeping', RESTAURANT['name'], '- edit the RESTAURANT cell above or rerun this cell.')
+    else:
+        print('Could not find it. Keeping', RESTAURANT['name'])
+else:
+    print('Using', RESTAURANT['name'])
+"""),
+code("""
 
 import csv
 with open('my_restaurant.csv', 'w', newline='') as f:
