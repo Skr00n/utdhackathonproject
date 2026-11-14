@@ -14,10 +14,17 @@ button{background:#f97316;color:#fff;border:0;font-size:17px;font-weight:700;pad
 <div id="m"></div>
 <div class="f"><div class="c"><b>10 keywords</b>Dishes, cuisine plus area, and real needs people search.</div><div class="c"><b>Gap analysis</b>What the top-ranked places have that you don't.</div><div class="c"><b>Paste-ready fixes</b>Description, posts, FAQs, schema, review text and a 30-day plan.</div></div>
 <small>Honest methods only: no fake reviews or clicks.</small>
-</div><script>
-const COLAB="https://colab.research.google.com/github/Skr00n/utdhackathonproject/blob/main/page_one_builder.ipynb";
-document.getElementById('f').onsubmit=async e=>{e.preventDefault();const q=document.getElementById('q').value.trim();
-try{await navigator.clipboard.writeText(q)}catch(_){}
-document.getElementById('m').textContent='Copied "'+q+'". In the notebook, click Run all, paste it into step 1b, then confirm the match.';
-window.open(COLAB,'_blank')};
+</div><div id="cf" style="display:none;margin-top:18px;background:#fff;color:#0f172a;border-radius:12px;padding:16px;text-align:left"></div>
+<div id="rep" style="display:none;margin-top:24px;background:#fff;border-radius:12px;overflow:hidden"><iframe id="fr" style="width:100%;height:80vh;border:0"></iframe></div>
+<script>
+const m=document.getElementById('m'),cf=document.getElementById('cf'),rep=document.getElementById('rep');let Q='';
+function esc(t){return String(t||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+async function go(confirm){m.textContent=confirm?'Building your plan (about 30-60 seconds)...':'Looking it up on Google...';
+ const r=await fetch('/api/build?q='+encodeURIComponent(Q)+'&confirm='+(confirm?1:0));const d=await r.json();
+ if(d.status==='confirm'){const i=d.info;m.textContent='';cf.style.display='block';
+  cf.innerHTML='<b>Is this your restaurant?</b><p>'+['name','address','cuisine','website','phone','hours','features'].map(k=>'<b>'+k+':</b> '+esc(i[k])).join('<br>')+'</p><button id="y">Yes, build my plan</button> <button id="n" style="background:#64748b">No</button>';
+  document.getElementById('y').onclick=()=>{cf.style.display='none';go(true)};document.getElementById('n').onclick=()=>{cf.style.display='none';m.textContent='Try a more specific name or paste the website.'};return}
+ if(d.status==='ok'||d.status==='offline'){m.textContent=d.status==='offline'?'Demo mode (no key on server): showing the Tikka N Kabab sample plan.':'Done. Here is your plan:';rep.style.display='block';document.getElementById('fr').srcdoc=d.report;document.querySelector('.w').style.maxWidth='1100px';return}
+ m.textContent=d.status==='notfound'?'Could not find that restaurant. Try the website URL.':'Error: '+(d.error||'unknown')}
+document.getElementById('f').onsubmit=e=>{e.preventDefault();Q=document.getElementById('q').value.trim();rep.style.display='none';go(false)};
 </script></body></html>
