@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Page One Builder: get your restaurant found on Google Maps and AI</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:linear-gradient(135deg,#0f172a,#1e3a8a);color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center}
+.w{max-width:720px;padding:40px 24px;text-align:center}h1{font-size:44px;line-height:1.1;margin:0 0 14px}p.s{font-size:19px;color:#cbd5e1;margin:0 0 30px}
+form{display:flex;gap:10px;background:#fff;padding:8px;border-radius:14px}input{flex:1;border:0;font-size:17px;padding:14px;outline:none;color:#0f172a;border-radius:10px}
+button{background:#f97316;color:#fff;border:0;font-size:17px;font-weight:700;padding:14px 22px;border-radius:10px;cursor:pointer}button:hover{background:#ea580c}
+.f{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px;text-align:left}.c{background:rgba(255,255,255,.08);padding:16px;border-radius:12px;font-size:15px;color:#e2e8f0}.c b{display:block;color:#fff;margin-bottom:4px}
+#m{margin-top:16px;color:#fde68a;min-height:22px}small{color:#94a3b8;display:block;margin-top:28px}@media(max-width:640px){.f{grid-template-columns:1fr}h1{font-size:32px}}
+</style></head><body><div class="w">
+<h1>Get your restaurant on Page One</h1>
+<p class="s">Paste your restaurant's name or website. We find the 10 keywords you should rank for, check where you stand on Google Maps, Google and AI assistants, and write every fix, ready to paste.</p>
+<form id="f"><input id="q" placeholder="e.g. Tikka N Kabab Dallas or tikkankababtx.com" required><button>Build my plan</button></form>
+<div id="m"></div>
+<div class="f"><div class="c"><b>10 keywords</b>Dishes, cuisine plus area, and real needs people search.</div><div class="c"><b>Gap analysis</b>What the top-ranked places have that you don't.</div><div class="c"><b>Paste-ready fixes</b>Description, posts, FAQs, schema, review text and a 30-day plan.</div></div>
+<small>Honest methods only: no fake reviews or clicks.</small>
+</div><script>
+const COLAB="https://colab.research.google.com/github/Skr00n/utdhackathonproject/blob/main/page_one_builder.ipynb";
+document.getElementById('f').onsubmit=async e=>{e.preventDefault();const q=document.getElementById('q').value.trim();
+try{await navigator.clipboard.writeText(q)}catch(_){}
+document.getElementById('m').textContent='Copied "'+q+'". In the notebook, click Run all, paste it into step 1b, then confirm the match.';
+window.open(COLAB,'_blank')};
+</script></body></html>
